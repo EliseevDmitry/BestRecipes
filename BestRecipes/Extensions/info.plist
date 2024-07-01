@@ -6,11 +6,6 @@
 	<array>
 		<string>Extensions/Fonts/Poppins-Black.ttf</string>
 		<string>Extensions/Fonts/Poppins-Bold.ttf</string>
-		<string>Extensions/Fonts/Poppins-ExtraBold.ttf</string>
-		<string>Extensions/Fonts/Poppins-Light.ttf</string>
-		<string>Extensions/Fonts/Poppins-Medium.ttf</string>
-		<string>Extensions/Fonts/Poppins-Regular.ttf</string>
-		<string>Extensions/Fonts/Poppins-SemiBold.ttf</string>
 	</array>
 </dict>
 </plist>
