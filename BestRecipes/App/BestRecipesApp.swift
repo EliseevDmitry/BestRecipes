@@ -11,7 +11,8 @@ import SwiftUI
 struct BestRecipesApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+//            HomeView()
+            OnboardingPage3View()
         }
     }
 }

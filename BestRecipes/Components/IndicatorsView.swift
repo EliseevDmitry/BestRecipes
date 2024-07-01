@@ -2,17 +2,32 @@
 //  IndicatorsView.swift
 //  BestRecipes
 //
-//  Created by Dmitriy Eliseev on 30.06.2024.
+//  Created by Денис Гиндулин on 30.06.2024.
 //
 
 import SwiftUI
 
+
 struct IndicatorsView: View {
+    let activeIndicatorIndex: Int
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            ForEach(0..<Constants.indicatorsNumber, id: \.self) { item in
+                Rectangle()
+                    .clipShape(.capsule)
+                    .foregroundStyle(item == activeIndicatorIndex
+                                     ? Constants.activeIndicatorColorGradient
+                                     : Constants.inactiveIndicatorColor)
+                    .frame(width: Constants.indicatorWidth, height: Constants.indicatorHeight)
+            }
+        }
+        .padding(.bottom)
     }
 }
 
+
+
 #Preview {
-    IndicatorsView()
+    IndicatorsView(activeIndicatorIndex: 1)
 }

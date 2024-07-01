@@ -2,17 +2,28 @@
 //  OnboardingPage3View.swift
 //  BestRecipes
 //
-//  Created by Dmitriy Eliseev on 30.06.2024.
+//  Created by Денис Гиндулин on 30.06.2024.
 //
 
 import SwiftUI
 
 struct OnboardingPage3View: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        OnboardingPageView(
+            whiteText: "Cook it now or\n ",
+            orangeText: "save it for later",
+            backgroundImage: .onboardingThreeBackground,
+            activeIndicatorIndex: 2,
+            bigButtonTitle: "Start Cooking",
+            showingSkipButton: false
+        )
     }
 }
 
 #Preview {
     OnboardingPage3View()
+}
+
+#Preview {
+    OnboardingPage2View()
 }
