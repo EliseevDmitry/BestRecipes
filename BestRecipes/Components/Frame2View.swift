@@ -10,6 +10,7 @@ import SwiftUI
 struct Frame2View: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            .font(.custom(Poppins.Light, size: 40))
     }
 }
 

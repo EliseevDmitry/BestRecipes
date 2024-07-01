@@ -14,7 +14,7 @@ struct HomeView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
-                .font(.custom(Poppins.Black, size: 30))
+                .font(.custom(Poppins.Light, size: 30))
         }
         .padding()
     }
