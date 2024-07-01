@@ -10,14 +10,13 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
         VStack {
-            Text("Test")
-                .font(.custom(Poppins.Black, size: 25))
-            Text("Test")
-                .font(.custom(Poppins.Bold, size: 25))
-            Text("Test")
-                .font(.custom(Poppins.ExtraBold, size: 25))
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Hello, world!")
+                .font(.custom(Poppins.Light, size: 30))
         }
-        .ignoresSafeArea()
+        .padding()
     }
 }
 

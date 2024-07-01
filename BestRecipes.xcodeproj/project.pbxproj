@@ -35,15 +35,14 @@
 		261733E72C316F8E00BAB4F5 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733E62C316F8E00BAB4F5 /* Model.swift */; };
 		261733EC2C31710F00BAB4F5 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733EB2C31710F00BAB4F5 /* NetworkModel.swift */; };
 		261733F12C3171E900BAB4F5 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733F02C3171E900BAB4F5 /* UserDefaultService.swift */; };
+		261734052C3173E300BAB4F5 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FC2C3173E300BAB4F5 /* Poppins-Bold.ttf */; };
+		261734062C3173E300BAB4F5 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FD2C3173E300BAB4F5 /* Poppins-ExtraBold.ttf */; };
+		261734072C3173E300BAB4F5 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FE2C3173E300BAB4F5 /* Poppins-Light.ttf */; };
+		261734082C3173E300BAB4F5 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FF2C3173E300BAB4F5 /* Poppins-Medium.ttf */; };
+		261734092C3173E300BAB4F5 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261734002C3173E300BAB4F5 /* Poppins-Regular.ttf */; };
+		2617340A2C3173E300BAB4F5 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261734012C3173E300BAB4F5 /* Poppins-SemiBold.ttf */; };
 		2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261734032C3173E300BAB4F5 /* Fonts.swift */; };
-		26B55BAA2C332BD700080857 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26B55BA92C332BD600080857 /* Info.plist */; };
-		26F73A7F2C31D322000CFCBA /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A772C31D322000CFCBA /* Poppins-Black.ttf */; };
-		26F73A802C31D322000CFCBA /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A782C31D322000CFCBA /* Poppins-Bold.ttf */; };
-		26F73A812C31D322000CFCBA /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A792C31D322000CFCBA /* Poppins-ExtraBold.ttf */; };
-		26F73A822C31D322000CFCBA /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7A2C31D322000CFCBA /* Poppins-Light.ttf */; };
-		26F73A832C31D322000CFCBA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */; };
-		26F73A842C31D322000CFCBA /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */; };
-		26F73A852C31D322000CFCBA /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */; };
+		261734102C31793A00BAB4F5 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FB2C3173E300BAB4F5 /* Poppins-Black.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,22 +75,15 @@
 		261733E62C316F8E00BAB4F5 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		261733EB2C31710F00BAB4F5 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		261733F02C3171E900BAB4F5 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
+		261733FB2C3173E300BAB4F5 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		261733FC2C3173E300BAB4F5 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		261733FD2C3173E300BAB4F5 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		261733FE2C3173E300BAB4F5 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		261733FF2C3173E300BAB4F5 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		261734002C3173E300BAB4F5 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		261734012C3173E300BAB4F5 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		26B55BA02C32CE6200080857 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		26B55BA12C32CE6200080857 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		26B55BA22C32CE6200080857 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
-		26B55BA32C32CE6200080857 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
-		26B55BA42C32CE6200080857 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		26B55BA52C32CE6200080857 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
-		26B55BA62C32CE6200080857 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		26B55BA92C332BD600080857 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BestRecipes/Info.plist; sourceTree = SOURCE_ROOT; };
-		26F73A772C31D322000CFCBA /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
-		26F73A782C31D322000CFCBA /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		26F73A792C31D322000CFCBA /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
-		26F73A7A2C31D322000CFCBA /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
-		26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		926E7EA12C3329EA00165701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +100,7 @@
 		2617339D2C3164A900BAB4F5 = {
 			isa = PBXGroup;
 			children = (
+				926E7EA12C3329EA00165701 /* Info.plist */,
 				261733A82C3164A900BAB4F5 /* BestRecipes */,
 				261733A72C3164A900BAB4F5 /* Products */,
 			);
@@ -132,7 +125,6 @@
 				261733F22C31725000BAB4F5 /* Extensions */,
 				261733AD2C3164AC00BAB4F5 /* Assets.xcassets */,
 				261733AF2C3164AC00BAB4F5 /* Preview Content */,
-				26B55B9F2C32CE6200080857 /* Fonts */,
 			);
 			path = BestRecipes;
 			sourceTree = "<group>";
@@ -233,40 +225,24 @@
 		261733F22C31725000BAB4F5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				26F73A7E2C31D322000CFCBA /* Fonts */,
+				261734022C3173E300BAB4F5 /* Fonts */,
 				261734032C3173E300BAB4F5 /* Fonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		26B55B9F2C32CE6200080857 /* Fonts */ = {
+		261734022C3173E300BAB4F5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				26B55BA92C332BD600080857 /* Info.plist */,
-				26B55BA52C32CE6200080857 /* Poppins-Black.ttf */,
-				26B55BA62C32CE6200080857 /* Poppins-Bold.ttf */,
-				26B55BA22C32CE6200080857 /* Poppins-ExtraBold.ttf */,
-				26B55BA32C32CE6200080857 /* Poppins-Light.ttf */,
-				26B55BA42C32CE6200080857 /* Poppins-Medium.ttf */,
-				26B55BA02C32CE6200080857 /* Poppins-Regular.ttf */,
-				26B55BA12C32CE6200080857 /* Poppins-SemiBold.ttf */,
+				261733FB2C3173E300BAB4F5 /* Poppins-Black.ttf */,
+				261733FC2C3173E300BAB4F5 /* Poppins-Bold.ttf */,
+				261733FD2C3173E300BAB4F5 /* Poppins-ExtraBold.ttf */,
+				261733FE2C3173E300BAB4F5 /* Poppins-Light.ttf */,
+				261733FF2C3173E300BAB4F5 /* Poppins-Medium.ttf */,
+				261734002C3173E300BAB4F5 /* Poppins-Regular.ttf */,
+				261734012C3173E300BAB4F5 /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		26F73A7E2C31D322000CFCBA /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				26F73A772C31D322000CFCBA /* Poppins-Black.ttf */,
-				26F73A782C31D322000CFCBA /* Poppins-Bold.ttf */,
-				26F73A792C31D322000CFCBA /* Poppins-ExtraBold.ttf */,
-				26F73A7A2C31D322000CFCBA /* Poppins-Light.ttf */,
-				26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */,
-				26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */,
-				26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */,
-			);
-			name = Fonts;
-			path = ../../../../Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,16 +303,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26F73A7F2C31D322000CFCBA /* Poppins-Black.ttf in Resources */,
-				26F73A832C31D322000CFCBA /* Poppins-Medium.ttf in Resources */,
-				26F73A822C31D322000CFCBA /* Poppins-Light.ttf in Resources */,
-				26F73A812C31D322000CFCBA /* Poppins-ExtraBold.ttf in Resources */,
+				261734072C3173E300BAB4F5 /* Poppins-Light.ttf in Resources */,
+				261734092C3173E300BAB4F5 /* Poppins-Regular.ttf in Resources */,
+				261734052C3173E300BAB4F5 /* Poppins-Bold.ttf in Resources */,
+				261734102C31793A00BAB4F5 /* Poppins-Black.ttf in Resources */,
+				2617340A2C3173E300BAB4F5 /* Poppins-SemiBold.ttf in Resources */,
 				261733B12C3164AC00BAB4F5 /* Preview Assets.xcassets in Resources */,
+				261734082C3173E300BAB4F5 /* Poppins-Medium.ttf in Resources */,
+				261734062C3173E300BAB4F5 /* Poppins-ExtraBold.ttf in Resources */,
 				261733AE2C3164AC00BAB4F5 /* Assets.xcassets in Resources */,
-				26F73A852C31D322000CFCBA /* Poppins-SemiBold.ttf in Resources */,
-				26F73A802C31D322000CFCBA /* Poppins-Bold.ttf in Resources */,
-				26B55BAA2C332BD700080857 /* Info.plist in Resources */,
-				26F73A842C31D322000CFCBA /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -489,6 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -510,6 +487,7 @@
 				DEVELOPMENT_TEAM = LT54Q8Z33F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -544,6 +522,7 @@
 				DEVELOPMENT_TEAM = LT54Q8Z33F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
