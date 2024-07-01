@@ -16,7 +16,7 @@ struct HomeView: View {
             Text("Hello, world!")
                 .font(.custom(Poppins.Light, size: 30))
         }
-        .padding()
+        .ignoresSafeArea()
     }
 }
 
