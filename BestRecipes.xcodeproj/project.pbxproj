@@ -42,7 +42,6 @@
 		261734092C3173E300BAB4F5 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261734002C3173E300BAB4F5 /* Poppins-Regular.ttf */; };
 		2617340A2C3173E300BAB4F5 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261734012C3173E300BAB4F5 /* Poppins-SemiBold.ttf */; };
 		2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261734032C3173E300BAB4F5 /* Fonts.swift */; };
-		2617340F2C31756900BAB4F5 /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2617340E2C31756900BAB4F5 /* info.plist */; };
 		261734102C31793A00BAB4F5 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FB2C3173E300BAB4F5 /* Poppins-Black.ttf */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +83,6 @@
 		261734002C3173E300BAB4F5 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		261734012C3173E300BAB4F5 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		2617340E2C31756900BAB4F5 /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +99,6 @@
 		2617339D2C3164A900BAB4F5 = {
 			isa = PBXGroup;
 			children = (
-				2617340E2C31756900BAB4F5 /* info.plist */,
 				261733A82C3164A900BAB4F5 /* BestRecipes */,
 				261733A72C3164A900BAB4F5 /* Products */,
 			);
@@ -304,7 +301,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2617340F2C31756900BAB4F5 /* info.plist in Resources */,
 				261734072C3173E300BAB4F5 /* Poppins-Light.ttf in Resources */,
 				261734092C3173E300BAB4F5 /* Poppins-Regular.ttf in Resources */,
 				261734052C3173E300BAB4F5 /* Poppins-Bold.ttf in Resources */,

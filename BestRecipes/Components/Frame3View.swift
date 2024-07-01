@@ -9,7 +9,20 @@ import SwiftUI
 
 struct Frame3View: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.horizontal) {
+            LazyHStack {
+                VStack {
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .frame(width: 110, height: 110)
+                        .clipShape(Circle())
+                        .padding(.horizontal, 16)
+                    Text("Name Surname")
+                        .font(.custom(Poppins.Bold, size: 12))
+                        .padding(.top, 8)
+                }
+            }
+        }
     }
 }
 
