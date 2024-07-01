@@ -257,6 +257,14 @@
 		26B55B9F2C32CE6200080857 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				26B55BA92C332BD600080857 /* Info.plist */,
+				26B55BA52C32CE6200080857 /* Poppins-Black.ttf */,
+				26B55BA62C32CE6200080857 /* Poppins-Bold.ttf */,
+				26B55BA22C32CE6200080857 /* Poppins-ExtraBold.ttf */,
+				26B55BA32C32CE6200080857 /* Poppins-Light.ttf */,
+				26B55BA42C32CE6200080857 /* Poppins-Medium.ttf */,
+				26B55BA02C32CE6200080857 /* Poppins-Regular.ttf */,
+				26B55BA12C32CE6200080857 /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -264,6 +272,13 @@
 		26F73A7E2C31D322000CFCBA /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				26F73A772C31D322000CFCBA /* Poppins-Black.ttf */,
+				26F73A782C31D322000CFCBA /* Poppins-Bold.ttf */,
+				26F73A792C31D322000CFCBA /* Poppins-ExtraBold.ttf */,
+				26F73A7A2C31D322000CFCBA /* Poppins-Light.ttf */,
+				26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */,
+				26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */,
+				26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */,
 			);
 			name = Fonts;
 			path = ../../../../Fonts;
@@ -339,8 +354,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F73A7F2C31D322000CFCBA /* Poppins-Black.ttf in Resources */,
+				26F73A832C31D322000CFCBA /* Poppins-Medium.ttf in Resources */,
+				26F73A822C31D322000CFCBA /* Poppins-Light.ttf in Resources */,
+				26F73A812C31D322000CFCBA /* Poppins-ExtraBold.ttf in Resources */,
 				261733B12C3164AC00BAB4F5 /* Preview Assets.xcassets in Resources */,
 				261733AE2C3164AC00BAB4F5 /* Assets.xcassets in Resources */,
+				26F73A852C31D322000CFCBA /* Poppins-SemiBold.ttf in Resources */,
+				26F73A802C31D322000CFCBA /* Poppins-Bold.ttf in Resources */,
+				26B55BAA2C332BD700080857 /* Info.plist in Resources */,
+				26F73A842C31D322000CFCBA /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
