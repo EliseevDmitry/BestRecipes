@@ -20,7 +20,7 @@ struct HomeView: View {
                 .font(.custom(Poppins.Light, size: 30))
             Button("сбросить данные onboarding"){onboardingIsShow = false}
         }
-        .padding()
+        .ignoresSafeArea()
     }
 }
 
