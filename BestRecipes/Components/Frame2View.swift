@@ -9,8 +9,27 @@ import SwiftUI
 
 struct Frame2View: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .font(.custom(Poppins.Light, size: 40))
+        ScrollView(.horizontal) {
+            ZStack {
+                VStack {
+                    Image("mockImage7")
+                        .resizable()
+                        .frame(width: 124, height: 124)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                    VStack(alignment: .leading) {
+                        Text("Kelewelw Ghanian Recipe")
+                            .font(.custom(Poppins.Bold, size: 14))
+                            .padding(.top, 8)
+                        Text("By Zeelicious Foods")
+                            .font(.custom(Poppins.Regular, size: 10))
+                            .foregroundStyle(.secondary)
+                            .padding(.top, 4)
+                    }
+                }
+            }
+            .frame(width: 124)
+            .padding(.horizontal, 16)
+        }
     }
 }
 
