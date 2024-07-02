@@ -8,8 +8,39 @@
 import SwiftUI
 
 struct OnboardingStartView: View {
+    @State private var onboardingPage1ViewIsOn = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ZStack(alignment: .bottom) {
+                OnboardingBackgroundView(backgroundImage: .onboardingStartBackground)
+                DarkeningGradientView()
+                VStack {
+                    // TODO: - to add a star icon in this text
+                    AppSloganTextView(text: "100k+ Premium recipes")
+                    Spacer()
+                    AppTitleTextView()
+                    AppSloganTextView(text: "Find best recipes for cooking")
+                    
+                    
+//                    NavigationLink(destination: OnboardingPage1View()) {
+//                        StartButtonView(title: "Get Started")
+//                    }
+                    
+                    
+                    NavigationLink(isActive: $onboardingPage1ViewIsOn) {
+                        OnboardingPage1View()
+                    } label: {
+                        StartButtonView(title: "Get Started") {
+                            onboardingPage1ViewIsOn.toggle()
+                        } 
+                    }
+                    
+                    
+                }
+                .multilineTextAlignment(.center)
+            }
+        }
     }
 }
 

@@ -9,13 +9,15 @@ import SwiftUI
 
 struct OnboardingPage1View: View {
     var body: some View {
-        OnboardingPageView(
+        OnboardingSomePageView(
             whiteText: "Recipes from\nall ",
             orangeText: "over the\nWorld",
             backgroundImage: .onboardingOneBackground,
             activeIndicatorIndex: 0,
             bigButtonTitle: "Continue",
-            showingSkipButton: true
+            showingSkipButton: true/*, 
+            destinationView: OnboardingPage2View()
+            */
         )
     }
 }

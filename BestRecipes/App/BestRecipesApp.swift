@@ -12,7 +12,7 @@ struct BestRecipesApp: App {
     var body: some Scene {
         WindowGroup {
 //            HomeView()
-            OnboardingPage3View()
+            OnboardingStartView()
         }
     }
 }
