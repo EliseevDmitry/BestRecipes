@@ -17,7 +17,7 @@ struct Frame3View: View {
                 Text("Name Surname")
                     .font(.custom(Poppins.Bold, size: 12))
             }
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 16) 
         }
     }
 }
