@@ -51,6 +51,9 @@
 		26F73A832C31D322000CFCBA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */; };
 		26F73A842C31D322000CFCBA /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */; };
 		26F73A852C31D322000CFCBA /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */; };
+		261734102C31793A00BAB4F5 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FB2C3173E300BAB4F5 /* Poppins-Black.ttf */; };
+		26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA392C3452D200EE6B43 /* ModelApp.swift */; };
+		26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA3B2C345B0700EE6B43 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +87,9 @@
 		261733EB2C31710F00BAB4F5 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		261733F02C3171E900BAB4F5 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		26B6FA392C3452D200EE6B43 /* ModelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApp.swift; sourceTree = "<group>"; };
+		26B6FA3B2C345B0700EE6B43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		926E7EA12C3329EA00165701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B55BA02C32CE6200080857 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		26B55BA12C32CE6200080857 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		26B55BA22C32CE6200080857 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
