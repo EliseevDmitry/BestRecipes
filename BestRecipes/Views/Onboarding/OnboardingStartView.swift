@@ -27,14 +27,14 @@ struct OnboardingStartView: View {
 //                        StartButtonView(title: "Get Started")
 //                    }
                     
-                    
-                    NavigationLink(isActive: $onboardingPage1ViewIsOn) {
-                        OnboardingPage1View()
-                    } label: {
-                        StartButtonView(title: "Get Started") {
-                            onboardingPage1ViewIsOn.toggle()
-                        } 
-                    }
+//                    
+//                    NavigationLink(isActive: $onboardingPage1ViewIsOn) {
+//                        OnboardingPage1View()
+//                    } label: {
+//                        StartButtonView(title: "Get Started") {
+//                            onboardingPage1ViewIsOn.toggle()
+//                        } 
+//                    }
                     
                     
                 }
