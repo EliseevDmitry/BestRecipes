@@ -13,12 +13,12 @@ struct HomeView: View {
     @ObservedObject var appManager: RecipesManager
     var body: some View {
         VStack {
-            Text("Test")
-                .font(.custom(Poppins.Black, size: 25))
-            Text("Test")
-                .font(.custom(Poppins.Bold, size: 25))
-            Text("Test")
-                .font(.custom(Poppins.ExtraBold, size: 25))
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+            Text("Home View!")
+                .font(.custom(Poppins.Light, size: 30))
+            Button("сбросить данные onboarding"){onboardingIsShow = false}
         }
         .ignoresSafeArea()
     }
