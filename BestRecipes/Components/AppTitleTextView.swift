@@ -21,7 +21,7 @@ struct TitleRowView: View {
     var body: some View {
         Text(text)
             .foregroundStyle(.white)
-            .font(.custom(Poppins.Bold, size: 80))
+            .font(.custom(Poppins.bold, size: 80))
             .offset(CGSize(width: 0, height: offsetHeight))
 
     }

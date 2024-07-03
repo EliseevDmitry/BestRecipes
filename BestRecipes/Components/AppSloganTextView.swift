@@ -13,7 +13,7 @@ struct AppSloganTextView: View {
     var body: some View {
         Text(text)
             .foregroundStyle(.white)
-            .font(.custom(Poppins.Regular, size: 24))
+            .font(.custom(Poppins.regular, size: 24))
             .padding(.bottom, 24)
     }
 }

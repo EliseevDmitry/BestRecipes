@@ -12,7 +12,7 @@ struct SkipButtonView: View {
     
     var body: some View {
         Button("Skip", action: action)
-            .font(.custom(Poppins.Medium, size: 20))
+            .font(.custom(Poppins.medium, size: 20))
             .foregroundStyle(.white)
             .padding(.bottom, 24)
             .padding(.top, 8)

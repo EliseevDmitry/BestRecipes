@@ -18,10 +18,10 @@ struct Frame2View: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     VStack(alignment: .leading) {
                         Text("Kelewelw Ghanian Recipe")
-                            .font(.custom(Poppins.Bold, size: 14))
+                            .font(.custom(Poppins.bold, size: 14))
                             .padding(.top, 8)
                         Text("By Zeelicious Foods")
-                            .font(.custom(Poppins.Regular, size: 10))
+                            .font(.custom(Poppins.regular, size: 10))
                             .foregroundStyle(.secondary)
                             .padding(.top, 4)
                     }

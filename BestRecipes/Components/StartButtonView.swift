@@ -15,7 +15,7 @@ struct StartButtonView: View {
         Button(title, action: action)
             .padding(32)
             .frame(width: 200)
-            .font(.custom(Poppins.SemiBold, size: 20))
+            .font(.custom(Poppins.semiBold, size: 20))
             .background(.primary50)
             .foregroundStyle(.white)
             .clipShape(RoundedRectangle(cornerRadius: 15))

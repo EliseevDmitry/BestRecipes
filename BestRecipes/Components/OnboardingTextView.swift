@@ -13,7 +13,7 @@ struct OnboardingTextView: View {
     
     var body: some View {
         Text("\(twoColorsText())")
-            .font(.custom(Poppins.Bold, size: 40))
+            .font(.custom(Poppins.bold, size: 40))
             .multilineTextAlignment(.center)
             .padding(.bottom, 16)
     }
