@@ -8,11 +8,11 @@
 import Foundation
 
 enum Poppins {
-    static let Black = "Poppins-Black"
-    static let Bold = "Poppins-Bold"
-    static let ExtraBold = "Poppins-ExtraBold"
-    static let Light = "Poppins-Light"
-    static let Medium = "Poppins-Medium"
-    static let Regular = "Poppins-Regular"
-    static let SemiBold = "Poppins-SemiBold"
+    static let black = "Poppins-Black"
+    static let bold = "Poppins-Bold"
+    static let extraBold = "Poppins-ExtraBold"
+    static let light = "Poppins-Light"
+    static let medium = "Poppins-Medium"
+    static let regular = "Poppins-Regular"
+    static let semiBold = "Poppins-SemiBold"
 }
