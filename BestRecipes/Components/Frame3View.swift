@@ -15,7 +15,7 @@ struct Frame3View: View {
                     .resizable()
                     .frame(width: 110, height: 110)
                 Text("Name Surname")
-                    .font(.custom(Poppins.Bold, size: 12))
+                    .font(.custom(Poppins.bold, size: 12))
             }
             .padding(.horizontal, 16) 
         }

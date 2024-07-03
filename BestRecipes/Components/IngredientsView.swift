@@ -23,10 +23,10 @@ struct IngredientsView: View {
                         .frame(width: 52, height: 52)
                 }
                 Text("Fish")
-                    .font(.custom(Poppins.Bold, size: 16))
+                    .font(.custom(Poppins.bold, size: 16))
                 Spacer()
                 Text("200g")
-                    .font(.custom(Poppins.Regular, size: 14))
+                    .font(.custom(Poppins.regular, size: 14))
                     .foregroundStyle(.secondary)
                 
             }
