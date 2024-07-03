@@ -38,23 +38,12 @@
 		2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261734032C3173E300BAB4F5 /* Fonts.swift */; };
 		26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA392C3452D200EE6B43 /* ModelApp.swift */; };
 		26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA3B2C345B0700EE6B43 /* SearchView.swift */; };
+		26B6FA532C35AD4600EE6B43 /* Сuisines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA522C35AD4600EE6B43 /* Сuisines.swift */; };
 		926E7EAA2C357BA500165701 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EA92C357BA500165701 /* API.swift */; };
 		926E7EAC2C3580A600165701 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAB2C3580A600165701 /* Endpoints.swift */; };
 		926E7EAE2C35819500165701 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAD2C35819500165701 /* NetworkManager.swift */; };
 		926E7EB02C35826500165701 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAF2C35826500165701 /* NetworkErrors.swift */; };
 		926E7EB22C3592C500165701 /* NetworkTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB12C3592C500165701 /* NetworkTestView.swift */; };
-		26B55BAA2C332BD700080857 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26B55BA92C332BD600080857 /* Info.plist */; };
-		26F73A7F2C31D322000CFCBA /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A772C31D322000CFCBA /* Poppins-Black.ttf */; };
-		26F73A802C31D322000CFCBA /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A782C31D322000CFCBA /* Poppins-Bold.ttf */; };
-		26F73A812C31D322000CFCBA /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A792C31D322000CFCBA /* Poppins-ExtraBold.ttf */; };
-		26F73A822C31D322000CFCBA /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7A2C31D322000CFCBA /* Poppins-Light.ttf */; };
-		26F73A832C31D322000CFCBA /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */; };
-		26F73A842C31D322000CFCBA /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */; };
-		26F73A852C31D322000CFCBA /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */; };
-		261734102C31793A00BAB4F5 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FB2C3173E300BAB4F5 /* Poppins-Black.ttf */; };
-		26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA392C3452D200EE6B43 /* ModelApp.swift */; };
-		26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA3B2C345B0700EE6B43 /* SearchView.swift */; };
-		26B6FA532C35AD4600EE6B43 /* Сuisines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA522C35AD4600EE6B43 /* Сuisines.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,29 +79,6 @@
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		26B6FA392C3452D200EE6B43 /* ModelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApp.swift; sourceTree = "<group>"; };
 		26B6FA3B2C345B0700EE6B43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		926E7EA12C3329EA00165701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26B55BA02C32CE6200080857 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		26B55BA12C32CE6200080857 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		26B55BA22C32CE6200080857 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
-		26B55BA32C32CE6200080857 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
-		26B55BA42C32CE6200080857 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		26B55BA52C32CE6200080857 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
-		26B55BA62C32CE6200080857 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		26B55BA92C332BD600080857 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BestRecipes/Info.plist; sourceTree = SOURCE_ROOT; };
-		26F73A772C31D322000CFCBA /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
-		26F73A782C31D322000CFCBA /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		26F73A792C31D322000CFCBA /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
-		26F73A7A2C31D322000CFCBA /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
-		26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		26B6FA392C3452D200EE6B43 /* ModelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApp.swift; sourceTree = "<group>"; };
-		26B6FA3B2C345B0700EE6B43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		926E7EA92C357BA500165701 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		926E7EAB2C3580A600165701 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
-		926E7EAD2C35819500165701 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		926E7EAF2C35826500165701 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
-		926E7EB12C3592C500165701 /* NetworkTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestView.swift; sourceTree = "<group>"; };
 		26B6FA4B2C35AC3E00EE6B43 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		26B6FA4C2C35AC3E00EE6B43 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		26B6FA4D2C35AC3E00EE6B43 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
@@ -121,6 +87,12 @@
 		26B6FA502C35AC3E00EE6B43 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		26B6FA512C35AC3E00EE6B43 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		26B6FA522C35AD4600EE6B43 /* Сuisines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сuisines.swift"; sourceTree = "<group>"; };
+		26B6FA592C35C82200EE6B43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
+		926E7EA92C357BA500165701 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		926E7EAB2C3580A600165701 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		926E7EAD2C35819500165701 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		926E7EAF2C35826500165701 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		926E7EB12C3592C500165701 /* NetworkTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +125,7 @@
 		261733A82C3164A900BAB4F5 /* BestRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				26B6FA592C35C82200EE6B43 /* Info.plist */,
 				261733D22C316D8200BAB4F5 /* App */,
 				261733E52C316F5A00BAB4F5 /* Models */,
 				261733ED2C3171A800BAB4F5 /* Services */,
@@ -161,7 +134,6 @@
 				261733F22C31725000BAB4F5 /* Extensions */,
 				261733AD2C3164AC00BAB4F5 /* Assets.xcassets */,
 				261733AF2C3164AC00BAB4F5 /* Preview Content */,
-				26B55B9F2C32CE6200080857 /* Fonts */,
 			);
 			path = BestRecipes;
 			sourceTree = "<group>";
@@ -262,13 +234,6 @@
 				26B6FA522C35AD4600EE6B43 /* Сuisines.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		26B55B9F2C32CE6200080857 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		26F73A7E2C31D322000CFCBA /* Fonts */ = {
