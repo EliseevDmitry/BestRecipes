@@ -10,33 +10,34 @@ import SwiftUI
 struct OnboardingStartView: View {
     @State private var onboardingPage1ViewIsOn = false
     
+    @ObservedObject var appManager: RecipesManager
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .bottom) {
                 OnboardingBackgroundView(backgroundImage: .onboardingStartBackground)
                 DarkeningGradientView()
+                
                 VStack {
-                    // TODO: - to add a star icon in this text
-                    AppSloganTextView(text: "100k+ Premium recipes")
+                    HStack(alignment: .firstTextBaseline) {
+                        Image("star")
+                        AppSloganTextView(text: "100k+ Premium recipes")
+                    }
+                    
                     Spacer()
+                    
                     AppTitleTextView()
+                    
                     AppSloganTextView(text: "Find best recipes for cooking")
-                    
-                    
-//                    NavigationLink(destination: OnboardingPage1View()) {
-//                        StartButtonView(title: "Get Started")
-//                    }
-                    
-//                    
-//                    NavigationLink(isActive: $onboardingPage1ViewIsOn) {
-//                        OnboardingPage1View()
-//                    } label: {
-//                        StartButtonView(title: "Get Started") {
-//                            onboardingPage1ViewIsOn.toggle()
-//                        } 
-//                    }
-                    
-                    
+                 
+                    NavigationLink(isActive: $onboardingPage1ViewIsOn) {
+                        OnboardingPage1View(appManager: appManager)
+                            .navigationBarBackButtonHidden()
+                    } label: {
+                        StartButtonView(title: "Get Started") {
+                            onboardingPage1ViewIsOn.toggle()
+                        } 
+                    }
                 }
                 .multilineTextAlignment(.center)
             }
@@ -45,5 +46,5 @@ struct OnboardingStartView: View {
 }
 
 #Preview {
-    OnboardingStartView()
+    OnboardingStartView(appManager: RecipesManager())
 }

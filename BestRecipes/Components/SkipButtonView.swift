@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct SkipButtonView: View {
+    let action: () -> Void
+    
     var body: some View {
-        Button("Skip") {
-//            NavigationLink("Skip", destination: HomeView())
-        }
-        .font(.custom(Poppins.Medium, size: 20))
-        .foregroundStyle(.white)
-        .padding(.bottom, 24)
-        .padding(.top, 8)
+        Button("Skip", action: action)
+            .font(.custom(Poppins.Medium, size: 20))
+            .foregroundStyle(.white)
+            .padding(.bottom, 24)
+            .padding(.top, 8)
     }
 }
 
 #Preview {
-    SkipButtonView()
+    SkipButtonView(action: {})
         .preferredColorScheme(.dark)
 }

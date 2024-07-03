@@ -19,7 +19,7 @@ struct OnboardingTextView: View {
     }
     
     private func twoColorsText() -> Text {
-        Text(whiteText).foregroundColor(.white) + Text(orangeText).foregroundColor(.rating100)
+        Text(whiteText).foregroundColor(.white) + Text(orangeText).foregroundColor(.secondary20)
     }
 }
 

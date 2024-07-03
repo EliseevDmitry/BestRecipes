@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct HomeView: View {
-    @AppStorage("onboardingIsShow")
-    var onboardingIsShow = false
+    @AppStorage("onboardingIsShow") var onboardingIsShow = false
+    
     @ObservedObject var appManager: RecipesManager
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Home View!")
+            Text("Home View! \nondoarding status: \(onboardingIsShow)")
                 .font(.custom(Poppins.Light, size: 30))
-            Button("сбросить данные onboarding"){onboardingIsShow = false}
+          
+            Button("сбросить данные onboarding status"){onboardingIsShow = false}
         }
         .ignoresSafeArea()
     }

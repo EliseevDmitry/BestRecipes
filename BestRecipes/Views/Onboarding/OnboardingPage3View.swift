@@ -8,23 +8,40 @@
 import SwiftUI
 
 struct OnboardingPage3View: View {
+    @AppStorage("onboardingIsShow") var onboardingIsShow = false
+    
+    @State private var homeViewIsOn = false
+    
+    @ObservedObject var appManager: RecipesManager
+
     var body: some View {
-        OnboardingSomePageView(
-            whiteText: "Cook it now or\n ",
-            orangeText: "save it for later",
-            backgroundImage: .onboardingThreeBackground,
-            activeIndicatorIndex: 2,
-            bigButtonTitle: "Start Cooking",
-            showingSkipButton: false/*,
-            destinationView: HomeView()*/
-        )
+        ZStack(alignment: .bottom) {
+            OnboardingBackgroundView(backgroundImage: .onboardingThreeBackground)
+            DarkeningGradientView()
+            VStack {
+                OnboardingTextView(
+                    whiteText: "Cook it now or\n ",
+                    orangeText: "save it for later"
+                )
+
+                IndicatorsView(activeIndicatorIndex: 2)
+                               
+                NavigationLink(isActive: $homeViewIsOn) {
+                    HomeView(appManager: appManager)
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    ContinueButtonView(title: "Start Cooking") {
+                        homeViewIsOn.toggle()
+                        onboardingIsShow = true
+                    }
+                }
+            
+                RectangleSpacerView()
+            }
+        }
     }
 }
 
 #Preview {
-    OnboardingPage3View()
-}
-
-#Preview {
-    OnboardingPage2View()
+    OnboardingPage3View(appManager: RecipesManager())
 }

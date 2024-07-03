@@ -9,21 +9,19 @@ import SwiftUI
 
 struct ContinueButtonView: View {
     let title: String
-//    let destinationView: any View
+    let action: () -> Void
     
     var body: some View {
-        Button(title) {
-            //NavigationLink("title", destination: destinationView)
-        }
-        .frame(width: 250)
-        .padding()
-        .font(.custom(Poppins.SemiBold, size: 30))
-        .background(.pinkish)
-        .foregroundStyle(.white)
-        .clipShape(.capsule)
+        Button(title, action: action)
+            .padding()
+            .frame(width: 280)
+            .font(.custom(Poppins.SemiBold, size: 30))
+            .background(.primary50)
+            .foregroundStyle(.white)
+            .clipShape(.capsule)
     }
 }
 
 #Preview {
-    ContinueButtonView(title: "Continue"/*, destinationView: OnboardingPage2View()*/)
+    ContinueButtonView(title: "Continue", action: {})
 }

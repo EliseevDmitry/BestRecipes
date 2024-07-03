@@ -10,7 +10,7 @@ import SwiftUI
 struct AppTitleTextView: View {
     var body: some View {
         TitleRowView(text: "Best", offsetHeight: 40)
-        TitleRowView(text: "Recipes", offsetHeight: 0)
+        TitleRowView(text: "Recipe", offsetHeight: 0)
     }
 }
 
