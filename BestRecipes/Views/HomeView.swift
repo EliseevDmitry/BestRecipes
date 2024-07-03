@@ -20,7 +20,7 @@ struct HomeView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Home View!")
-                .font(.custom(Poppins.Light, size: 30))
+                .font(.custom(Poppins.light, size: 30))
             Button("Сбросить данные onboarding") {
                 networkManager.searchRecipe(for: "pasta") { result in
                     switch result {
