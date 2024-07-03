@@ -30,7 +30,7 @@ struct Frame1View: View {
                                         Image(systemName: "star.fill")
                                             .frame(width: 16, height: 16)
                                         Text("5,0")
-                                            .font(.custom(Poppins.Bold, size: 14))
+                                            .font(.custom(Poppins.bold, size: 14))
                                             .foregroundStyle(.white)
                                     }
                                 }
@@ -54,7 +54,7 @@ struct Frame1View: View {
                                         .fill(.secondary)
                                         .frame(width: 41, height: 25)
                                     Text("15:10")
-                                        .font(.custom(Poppins.Regular, size: 12))
+                                        .font(.custom(Poppins.regular, size: 12))
                                         .foregroundStyle(.white)
                                 }
                             }
@@ -65,7 +65,7 @@ struct Frame1View: View {
                     // стек под видео
                     VStack(alignment: .leading) {
                         Text("How to make sharwama at home")
-                            .font(.custom(Poppins.Bold, size: 16))
+                            .font(.custom(Poppins.bold, size: 16))
                             .padding(.vertical, 12)
                         HStack {
                             Image("mockAvatar")
@@ -73,7 +73,7 @@ struct Frame1View: View {
                                 .frame(width: 32, height: 32)
                                 .clipShape(Circle())
                             Text("By Zellicous Foods")
-                                .font(.custom(Poppins.Regular, size: 12))
+                                .font(.custom(Poppins.regular, size: 12))
                                 .foregroundStyle(.secondary)
                         }
                     }
