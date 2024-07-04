@@ -25,7 +25,8 @@ struct OnboardingPage3View: View {
                 )
 
                 IndicatorsView(activeIndicatorIndex: 2)
-                               
+                
+                // кнопка, нажатие на которую ведет на экран HomeView
                 NavigationLink(isActive: $homeViewIsOn) {
                     HomeView(appManager: appManager)
                         .navigationBarBackButtonHidden()

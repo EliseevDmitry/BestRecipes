@@ -22,6 +22,7 @@ struct HomeView: View {
             Text("Home View!")
                 .font(.custom(Poppins.light, size: 30))
             Button("Сбросить данные onboarding") {
+                onboardingIsShow = true
                 networkManager.searchRecipe(for: "pasta") { result in
                     switch result {
                     case .success(let response):
