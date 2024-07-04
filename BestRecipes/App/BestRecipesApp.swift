@@ -20,6 +20,7 @@ struct BestRecipesApp: App {
 //            } else {
 //                OnboardingView()
 //            }
+     HomeView(appManager: appManager)
         }
     }
 }

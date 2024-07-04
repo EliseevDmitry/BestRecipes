@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct Frame1View: View {
+struct Frame1View: View, Hashable {
+    var id: Int
     var body: some View {
-        ScrollView {
             // общий стек
             ZStack {
                 VStack(alignment: .leading) {
@@ -79,11 +79,10 @@ struct Frame1View: View {
                     }
                 }
             }
-            .padding(.horizontal, 24)
         }
     }
-}
+    
 
 #Preview {
-    Frame1View()
+    Frame1View(id: 1)
 }
