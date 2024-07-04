@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct PopularItemView: View {
+struct PopularItemView: View, Hashable {
     // входные параметры, которые могут приходить из сети
+    
     var foodFoto: String
     var title: String
     var time: String
@@ -28,7 +29,7 @@ struct PopularItemView: View {
     private var foodFotoVerticalOffset: Double { cardBgHeight / 2 }
     
     private var titleWidth: Double { cardWidth * 0.8 }
-    private var titleFontSize: Double { cardWidth * 0.1 }
+    private var titleFontSize: Double { cardWidth * 0.09 }
 
     private var timeFontSize: Double { cardWidth * 0.1 }
     
@@ -56,7 +57,7 @@ struct PopularItemView: View {
                 // название популярного блюда
                 Text(title)
                     .frame(width: titleWidth)
-                    .font(.custom(Poppins.black, size: titleFontSize))
+                    .font(.custom(Poppins.semiBold, size: titleFontSize))
                     .multilineTextAlignment(.center)
                     .lineLimit(3)
                 
@@ -76,10 +77,9 @@ struct PopularItemView: View {
                 // время приготовления блюда
                 VStack(alignment: .leading) {
                     Text("Time")
-                        .foregroundStyle(.neutral50)
-                        .padding(.bottom, 4)
+                        .foregroundStyle(.neutral30)
                     Text(time)
-                }.font(.custom(Poppins.medium, size: timeFontSize))
+                }.font(.custom(Poppins.semiBold, size: timeFontSize))
                 
                 Spacer()
                 
