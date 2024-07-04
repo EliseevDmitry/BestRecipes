@@ -36,7 +36,6 @@
 		261733EC2C31710F00BAB4F5 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733EB2C31710F00BAB4F5 /* NetworkModel.swift */; };
 		261733F12C3171E900BAB4F5 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733F02C3171E900BAB4F5 /* UserDefaultService.swift */; };
 		2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261734032C3173E300BAB4F5 /* Fonts.swift */; };
-		261734102C31793A00BAB4F5 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 261733FB2C3173E300BAB4F5 /* Poppins-Black.ttf */; };
 		26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA392C3452D200EE6B43 /* ModelApp.swift */; };
 		26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA3B2C345B0700EE6B43 /* SearchView.swift */; };
 /* End PBXBuildFile section */
@@ -74,7 +73,6 @@
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		26B6FA392C3452D200EE6B43 /* ModelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApp.swift; sourceTree = "<group>"; };
 		26B6FA3B2C345B0700EE6B43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
-		926E7EA12C3329EA00165701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,14 +225,6 @@
 		26B55B9F2C32CE6200080857 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				26B55BA92C332BD600080857 /* Info.plist */,
-				26B55BA52C32CE6200080857 /* Poppins-Black.ttf */,
-				26B55BA62C32CE6200080857 /* Poppins-Bold.ttf */,
-				26B55BA22C32CE6200080857 /* Poppins-ExtraBold.ttf */,
-				26B55BA32C32CE6200080857 /* Poppins-Light.ttf */,
-				26B55BA42C32CE6200080857 /* Poppins-Medium.ttf */,
-				26B55BA02C32CE6200080857 /* Poppins-Regular.ttf */,
-				26B55BA12C32CE6200080857 /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -242,13 +232,6 @@
 		26F73A7E2C31D322000CFCBA /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				26F73A772C31D322000CFCBA /* Poppins-Black.ttf */,
-				26F73A782C31D322000CFCBA /* Poppins-Bold.ttf */,
-				26F73A792C31D322000CFCBA /* Poppins-ExtraBold.ttf */,
-				26F73A7A2C31D322000CFCBA /* Poppins-Light.ttf */,
-				26F73A7B2C31D322000CFCBA /* Poppins-Medium.ttf */,
-				26F73A7C2C31D322000CFCBA /* Poppins-Regular.ttf */,
-				26F73A7D2C31D322000CFCBA /* Poppins-SemiBold.ttf */,
 			);
 			name = Fonts;
 			path = ../../../../Fonts;
@@ -312,16 +295,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26F73A7F2C31D322000CFCBA /* Poppins-Black.ttf in Resources */,
-				26F73A832C31D322000CFCBA /* Poppins-Medium.ttf in Resources */,
-				26F73A822C31D322000CFCBA /* Poppins-Light.ttf in Resources */,
-				26F73A812C31D322000CFCBA /* Poppins-ExtraBold.ttf in Resources */,
 				261733B12C3164AC00BAB4F5 /* Preview Assets.xcassets in Resources */,
 				261733AE2C3164AC00BAB4F5 /* Assets.xcassets in Resources */,
-				26F73A852C31D322000CFCBA /* Poppins-SemiBold.ttf in Resources */,
-				26F73A802C31D322000CFCBA /* Poppins-Bold.ttf in Resources */,
-				26B55BAA2C332BD700080857 /* Info.plist in Resources */,
-				26F73A842C31D322000CFCBA /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,7 +471,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BestRecipes/Preview Content\"";
-				DEVELOPMENT_TEAM = LT54Q8Z33F;
+				DEVELOPMENT_TEAM = 9W4LY938NZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
@@ -531,7 +506,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BestRecipes/Preview Content\"";
-				DEVELOPMENT_TEAM = LT54Q8Z33F;
+				DEVELOPMENT_TEAM = 9W4LY938NZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";

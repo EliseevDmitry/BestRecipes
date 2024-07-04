@@ -14,11 +14,12 @@ struct BestRecipesApp: App {
     @StateObject var appManager = RecipesManager()
     var body: some Scene {
         WindowGroup {
-            if onboardingIsShow {
-                HomeView(appManager: appManager)
-            } else {
-                OnboardingView()
-            }
+            MyRecipeItemView()
+//            if onboardingIsShow {
+//                HomeView(appManager: appManager)
+//            } else {
+//                OnboardingView()
+//            }
         }
     }
 }
