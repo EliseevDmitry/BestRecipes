@@ -13,40 +13,66 @@ struct HomeView: View {
     @ObservedObject var appManager: RecipesManager
     @State private var searchResults: [SearchResultRecipe] = []
     var networkManager = NetworkManager.shared
+    var frameArr: [Frame1View] = [Frame1View(id: 1), Frame1View(id: 2), Frame1View(id: 3), Frame1View(id: 4), Frame1View(id: 5)]
+    @State private var selectionCatigory = "Breakfast"
+    
+    var categories = ["Salad", "Breakfast", "Appetizer", "Noodle", "Lunch", "...", "jhjhj", "jjj"]
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Home View!")
-                .font(.custom(Poppins.light, size: 30))
-            Button("Сбросить данные onboarding") {
-                onboardingIsShow = true
-                networkManager.searchRecipe(for: "pasta") { result in
-                    switch result {
-                    case .success(let response):
-                        DispatchQueue.main.async {
-                            self.searchResults = response.results
+        NavigationView{
+            ScrollView{
+                VStack{
+                    //searchView
+                    HStack(){
+                        Text("Trendind")
+                        Image(systemName: "flame")
+                        Spacer()
+                        Text("See All")
+                        Image(systemName: "arrow.right")
+                    }
+                    .padding(.horizontal, 20)
+                    //выравнивание фрайма, и прокрутка влево без отступа от левого края экрана
+                    ScrollView(.horizontal, showsIndicators: false){
+                        LazyHStack(spacing: 20){
+                            ForEach(frameArr, id: \.self){ item in
+                                NavigationLink(destination: RecipeDetailView()){
+                                    item
+                                }
+                            }
                         }
-                    case .failure(let error):
-                        print("Error: \(error)")
+                        
                     }
+                    .padding(.leading, 20)
+                    HStack(){
+                        Text("Popular Category")
+                        Spacer()
+                    }
+                    //проблема №2 - кнопка должна тоглица и переключаться! Только ождна кнопка - может быть нажата!
+                    ScrollView(.horizontal, showsIndicators: false){
+                        LazyHStack {
+                            ForEach(categories, id: \.self) { item in
+                                TestBTN(title: item, action: {})
+                                    .foregroundStyle(.red)
+                                    
+                            }
+                            
+                        }
+                        
+                    }
+                    .padding(.leading, 20)
                 }
+
             }
+            .navigationTitle("Get Amazing recipes to cooking")
+            .navigationBarTitleDisplayMode(.automatic)
             
-            List(searchResults, id: \.id) { recipe in
-                VStack(alignment: .leading) {
-                    Text(recipe.title ?? "No title")
-                        .font(.headline)
-                    if let imageUrl = recipe.image, let url = URL(string: imageUrl) {
-                        AsyncImage(url: url)
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 150)
-                    }
-                }
-            }
+            
         }
+
+        //Проблема -  .ignoresSafeArea()
+        CustomNavBarViewShape()
+            .ignoresSafeArea()
+          
         
     }
 }
