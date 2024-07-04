@@ -40,7 +40,7 @@ struct Frame1View: View, Hashable {
                                     Circle()
                                         .frame(width: 32, height: 32)
                                         .foregroundStyle(.white)
-                                    Image("iconeBookmark")
+                                    Image("Iconebookmark")
                                 }
                             }
                             .padding(.vertical, 8)

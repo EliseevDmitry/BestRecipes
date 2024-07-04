@@ -2,17 +2,54 @@
 //  OnboardingPage2View.swift
 //  BestRecipes
 //
-//  Created by Dmitriy Eliseev on 30.06.2024.
+//  Created by Денис Гиндулин on 30.06.2024.
 //
 
 import SwiftUI
 
 struct OnboardingPage2View: View {
+    @AppStorage("onboardingIsShow") var onboardingIsShow = false
+
+    @State private var onboardingPage3ViewIsOn = false
+    @State private var homeViewIsOn = false
+    
+    @ObservedObject var appManager: RecipesManager
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottom) {
+            OnboardingBackgroundView(backgroundImage: .onboardingTwoBackground)
+            DarkeningGradientView()
+            VStack {
+                OnboardingTextView(
+                    whiteText: "Recipes with\n",
+                    orangeText: "each and every\ndetail"
+                )
+
+                IndicatorsView(activeIndicatorIndex: 1)
+                
+                NavigationLink(isActive: $onboardingPage3ViewIsOn) {
+                    OnboardingPage3View(appManager: appManager)
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    ContinueButtonView(title: "Continue") {
+                        onboardingPage3ViewIsOn.toggle()
+                    }
+                }
+                               
+                NavigationLink(isActive: $homeViewIsOn) {
+                    HomeView(appManager: appManager)
+                        .navigationBarBackButtonHidden()
+                } label: {
+                    SkipButtonView() {
+                        homeViewIsOn.toggle()
+                        onboardingIsShow = true
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    OnboardingPage2View()
+    OnboardingPage2View(appManager: RecipesManager())
 }

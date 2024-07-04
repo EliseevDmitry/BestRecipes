@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
-    @AppStorage("onboardingIsShow")
-    var onboardingIsShow = false
+    @AppStorage("onboardingIsShow") var onboardingIsShow = false
+    
     @ObservedObject var appManager: RecipesManager
     @State private var searchResults: [SearchResultRecipe] = []
     var networkManager = NetworkManager.shared
