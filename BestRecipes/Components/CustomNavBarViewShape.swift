@@ -89,7 +89,6 @@ struct CustomNavBarViewShape: View {
                         Circle()
                             .frame(width: 90)
                             .foregroundStyle(.red)
-                          
                         Image(systemName: "plus")
                             .font(.title.bold())
                     }
