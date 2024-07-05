@@ -15,6 +15,8 @@ struct BestRecipesApp: App {
     var body: some Scene {
         WindowGroup {
             MyRecipeItemView()
+            CustomNavBarViewShape()
+            
 //            if onboardingIsShow {
 //                HomeView(appManager: appManager)
 //            } else {

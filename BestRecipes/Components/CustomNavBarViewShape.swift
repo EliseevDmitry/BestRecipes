@@ -33,6 +33,7 @@ struct CustomBox: Shape {
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
         path.addLine(to: CGPoint(x: (rect.maxX/2)+50, y: 0))
+        
         path.addArc(center: CGPoint(x: rect.maxX/2, y: 0), radius: 50, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: false)
         path.closeSubpath()
         return path

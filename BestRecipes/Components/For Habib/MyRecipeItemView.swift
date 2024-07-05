@@ -1,10 +1,5 @@
 import SwiftUI
 
-
-
-
-
-
 struct MyRecipeItemView: View {
     var body: some View {
         VStack(alignment: .leading) {
@@ -25,6 +20,7 @@ struct MyRecipeItemView: View {
 
 
 struct RecipeCardView: View {
+    @State private var isStarred : Bool = false
     var body: some View {
         VStack(alignment: .leading) {
             Image("mockImage1")
@@ -34,16 +30,37 @@ struct RecipeCardView: View {
                 .clipped()
                 .overlay(
                     VStack {
-                        Spacer()
-                        HStack {
-                            Spacer()
-                            Image("bookmark")
-                                .padding()
-                                .background(Color.white.opacity(0.7))
-                                .clipShape(Circle())
+                    Spacer()
+                        ZStack{
+                            
+                            HStack {
+                                Spacer()
+                                Image("Bookmark")
+                                    .padding()
+                                // .background(Color.white.opacity(0.7))
+                                    .clipShape(Circle())
+                                    .position(CGPoint(x: 325, y: 20))
+                            }
+                            .padding()
                         }
-                        .padding()
+                        
+                        HStack
+                        {
+                            RatingView()
+                        }
+                        .position(CGPoint(x: 45.0, y: -70.0))
+                    
+//                        VStack
+//                        {
+//                            TimeView()
+//                        }
+                       
+                        
+                        
+                        
+                        
                     }
+                        
                 )
             HStack {
                 ForEach(0..<5) { _ in
@@ -62,6 +79,7 @@ struct RecipeCardView: View {
                 .font(.headline)
                 .padding(.horizontal)
                 .padding(.top, 5)
+     
             
             HStack {
                 Image("mockAvatar")
@@ -83,3 +101,7 @@ struct RecipeCardView: View {
 }
 
 
+#Preview
+{
+    MyRecipeItemView()
+}

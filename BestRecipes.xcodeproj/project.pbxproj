@@ -38,6 +38,7 @@
 		2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261734032C3173E300BAB4F5 /* Fonts.swift */; };
 		26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA392C3452D200EE6B43 /* ModelApp.swift */; };
 		26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA3B2C345B0700EE6B43 /* SearchView.swift */; };
+		D475FEBE2C36BA1700A991A6 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D475FEBD2C36BA1700A991A6 /* RatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		26B6FA392C3452D200EE6B43 /* ModelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApp.swift; sourceTree = "<group>"; };
 		26B6FA3B2C345B0700EE6B43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		D475FEBD2C36BA1700A991A6 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +140,7 @@
 				261733C42C316BFA00BAB4F5 /* VideoView.swift */,
 				261733C62C316C1400BAB4F5 /* Frame4View.swift */,
 				261733C82C316C3B00BAB4F5 /* PopularItemView.swift */,
-				261733CA2C316C5400BAB4F5 /* MyRecipeItemView.swift */,
+				D475FEBC2C36B9F600A991A6 /* For Habib */,
 				261733CC2C316D5000BAB4F5 /* ButtonIcon.swift */,
 				261733CE2C316D6800BAB4F5 /* ButtonTextIcon.swift */,
 				261733D02C316D7900BAB4F5 /* ButtonText.swift */,
@@ -237,6 +239,15 @@
 			path = ../../../../Fonts;
 			sourceTree = "<group>";
 		};
+		D475FEBC2C36B9F600A991A6 /* For Habib */ = {
+			isa = PBXGroup;
+			children = (
+				261733CA2C316C5400BAB4F5 /* MyRecipeItemView.swift */,
+				D475FEBD2C36BA1700A991A6 /* RatingView.swift */,
+			);
+			path = "For Habib";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -310,6 +321,7 @@
 				261733CD2C316D5000BAB4F5 /* ButtonIcon.swift in Sources */,
 				261733D12C316D7900BAB4F5 /* ButtonText.swift in Sources */,
 				261733BD2C316B6800BAB4F5 /* Frame3View.swift in Sources */,
+				D475FEBE2C36BA1700A991A6 /* RatingView.swift in Sources */,
 				26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */,
 				261733C32C316BD900BAB4F5 /* CustomNavBarViewShape.swift in Sources */,
 				261733DC2C316E5900BAB4F5 /* OnboardingPage3View.swift in Sources */,
