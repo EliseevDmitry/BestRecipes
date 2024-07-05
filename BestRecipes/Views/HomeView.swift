@@ -16,38 +16,38 @@ struct HomeView: View {
     var frameArr: [Frame1View] = [Frame1View(id: 1), Frame1View(id: 2), Frame1View(id: 3), Frame1View(id: 4), Frame1View(id: 5)]
     @State private var selectionCatigory = "Breakfast"
     
-    var popularItems: [PopularItemView] = [
-        PopularItemView(
-            foodFoto: "mockImage1",
-            title: "Chicken and Vegetable wrap",
-            time: "5 Mins",
-            bookmarkIsOn: true,
-            cardWidth: 150
-        ),
-        PopularItemView(
-            foodFoto: "mockImage1",
-            title: "Cucumber only",
-            time: "10 Mins",
-            bookmarkIsOn: false,
-            cardWidth: 150
-        ),
-        PopularItemView(
-            foodFoto: "mockImage1",
-            title: "Chicken without Vegetables",
-            time: "15 Mins",
-            bookmarkIsOn: true,
-            cardWidth: 150
-        ),
-        PopularItemView(
-            foodFoto: "mockImage1",
-            title: "Vegetable only",
-            time: "2 Mins",
-            bookmarkIsOn: false,
-            cardWidth: 150
-        ),
-    ]
+    @State private var popularItems: [PopularItemView] = []
+//        PopularItemView(
+//            foodFoto: "mockImage1",
+//            title: "Chicken and Vegetable wrap",
+//            time: "5 Mins",
+//            bookmarkIsOn: true,
+//            cardWidth: 150
+//        ),
+//        PopularItemView(
+//            foodFoto: "mockImage1",
+//            title: "Cucumber only",
+//            time: "10 Mins",
+//            bookmarkIsOn: false,
+//            cardWidth: 150
+//        ),
+//        PopularItemView(
+//            foodFoto: "mockImage1",
+//            title: "Chicken without Vegetables",
+//            time: "15 Mins",
+//            bookmarkIsOn: true,
+//            cardWidth: 150
+//        ),
+//        PopularItemView(
+//            foodFoto: "mockImage1",
+//            title: "Vegetable only",
+//            time: "2 Mins",
+//            bookmarkIsOn: false,
+//            cardWidth: 150
+//        ),
+//    ]
     
-    // массив модели (вначале пустой)
+    // массив экземпляров модели рецептов, полученных из сети в результате  запроса (вначале пустой)
     @State private var searchResultRecipes: [SearchResultRecipe] = []
     
     var categories = ["Salad", "Breakfast", "Appetizer", "Noodle", "Lunch", "...", "jhjhj", "jjj"]
@@ -96,13 +96,22 @@ struct HomeView: View {
                         LazyHStack {
                             ForEach(categories, id: \.self) { item in
                                 TestBTN(title: item, action: {
-                                    networkManager.fetchPopularCategory(for: item.title) { result in
+                                    networkManager.fetchPopularCategory(for: item) { result in
                                         DispatchQueue.main.async {
                                             switch result {
                                             case .success(let response):
-                                                self.searchResultRecipes = response.result
-                                            case .error:
-                                                print("Error")
+                                                self.popularItems = response.results.map { popularRecipe in
+                                                    PopularItemView(
+                                                        foodFoto: popularRecipe.image ?? "no image",
+                                                        title: popularRecipe.title ?? "no title",
+                                                        time: "10", // разобраться где в моделях время приготовления популярного рецепта
+                                                        bookmarkIsOn: false,
+                                                        cardWidth: 150
+                                                    )
+                                                    print("\(popularItems.$0.title)")
+                                                }
+                                            case .failure(let error):
+                                                print("\(error.localizedDescription)")
                                             }
                                         }
                                     }
