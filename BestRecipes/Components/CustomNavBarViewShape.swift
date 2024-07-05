@@ -35,6 +35,7 @@ struct CustomBox: Shape {
         path.addLine(to: CGPoint(x: (rect.maxX/2)+50, y: 0))
         path.addArc(center: CGPoint(x: rect.maxX/2, y: 0), radius: 50, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: false)
         path.closeSubpath()
+        path.move(to: CGPoint(x: (rect.maxX/2)+50, y: 0))
         return path
     }
 }
@@ -46,8 +47,9 @@ struct CustomNavBarViewShape: View {
             ZStack {
                 CustomBox()
                     .frame(alignment: .center)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.white)
                     .frame(height: 100)
+                    .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
                 HStack{
                     Button{
                         
@@ -75,9 +77,24 @@ struct CustomNavBarViewShape: View {
                             
                     }
                 }
+                .offset(CGSize(width: 0.0, height: -15.0)) //костыль
                 .frame(maxWidth: .infinity)
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
+                Button{
+                    //action
+                    print("Boommmm!")
+                }label: {
+                    ZStack {
+                        Circle()
+                            .frame(width: 90)
+                            .foregroundStyle(.red)
+                          
+                        Image(systemName: "plus")
+                            .font(.title.bold())
+                    }
+                    .offset(CGSize(width: 0.0, height: -50.0))
+                }
             }
         }
         
