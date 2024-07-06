@@ -8,14 +8,18 @@
 import SwiftUI
 
 struct Frame1View: View, Hashable {
+   
     var id: Int
+    var foodFoto: String
+    var title: String
+
     var body: some View {
             // общий стек
             ZStack {
                 VStack(alignment: .leading) {
                     // стек с видео
                     ZStack {
-                        Image("mockImage1")
+                        AsyncImage(url: URL(string: foodFoto))
                             .frame(height: 180)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         // вложеные вью на картнинку
@@ -64,7 +68,7 @@ struct Frame1View: View, Hashable {
                     }
                     // стек под видео
                     VStack(alignment: .leading) {
-                        Text("How to make sharwama at home")
+                        Text(title)
                             .font(.custom(Poppins.bold, size: 16))
                             .padding(.vertical, 12)
                         HStack {
@@ -84,5 +88,5 @@ struct Frame1View: View, Hashable {
     
 
 #Preview {
-    Frame1View(id: 1)
+    Frame1View(id: 0, foodFoto: "", title: "")
 }
