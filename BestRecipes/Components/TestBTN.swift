@@ -14,16 +14,18 @@ struct TestBTN: View {
     var body: some View {
         Button(title){
             isSelected.toggle()
+            action() 
         }
             .padding(5)
             .padding(.horizontal, 8)
             .font(.custom(Poppins.semiBold, size: 20))
-            .background(isSelected ? .primary50 : .neutral30)
+            .background(isSelected ? .primary50 : .neutral10)
             .foregroundStyle(isSelected ? .white : .red)
             .clipShape(RoundedRectangle(cornerRadius: 8))
     }
 }
 
 #Preview {
-    TestBTN(title: "", action: {})
+    TestBTN(title: "Example Item", action: {})
+        .border(.gray)
 }
