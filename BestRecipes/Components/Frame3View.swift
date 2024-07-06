@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-struct Frame3View: View {
+struct Frame3View: View, Hashable {
+    
+    var id: Int
+    var cuisineFoto: String
+    var title: String
+    
     var body: some View {
         ScrollView(.horizontal) {
             VStack {
-                Image("mockAvatar")
+                Image(cuisineFoto)
                     .resizable()
                     .frame(width: 110, height: 110)
-                Text("Name Surname")
+                Text(title)
                     .font(.custom(Poppins.bold, size: 12))
             }
             .padding(.horizontal, 16) 
@@ -23,5 +28,5 @@ struct Frame3View: View {
 }
 
 #Preview {
-    Frame3View()
+    Frame3View(id: 0, cuisineFoto: Сuisines.african, title: "African")
 }
