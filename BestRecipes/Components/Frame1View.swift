@@ -8,85 +8,102 @@
 import SwiftUI
 
 struct Frame1View: View, Hashable {
-   
     var id: Int
     var foodFoto: String
     var title: String
 
     var body: some View {
-            // общий стек
+        VStack(alignment: .leading, spacing: 0) {
             ZStack {
-                VStack(alignment: .leading) {
-                    // стек с видео
-                    ZStack {
-                        AsyncImage(url: URL(string: foodFoto))
-                            .frame(height: 180)
+                AsyncImage(url: URL(string: foodFoto)) { phase in
+                    switch phase {
+                    case .empty:
+                        Image(systemName: "wifi.slash")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 280, height: 180)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
-                        // вложеные вью на картнинку
-                        VStack {
-                            HStack {
-                                // оценка
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(.secondary)
-                                        .frame(width: 58, height: 28)
-                                    HStack {
-                                        Image(systemName: "star.fill")
-                                            .frame(width: 16, height: 16)
-                                        Text("5,0")
-                                            .font(.custom(Poppins.bold, size: 14))
-                                            .foregroundStyle(.white)
-                                    }
-                                }
-                                Spacer()
-                                // бук марк
-                                ZStack {
-                                    Circle()
-                                        .frame(width: 32, height: 32)
-                                        .foregroundStyle(.white)
-                                    Image("Iconebookmark")
-                                }
-                            }
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 8)
-                            Spacer()
-                            HStack {
-                                Spacer()
-                                // время
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(.secondary)
-                                        .frame(width: 41, height: 25)
-                                    Text("15:10")
-                                        .font(.custom(Poppins.regular, size: 12))
-                                        .foregroundStyle(.white)
-                                }
-                            }
-                            .padding(.vertical, 8)
-                            .padding(.horizontal, 8)
-                        }
-                    }
-                    // стек под видео
-                    VStack(alignment: .leading) {
-                        Text(title)
-                            .font(.custom(Poppins.bold, size: 16))
-                            .padding(.vertical, 12)
-                        HStack {
-                            Image("mockAvatar")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                                .clipShape(Circle())
-                            Text("By Zellicous Foods")
-                                .font(.custom(Poppins.regular, size: 12))
-                                .foregroundStyle(.secondary)
-                        }
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 280, height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    case .failure(_):
+                        Image(systemName: "wifi.slash")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 280, height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    @unknown default:
+                        EmptyView()
                     }
                 }
+
+                VStack {
+                    HStack {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.secondary)
+                                .frame(width: 58, height: 28)
+                            HStack {
+                                Image(systemName: "star.fill")
+                                    .frame(width: 16, height: 16)
+                                Text("5.0")
+                                    .font(.custom(Poppins.bold, size: 14))
+                                    .foregroundStyle(.white)
+                            }
+                        }
+                        Spacer()
+                        ZStack {
+                            Circle()
+                                .frame(width: 32, height: 32)
+                                .foregroundStyle(.white)
+                            Image("Iconebookmark")
+                        }
+                    }
+                    .padding(8)
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.secondary)
+                                .frame(width: 41, height: 25)
+                            Text("15:10")
+                                .font(.custom(Poppins.regular, size: 12))
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    .padding(8)
+                }
             }
+
+            VStack(alignment: .leading, spacing: 8) {
+                Text(title)
+                    .font(.custom(Poppins.bold, size: 16))
+                    .lineLimit(2)
+                    .truncationMode(.tail)
+                    .frame(maxWidth: 260)
+                    .padding(.vertical, 8)
+                HStack {
+                    Image("mockAvatar")
+                        .resizable()
+                        .frame(width: 32, height: 32)
+                        .clipShape(Circle())
+                    Text("By Zellicous Foods")
+                        .font(.custom(Poppins.regular, size: 12))
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding([.leading, .trailing, .bottom], 8)
         }
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .frame(width: 280, height: 300)
     }
-    
+}
 
 #Preview {
-    Frame1View(id: 0, foodFoto: "", title: "")
+    Frame1View(id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
 }
