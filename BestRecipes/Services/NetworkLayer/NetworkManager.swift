@@ -138,12 +138,12 @@ struct NetworkManager {
     
     func fetchPopularCategory(
         for category: String,
-        completion: @escaping(Result<SearchResults, NetworkErrors>) -> Void)
-     {
-         guard let url = createURL(for: .popularCategory(category: category)) else { return }
-         
-        makeRequest(for: url, apiKey: API.apiKey , completion: completion)
+        completion: @escaping(Result<SearchResults, NetworkErrors>) -> Void
+    ) {
+        guard let url = createURL(for: .popularCategory(category: category)) else { return }
         print("Request popular category URL: \(url.absoluteString)")
+        makeRequest(for: url, apiKey: API.apiKey, completion: completion)
+        
     }
     
     func fetchCuisine(

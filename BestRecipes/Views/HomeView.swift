@@ -12,71 +12,180 @@ struct HomeView: View {
     
     @ObservedObject var appManager: RecipesManager
     @State private var searchResults: [SearchResultRecipe] = []
-    var networkManager = NetworkManager.shared
-    var frameArr: [Frame1View] = [Frame1View(id: 1), Frame1View(id: 2), Frame1View(id: 3), Frame1View(id: 4), Frame1View(id: 5)]
-    @State private var selectionCatigory = "Breakfast"
+    @State private var popularItems: [PopularItemView] = []
+    @State private var trendingItems: [Frame1View] = []
+    @State private var cuisinesItems: [Frame3View] = []
+    @State private var errorMessage: String?
+    @State private var selectionCategory = "Breakfast"
     
-    var categories = ["Salad", "Breakfast", "Appetizer", "Noodle", "Lunch", "...", "jhjhj", "jjj"]
+    var categories = [
+        "main course", "side dish", "dessert", "appetizer", "salad",
+        "bread", "breakfast", "soup", "beverage", "sauce", "marinade",
+        "fingerfood", "snack", "drink"
+    ]
+    
+    var cuisines = [
+        "African", "Asian", "American", "British", "Cajun", "Caribbean",
+        "Chinese", "Eastern European", "European", "French", "German",
+        "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish",
+        "Korean", "Latin American", "Mediterranean", "Mexican",
+        "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"
+    ]
+    
+    var networkManager = NetworkManager.shared
     
     var body: some View {
-        
-        NavigationView{
-            VStack{
-                ScrollView{
-                    VStack{
-                        //searchView
-                        HStack(){
-                            Text("Trendind")
-                            Image(systemName: "flame")
-                            Spacer()
-                            Text("See All")
-                            Image(systemName: "arrow.right")
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    // MARK: - Trending Section
+                    Spacer(minLength: 30)
+                    HStack {
+                        Text("Trending now 🔥")
+                            .font(.custom(Poppins.bold, size: 20))
+                        Spacer()
+                        Text("See All")
+                            .font(.custom(Poppins.bold, size: 14))
+                            .foregroundStyle(.red)
+                        Image(systemName: "arrow.right")
+                    }
+                    .padding(.horizontal, 20)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 20) {
+                            ForEach(trendingItems, id: \.self) { item in
+                                NavigationLink(destination: RecipeDetailView()) {
+                                    item
+                                }
+                            }
                         }
-                        .padding(.horizontal, 20)
-                        //выравнивание фрайма, и прокрутка влево без отступа от левого края экрана
-                        ScrollView(.horizontal, showsIndicators: false){
-                            LazyHStack(spacing: 20){
-                                ForEach(frameArr, id: \.self){ item in
-                                    NavigationLink(destination: RecipeDetailView()){
-                                        item
+                    }
+                    .padding(.horizontal, -200)
+                    
+                    // MARK: - Popular Categories Section
+                    HStack {
+                        Text("Popular Category")
+                        Spacer()
+                    }
+                    .padding()
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(categories, id: \.self) { item in
+                                TestBTN(title: item) {
+                                    networkManager.fetchPopularCategory(for: item) { result in
+                                        DispatchQueue.main.async {
+                                            switch result {
+                                            case .success(let response):
+                                                self.popularItems = response.results.map { popularRecipe in
+                                                    PopularItemView(
+                                                        foodFoto: popularRecipe.image ?? "no image",
+                                                        title: popularRecipe.title ?? "no title",
+                                                        time: "N/A",
+                                                        bookmarkIsOn: false,
+                                                        cardWidth: 150
+                                                    )
+                                                }
+                                            case .failure(let error):
+                                                self.errorMessage = error.localizedDescription
+                                                print("Error fetching popular category: \(error.localizedDescription)")
+                                            }
+                                        }
                                     }
                                 }
+                                .foregroundStyle(.red)
                             }
-                            
                         }
-                        .padding(.leading, 20)
-                        HStack(){
-                            Text("Popular Category")
-                            Spacer()
-                        }
-                        //проблема №2 - кнопка должна тоглица и переключаться! Только ождна кнопка - может быть нажата!
-                        ScrollView(.horizontal, showsIndicators: false){
-                            LazyHStack {
-                                ForEach(categories, id: \.self) { item in
-                                    TestBTN(title: item, action: {})
-                                        .foregroundStyle(.red)
-                                    
-                                }
-                                
-                            }
-                            
-                        }
-                        .padding(.leading, 20)
+                    }
+                    .padding(.leading, 20)
+                    
+                    // Display error message if any
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding()
                     }
                     
+                    // MARK: - Popular Items Section
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 20) {
+                            ForEach(popularItems, id: \.self) { item in
+                                NavigationLink(destination: RecipeDetailView()) {
+                                    item
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
                 }
-                .navigationTitle("Get Amazing recipes to cooking")
-                .navigationBarTitleDisplayMode(.automatic)
-                //Проблема -  .ignoresSafeArea()
-                CustomNavBarViewShape()
+                .onAppear {
+                    networkManager.fetchTrendingRecipes { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let response):
+                                self.trendingItems = response.results.map { element in Frame1View(
+                                    id: element.id ?? 0,
+                                    foodFoto: element.image ?? "",
+                                    title: element.title ?? "")
+                                }
+                            case .failure(let error):
+                                self.errorMessage = error.localizedDescription
+                                print("Error fetching trending recipes: \(error.localizedDescription)")
+                            }
+                        }
+                    }
+                    networkManager.fetchPopularCategory(for: selectionCategory) { result in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let response):
+                                self.popularItems = response.results.map { popularRecipe in
+                                    PopularItemView(
+                                        foodFoto: popularRecipe.image ?? "no image",
+                                        title: popularRecipe.title ?? "no title",
+                                        time: "N/A", 
+                                        bookmarkIsOn: false,
+                                        cardWidth: 150
+                                    )
+                                }
+                            case .failure(let error):
+                                self.errorMessage = error.localizedDescription
+                                print("Error fetching popular category: \(error.localizedDescription)")
+                            }
+                        }
+                    }
+                }
+                // MARK: - Cuisines Section
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(cuisines, id: \.self) { item in
+                            NavigationLink(destination: RecipeDetailView()) {
+                                Frame3View(
+                                    cuisineFoto: item,
+                                    title: item)
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 20)
             }
-            .ignoresSafeArea(.container, edges: .bottom)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    VStack(alignment: .leading) {
+                        Spacer(minLength: 30)
+                        Text("Get Amazing recipes")
+                            .font(.custom(Poppins.bold, size: 24))
+                            .multilineTextAlignment(.center)
+                        Text("to cooking")
+                            .font(.custom(Poppins.bold, size: 24))
+                            .multilineTextAlignment(.center)
+                    }
+                }
+            }
         }
-
         
-          
-          
-        
+        CustomNavBarViewShape()
+            .ignoresSafeArea()
     }
 }
 
