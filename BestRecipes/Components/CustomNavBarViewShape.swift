@@ -7,23 +7,21 @@
 
 import SwiftUI
 
-//struct CustomBox:View {
-//    var body: some View {
-//            GeometryReader { screen in
-//                Path() {path in
-//                    path.move(to: CGPoint(x: 0, y: 0))
-//                    path.addLine(to: CGPoint(x: 0, y: 100))
-//                    path.addLine(to: CGPoint(x: screen.size.width, y: 100))
-//                    path.addLine(to: CGPoint(x: screen.size.width, y: 0))
-//                    path.addLine(to: CGPoint(x: (screen.size.width/2)+50, y: 0))
-//                    path.addArc(center: CGPoint(x: screen.size.width/2, y: 0), radius: 50, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: false)
-//                    path.closeSubpath()
-//                }
-//                .fill(.red)
-//                
-//            }
-//    }
-//}
+//рабочая версия
+/*
+ func path(in rect: CGRect) -> Path {
+ var path = Path()
+ path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+ path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+ path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+ path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+ path.addLine(to: CGPoint(x: (rect.maxX/2)+50, y: 0))
+ path.addArc(center: CGPoint(x: rect.maxX/2, y: 0), radius: 50, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: false)
+ path.closeSubpath()
+ path.move(to: CGPoint(x: (rect.maxX/2)+50, y: 0))
+ return path
+ }
+ */
 
 struct CustomBox: Shape {
     func path(in rect: CGRect) -> Path {
@@ -32,10 +30,18 @@ struct CustomBox: Shape {
         path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-        path.addLine(to: CGPoint(x: (rect.maxX/2)+50, y: 0))
-        path.addArc(center: CGPoint(x: rect.maxX/2, y: 0), radius: 50, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 180), clockwise: false)
-        path.closeSubpath()
-        path.move(to: CGPoint(x: (rect.maxX/2)+50, y: 0))
+        path.addLine(to: CGPoint(x: (rect.maxX/2)+80, y: rect.minY))
+        
+        path.addArc(center: CGPoint(x: (rect.maxX/2)+80, y: rect.minY+30), radius: 30, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 66), clockwise: true)
+        
+//        path.addQuadCurve(to: CGPoint(x: (rect.maxX/2)-50, y: 0), control: CGPoint(x: rect.maxX/2, y: 50))
+        
+        path.addQuadCurve(to: CGPoint(x: (rect.maxX/2)-50, y: 0), control: CGPoint(x: rect.maxX/2, y: 50))
+        
+
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+        // path.closeSubpath()
+        
         return path
     }
 }
@@ -74,7 +80,7 @@ struct CustomNavBarViewShape: View {
                         
                     }label: {
                         Image("profile")
-                            
+                        
                     }
                 }
                 .offset(CGSize(width: 0.0, height: -15.0)) //костыль
@@ -85,14 +91,14 @@ struct CustomNavBarViewShape: View {
                     //action
                     print("Boommmm!")
                 }label: {
-                    ZStack {
-                        Circle()
-                            .frame(width: 90)
-                            .foregroundStyle(.red)
-                        Image(systemName: "plus")
-                            .font(.title.bold())
-                    }
-                    .offset(CGSize(width: 0.0, height: -50.0))
+                    //                    ZStack {
+                    //                        Circle()
+                    //                            .frame(width: 80)
+                    //                            .foregroundStyle(.red)
+                    //                        Image(systemName: "plus")
+                    //                            .font(.title.bold())
+                    //                    }
+                    //                    .offset(CGSize(width: 0.0, height: -50.0))
                 }
             }
         }
