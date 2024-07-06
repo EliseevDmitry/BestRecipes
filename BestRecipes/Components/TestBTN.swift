@@ -14,6 +14,7 @@ struct TestBTN: View {
     var body: some View {
         Button(title){
             isSelected.toggle()
+            action() 
         }
             .padding(5)
             .padding(.horizontal, 8)

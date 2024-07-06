@@ -291,7 +291,7 @@
 				22A1252D2C372AB2000962E5 /* Poppins-SemiBold.ttf */,
 			);
 			name = Fonts;
-			path = ../../../../Fonts;
+			path = ../Fonts;
 			sourceTree = "<group>";
 		};
 		926E7EA82C3575DC00165701 /* NetworkLayer */ = {

@@ -14,118 +14,30 @@ struct HomeView: View {
     @State private var searchResults: [SearchResultRecipe] = []
     var networkManager = NetworkManager.shared
     var frameArr: [Frame1View] = [Frame1View(id: 1), Frame1View(id: 2), Frame1View(id: 3), Frame1View(id: 4), Frame1View(id: 5)]
-    @State private var selectionCatigory = "Breakfast"
+    @State private var selectionCategory = "Breakfast"
     
     @State private var popularItems: [PopularItemView] = []
-//        PopularItemView(
-//            foodFoto: "mockImage1",
-//            title: "Chicken and Vegetable wrap",
-//            time: "5 Mins",
-//            bookmarkIsOn: true,
-//            cardWidth: 150
-//        ),
-//        PopularItemView(
-//            foodFoto: "mockImage1",
-//            title: "Cucumber only",
-//            time: "10 Mins",
-//            bookmarkIsOn: false,
-//            cardWidth: 150
-//        ),
-//        PopularItemView(
-//            foodFoto: "mockImage1",
-//            title: "Chicken without Vegetables",
-//            time: "15 Mins",
-//            bookmarkIsOn: true,
-//            cardWidth: 150
-//        ),
-//        PopularItemView(
-//            foodFoto: "mockImage1",
-//            title: "Vegetable only",
-//            time: "2 Mins",
-//            bookmarkIsOn: false,
-//            cardWidth: 150
-//        ),
-//    ]
-    
-    // массив экземпляров модели рецептов, полученных из сети в результате  запроса (вначале пустой)
-    @State private var searchResultRecipes: [SearchResultRecipe] = []
+    @State private var errorMessage: String?
     
     var categories = ["Salad", "Breakfast", "Appetizer", "Noodle", "Lunch", "...", "jhjhj", "jjj"]
     
     var body: some View {
-        NavigationView{
-            ScrollView{
-                VStack{
-                    // ================================
-                    // MARK: - начало блока searchView
-                    
-                    // ================================
-                    HStack(){
-                        Text("Trendind")
+        NavigationView {
+            ScrollView {
+                VStack {
+                    // MARK: - Trending Section
+                    HStack {
+                        Text("Trending")
                         Image(systemName: "flame")
                         Spacer()
                         Text("See All")
                         Image(systemName: "arrow.right")
                     }
                     .padding(.horizontal, 20)
-                    // TODO: выравнивание фрейма, и прокрутка влево без отступа от левого края экрана
-                    ScrollView(.horizontal, showsIndicators: false){
-                        LazyHStack(spacing: 20){
-                            ForEach(frameArr, id: \.self){ item in
-                                NavigationLink(destination: RecipeDetailView()){
-                                    item
-                                }
-                            }
-                        }
-                        
-                    }
-                    .padding(.leading, 20)
                     
-                    // =================================
-                    // MARK: - начало блока Popular Categories: 1. название блока, 2. кнопки выбора категории, 3. карточки с популярными блюдами - [PopularItemView]
-                    // 1. название блока
-                    HStack(){
-                        Text("Popular Category")
-                        Spacer()
-                    }
-                    .padding()
-                    
-                    // 2. кнопки выбора категории
-                    // TODO: проблема №2 - каждая кнопка в этой группе должна менять состояние (нажатая - красный текст на светлом фоне, ненажатая - белый текст на красном фоне); по умолчанию одна кнопка должна быть нажата; нажатие другой кнопки должно делать ее нажатой и ненажатыми все остальные; нажатая кнопка должна определять отображаемую коллекцию карточек - [PopularItemView]
-                    ScrollView(.horizontal, showsIndicators: false){
-                        LazyHStack {
-                            ForEach(categories, id: \.self) { item in
-                                TestBTN(title: item, action: {
-                                    networkManager.fetchPopularCategory(for: item) { result in
-                                        DispatchQueue.main.async {
-                                            switch result {
-                                            case .success(let response):
-                                                self.popularItems = response.results.map { popularRecipe in
-                                                    PopularItemView(
-                                                        foodFoto: popularRecipe.image ?? "no image",
-                                                        title: popularRecipe.title ?? "no title",
-                                                        time: "10", // разобраться где в моделях время приготовления популярного рецепта
-                                                        bookmarkIsOn: false,
-                                                        cardWidth: 150
-                                                    )
-                                                    print("\(popularItems.$0.title)")
-                                                }
-                                            case .failure(let error):
-                                                print("\(error.localizedDescription)")
-                                            }
-                                        }
-                                    }
-                                })
-                                    .foregroundStyle(.red)
-                            }
-                        }
-                    }
-                    .padding(.leading, 20)
-                    
-                    // 3. карточки с популярными блюдами - [PopularItemView]
-                    ScrollView(.horizontal, showsIndicators: false){
-                        LazyHStack(spacing: 20){
-                            ForEach(popularItems, id: \.self){ item in
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 20) {
+                            ForEach(frameArr, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView()) {
                                     item
                                 }
@@ -134,21 +46,71 @@ struct HomeView: View {
                     }
                     .padding(.leading, 20)
                     
+                    // MARK: - Popular Categories Section
+                    HStack {
+                        Text("Popular Category")
+                        Spacer()
+                    }
+                    .padding()
                     
-                    // ===================================
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(categories, id: \.self) { item in
+                                TestBTN(title: item) {
+                                    
+                                    networkManager.fetchPopularCategory(for: item) { result in
+                                        DispatchQueue.main.async {
+                                            switch result {
+                                            case .success(let response):
+                                                self.popularItems = response.results.map { popularRecipe in
+                                                    PopularItemView(
+                                                        
+                                                        foodFoto: popularRecipe.image ?? "no image",
+                                                        title: popularRecipe.title ?? "no title",
+                                                        time: "N/A", // Placeholder for time
+                                                        bookmarkIsOn: false,
+                                                        cardWidth: 150
+                                                    )
+                                                }
+                                            case .failure(let error):
+                                                self.errorMessage = error.localizedDescription
+                                                print("Error fetching popular category: \(error.localizedDescription)")
+                                            }
+                                        }
+                                    }
+                                }
+                                .foregroundStyle(.red)
+                            }
+                        }
+                    }
+                    .padding(.leading, 20)
+                    
+                    // Display error message if any
+                    if let errorMessage = errorMessage {
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                    
+                    // MARK: - Popular Items Section
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 20) {
+                            ForEach(popularItems, id: \.self) { item in
+                                NavigationLink(destination: RecipeDetailView()) {
+                                    item
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20) // Changed padding from leading to horizontal
                 }
             }
             .navigationTitle("Get Amazing recipes to cooking")
             .navigationBarTitleDisplayMode(.automatic)
-            
-            
         }
 
-        //Проблема -  .ignoresSafeArea()
         CustomNavBarViewShape()
             .ignoresSafeArea()
-          
-        
     }
 }
 
