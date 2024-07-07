@@ -37,18 +37,6 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
-                Text("Get Amazing recipes")
-                    .font(.custom(Poppins.bold, size: 24))
-                    .multilineTextAlignment(.center)
-                Text("to cooking")
-                    .font(.custom(Poppins.bold, size: 24))
-                    .multilineTextAlignment(.center)
-            }
-            .padding(.leading, -90)
-            .background(.white)
-            
-            SearchBar(searchTerm: $searchTerm)
             NavigationView {
                 ScrollView {
                     
@@ -77,6 +65,8 @@ struct HomeView: View {
                             Image(systemName: "arrow.right")
                         }
                         .padding(.horizontal, 20)
+                        .padding(.top, 20)
+                        
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 20) {
@@ -114,6 +104,7 @@ struct HomeView: View {
                                                             cardWidth: 150
                                                         )
                                                     }
+                                                    
                                                 case .failure(let error):
                                                     self.errorMessage = error.localizedDescription
                                                     print("Error fetching popular category: \(error.localizedDescription)")
@@ -184,7 +175,7 @@ struct HomeView: View {
                     }
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack(spacing: 20) {
+                        LazyHStack(spacing: 8) {
                             ForEach(cuisines, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView()) {
                                     Frame3View(
@@ -194,7 +185,7 @@ struct HomeView: View {
                             }
                         }
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 8)
                 }
             }
             .padding(.top, 15)
