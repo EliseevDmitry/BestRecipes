@@ -49,42 +49,49 @@ struct CustomBox: Shape {
     }
 }
 
-
 struct CustomNavBarViewShape: View {
+    @State private var isCheckHome = false
+    @State private var isCheckBookmark = false
+    @State private var isCheckbell = false
+    @State private var isCheckprofile = false
     let params = OffsetCustomBox()
     var body: some View {
         VStack{
             ZStack {
                 CustomBox(angle: params.angle, radiusOne: params.radiusOne, radiusTwo: params.radiusTwo)
                     .frame(alignment: .center)
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(.white)
                     .frame(height: params.height)
                     .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
                 HStack{
                     Button{
-                        
+                        resetCheck()
+                        isCheckHome.toggle()
                     }label: {
-                        Image("home")
+                        Image(!isCheckHome ? "home" : "homeRed")
                     }
                     Spacer()
                     Button{
-                        
+                        resetCheck()
+                        isCheckBookmark.toggle()
                     }label: {
-                        Image("bookmark")
+                        Image(!isCheckBookmark ? "bookmark" : "bookmarkRed")
                     }
                     Spacer()
                     Spacer()
                     Button{
-                        
+                        resetCheck()
+                        isCheckbell.toggle()
                     }label: {
-                        Image("bell")
+                        Image(!isCheckbell ? "bell" : "bellRed")
                     }
                     Spacer()
                     Button{
-                        
+                        resetCheck()
+                        isCheckprofile.toggle()
                     }label: {
-                        Image("profile")
-                        
+                        Image(!isCheckprofile ? "profile" : "profileRed")
+
                     }
                 }
                 .offset(CGSize(width: 0.0, height: -15.0)) //костыль
@@ -93,6 +100,7 @@ struct CustomNavBarViewShape: View {
                 .padding(.trailing, 20)
                 Button{
                     //action
+                    //resetCheck()
                     print("Boommmm!")
                 }label: {
                     ZStack {
@@ -106,7 +114,12 @@ struct CustomNavBarViewShape: View {
                 }
             }
         }
-        
+    }
+    func resetCheck(){
+        isCheckHome = false
+        isCheckBookmark = false
+        isCheckbell = false
+        isCheckprofile = false
     }
 }
 
