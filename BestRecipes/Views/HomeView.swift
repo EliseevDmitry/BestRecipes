@@ -51,6 +51,20 @@ struct HomeView: View {
             SearchBar(searchTerm: $searchTerm)
             NavigationView {
                 ScrollView {
+                    
+                    VStack(alignment: .leading) {
+                        Text("Get Amazing recipes")
+                            .font(.custom(Poppins.bold, size: 24))
+                            .multilineTextAlignment(.center)
+                        Text("to cooking")
+                            .font(.custom(Poppins.bold, size: 24))
+                            .multilineTextAlignment(.center)
+                    }
+                    .padding(.leading, -90)
+                    .background(.white)
+                    
+                    SearchBar(searchTerm: $searchTerm)
+
                     VStack(spacing: 20) {
                         // MARK: - Trending Section
                         HStack {
