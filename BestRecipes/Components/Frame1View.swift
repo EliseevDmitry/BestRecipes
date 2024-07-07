@@ -11,6 +11,8 @@ struct Frame1View: View, Hashable {
     var id: Int
     var foodFoto: String
     var title: String
+//    var cuisineFoto: String
+//    var cuisineName: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -101,6 +103,9 @@ struct Frame1View: View, Hashable {
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .frame(width: 280, height: 300)
+        .onAppear() {
+            
+        }
     }
 }
 
