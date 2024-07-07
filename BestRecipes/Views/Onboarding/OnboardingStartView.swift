@@ -20,7 +20,7 @@ struct OnboardingStartView: View {
                 
                 VStack {
                     HStack(alignment: .firstTextBaseline) {
-                        Image("star")
+                        Image("Star")
                         AppSloganTextView(text: "100k+ Premium recipes")
                     }
                     
