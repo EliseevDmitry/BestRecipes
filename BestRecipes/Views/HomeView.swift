@@ -11,6 +11,7 @@ struct HomeView: View {
     @AppStorage("onboardingIsShow") var onboardingIsShow = false
     
     @ObservedObject var appManager: RecipesManager
+    @State private var searchTerm = ""
     @State private var searchResults: [SearchResultRecipe] = []
     @State private var popularItems: [PopularItemView] = []
     @State private var trendingItems: [Frame1View] = []
@@ -19,9 +20,9 @@ struct HomeView: View {
     @State private var selectionCategory = "Breakfast"
     
     var categories = [
-        "main course", "side dish", "dessert", "appetizer", "salad",
-        "bread", "breakfast", "soup", "beverage", "sauce", "marinade",
-        "fingerfood", "snack", "drink"
+        "Breakfast", "Main course", "Side dish", "Dessert", "Appetizer", "Salad",
+        "Bread", "Soup", "Beverage", "Sauce", "Marinade",
+        "Fingerfood", "Snack", "Drink"
     ]
     
     var cuisines = [
@@ -35,13 +36,23 @@ struct HomeView: View {
     var networkManager = NetworkManager.shared
     
     var body: some View {
-        VStack{
-        NavigationView {
-           
+        VStack {
+            VStack(alignment: .leading) {
+                Text("Get Amazing recipes")
+                    .font(.custom(Poppins.bold, size: 24))
+                    .multilineTextAlignment(.center)
+                Text("to cooking")
+                    .font(.custom(Poppins.bold, size: 24))
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.leading, -90)
+            .background(.white)
+            
+            SearchBar(searchTerm: $searchTerm)
+            NavigationView {
                 ScrollView {
                     VStack(spacing: 20) {
                         // MARK: - Trending Section
-                        Spacer(minLength: 30)
                         HStack {
                             Text("Trending now 🔥")
                                 .font(.custom(Poppins.bold, size: 20))
@@ -62,11 +73,12 @@ struct HomeView: View {
                                 }
                             }
                         }
-                        .padding(.horizontal, -200)
+                        .padding(.horizontal, 20)
                         
                         // MARK: - Popular Categories Section
                         HStack {
                             Text("Popular Category")
+                                .font(.custom(Poppins.bold, size: 20))
                             Spacer()
                         }
                         .padding()
@@ -74,7 +86,7 @@ struct HomeView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(categories, id: \.self) { item in
-                                    TestBTN(title: item) {
+                                    PopularCategoryButton(title: item, selectedCategory: $selectionCategory) {
                                         networkManager.fetchPopularCategory(for: item) { result in
                                             DispatchQueue.main.async {
                                                 switch result {
@@ -110,7 +122,7 @@ struct HomeView: View {
                         
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 20) {
+                            LazyHStack(spacing: 10) {
                                 ForEach(popularItems, id: \.self) { item in
                                     NavigationLink(destination: RecipeDetailView()) {
                                         item
@@ -162,7 +174,7 @@ struct HomeView: View {
                             ForEach(cuisines, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView()) {
                                     Frame3View(
-                                        cuisineFoto: item,
+                                        cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
                                         title: item)
                                 }
                             }
@@ -170,29 +182,16 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 20)
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        VStack(alignment: .leading) {
-                            Spacer(minLength: 30)
-                            Text("Get Amazing recipes")
-                                .font(.custom(Poppins.bold, size: 24))
-                                .multilineTextAlignment(.center)
-                            Text("to cooking")
-                                .font(.custom(Poppins.bold, size: 24))
-                                .multilineTextAlignment(.center)
-                        }
-                    }
-                }
-                
             }
+            .padding(.top, 15)
             CustomNavBarViewShape()
+                .ignoresSafeArea(.all, edges: .bottom)
+                .searchable(text: $searchTerm, prompt: "Search recipes")
         }
-            .ignoresSafeArea(.all, edges: .bottom)
     }
-    
 }
 
 #Preview {
     HomeView(appManager: RecipesManager())
 }
+
