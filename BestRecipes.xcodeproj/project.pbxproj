@@ -63,7 +63,7 @@
 		926E7EAE2C35819500165701 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAD2C35819500165701 /* NetworkManager.swift */; };
 		926E7EB02C35826500165701 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAF2C35826500165701 /* NetworkErrors.swift */; };
 		926E7EB22C3592C500165701 /* NetworkTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB12C3592C500165701 /* NetworkTestView.swift */; };
-		926E7EB42C3AF6BB00165701 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB32C3AF6BB00165701 /* SearchBar.swift */; };
+		926E7EB42C3AF6BB00165701 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -125,7 +125,7 @@
 		926E7EAD2C35819500165701 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		926E7EAF2C35826500165701 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		926E7EB12C3592C500165701 /* NetworkTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestView.swift; sourceTree = "<group>"; };
-		926E7EB32C3AF6BB00165701 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +209,7 @@
 				26FAF5052C37167A00AED803 /* PopularCategoryButton.swift */,
 				26FAF5072C3721E600AED803 /* Test.swift */,
 				261733C82C316C3B00BAB4F5 /* PopularItemView.swift */,
-				926E7EB32C3AF6BB00165701 /* SearchBar.swift */,
+				926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 				22DBE3E62C341AE500CE7830 /* RectangleSpacerView.swift in Sources */,
 				261733AA2C3164A900BAB4F5 /* BestRecipesApp.swift in Sources */,
 				261733F12C3171E900BAB4F5 /* UserDefaultService.swift in Sources */,
-				926E7EB42C3AF6BB00165701 /* SearchBar.swift in Sources */,
+				926E7EB42C3AF6BB00165701 /* CustomSearchBar.swift in Sources */,
 				261733D62C316E0F00BAB4F5 /* OnboardingStartView.swift in Sources */,
 				261733BB2C316B5400BAB4F5 /* Frame2View.swift in Sources */,
 				2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */,

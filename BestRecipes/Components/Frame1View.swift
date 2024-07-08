@@ -80,7 +80,7 @@ struct Frame1View: View, Hashable {
                 }
             }
 
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 5){
                 Text(title)
                     .font(.custom(Poppins.bold, size: 16))
                     .lineLimit(2)
@@ -103,7 +103,6 @@ struct Frame1View: View, Hashable {
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .frame(width: 280, height: 300)
     }
 }
 
