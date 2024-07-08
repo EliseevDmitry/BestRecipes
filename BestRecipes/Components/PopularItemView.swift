@@ -9,7 +9,8 @@ import SwiftUI
 
 struct PopularItemView: View, Hashable {
     // входные параметры, которые могут приходить из сети
-    
+    var id: Int
+    var cuisine: String?
     var foodFoto: String
     var title: String
     var time: String
@@ -100,6 +101,7 @@ struct PopularItemView: View, Hashable {
 
 #Preview {
     PopularItemView(
+        id: 1,
         foodFoto: "",
         title: "Chicken and Vegetable wrap",
         time: "5 Mins",

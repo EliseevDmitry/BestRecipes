@@ -23,7 +23,7 @@ struct Frame3View: View, Hashable {
                 Text(title)
                     .font(.custom(Poppins.bold, size: 12))
             }
-            .padding(.horizontal, 16) 
+            .padding(.horizontal, 8) 
         }
     }
 }

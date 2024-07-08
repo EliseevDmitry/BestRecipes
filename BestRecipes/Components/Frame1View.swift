@@ -11,8 +11,6 @@ struct Frame1View: View, Hashable {
     var id: Int
     var foodFoto: String
     var title: String
-//    var cuisineFoto: String
-//    var cuisineName: String
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -51,12 +49,13 @@ struct Frame1View: View, Hashable {
                             HStack {
                                 Image(systemName: "star.fill")
                                     .frame(width: 16, height: 16)
-                                Text("5.0")
+                                Text(String(format: "%.1f", Double.random(in: 3.6...5.0)))
                                     .font(.custom(Poppins.bold, size: 14))
                                     .foregroundStyle(.white)
                             }
                         }
                         Spacer()
+                        .padding(.top, 20)
                         ZStack {
                             Circle()
                                 .frame(width: 32, height: 32)
@@ -77,17 +76,19 @@ struct Frame1View: View, Hashable {
                                 .foregroundStyle(.white)
                         }
                     }
-                    .padding(8)
+                    
                 }
             }
 
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: 5){
                 Text(title)
                     .font(.custom(Poppins.bold, size: 16))
                     .lineLimit(2)
                     .truncationMode(.tail)
-                    .frame(maxWidth: 260)
-                    .padding(.vertical, 8)
+                    .frame(maxWidth: 260, alignment: .leading)
+                    .multilineTextAlignment(.leading)
+                    .padding(.top, 10)
+                Spacer(minLength: 2)
                 HStack {
                     Image("mockAvatar")
                         .resizable()
@@ -97,15 +98,11 @@ struct Frame1View: View, Hashable {
                         .font(.custom(Poppins.regular, size: 12))
                         .foregroundStyle(.secondary)
                 }
+
             }
-            .padding([.leading, .trailing, .bottom], 8)
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
-        .frame(width: 280, height: 300)
-        .onAppear() {
-            
-        }
     }
 }
 
