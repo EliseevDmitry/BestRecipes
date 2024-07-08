@@ -16,9 +16,18 @@ struct CustomSearchBar: View {
     var body: some View {
         VStack {
             HStack {
+                Button(action: {
+                    performSearch()
+                }) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.black)
+                        .padding(.leading, 10)
+                }
+
                 TextField("Search recipes", text: $searchTerm, onEditingChanged: { isEditing in
                     if !isEditing {
                         self.searchResults = []
+                        
                     }
                 })
                 .onChange(of: searchTerm) { newValue in
