@@ -10,43 +10,39 @@ struct CustomSearchBar: View {
     @Binding var searchTerm: String
     @State private var searchResults: [SearchResultRecipe] = []
     @State private var isSearching = false
+    @State private var showResultsSheet = false
     var networkManager = NetworkManager.shared
 
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.black)
-                    .padding(.leading, 10)
-                
                 TextField("Search recipes", text: $searchTerm, onEditingChanged: { isEditing in
                     if !isEditing {
                         self.searchResults = []
                     }
                 })
                 .onChange(of: searchTerm) { newValue in
-                    if !newValue.isEmpty {
-                        isSearching = true
-                        networkManager.searchRecipe(for: newValue) { result in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(let response):
-                                    self.searchResults = response.results
-                                case .failure(let error):
-                                    print("Error fetching search results: \(error.localizedDescription)")
-                                }
-                                isSearching = false
-                            }
-                        }
-                    } else {
+                    if newValue.isEmpty {
                         self.searchResults = []
+                        self.showResultsSheet = false
                     }
+                }
+                .onSubmit {
+                    performSearch()
                 }
                 .frame(height: 44)
                 .background(Color.white)
                 .cornerRadius(10)
                 .font(.custom(Poppins.regular, size: 14))
                 .foregroundColor(.neutral30)
+                
+                Button(action: {
+                    performSearch()
+                }) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.black)
+                        .padding(.trailing, 10)
+                }
             }
             .frame(width: 360, height: 44)
             .overlay(
@@ -58,20 +54,28 @@ struct CustomSearchBar: View {
             if isSearching {
                 ProgressView()
                     .padding()
-            } else if !searchResults.isEmpty {
-                ScrollView {
-                    VStack(alignment: .leading) {
-                        ForEach(searchResults, id: \.id) { recipe in
-                            NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
-                                Frame1View(id: recipe.id ?? 0, foodFoto: recipe.image ?? "", title: recipe.title ?? "")
-                            }
-                        }
-                    }
+            }
+        }
+        .sheet(isPresented: $showResultsSheet) {
+            SearchResultsView(searchResults: searchResults)
+        }
+    }
+    
+    private func performSearch() {
+        guard !searchTerm.isEmpty else {
+            return
+        }
+        isSearching = true
+        networkManager.searchRecipe(for: searchTerm) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    self.searchResults = response.results
+                    self.showResultsSheet = true
+                case .failure(let error):
+                    print("Error fetching search results: \(error.localizedDescription)")
                 }
-                .background(Color.white)
-                .cornerRadius(10)
-                .shadow(radius: 5)
-                .padding(.horizontal)
+                isSearching = false
             }
         }
     }
@@ -84,5 +88,3 @@ struct SearchBar_Previews: PreviewProvider {
         CustomSearchBar(searchTerm: $searchTerm)
     }
 }
-
-
