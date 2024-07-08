@@ -64,6 +64,7 @@
 		926E7EB02C35826500165701 /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAF2C35826500165701 /* NetworkErrors.swift */; };
 		926E7EB22C3592C500165701 /* NetworkTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB12C3592C500165701 /* NetworkTestView.swift */; };
 		926E7EB42C3AF6BB00165701 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */; };
+		92B8FD312C3C01CC00DF3728 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +127,7 @@
 		926E7EAF2C35826500165701 /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
 		926E7EB12C3592C500165701 /* NetworkTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestView.swift; sourceTree = "<group>"; };
 		926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 				261733DF2C316F1000BAB4F5 /* DiscoverView.swift */,
 				261733E12C316F2B00BAB4F5 /* RecipeDetailView.swift */,
 				261733E32C316F4D00BAB4F5 /* SeeAllView.swift */,
+				92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				926E7EB22C3592C500165701 /* NetworkTestView.swift in Sources */,
 				261733C92C316C3B00BAB4F5 /* PopularItemView.swift in Sources */,
 				26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */,
+				92B8FD312C3C01CC00DF3728 /* SearchResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
