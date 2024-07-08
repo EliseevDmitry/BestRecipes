@@ -41,73 +41,70 @@ struct PopularItemView: View, Hashable {
     private var bottomBlockPadding: Double { cardWidth * 0.1 }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            // общие габариты компонента, чтобы их можно было учитывать  при его добавлении в сложную композицию на HomeView
-            Rectangle()
-                .frame(width: cardWidth, height: cardHeight)
-                .opacity(0)
-            
-            // начинается карточка: ее фон, фото и название блюда
-            ZStack {
-                // фон карточки
+        VStack{
+            ZStack{
                 RoundedRectangle(cornerRadius: cardBgCornerRadius)
-                    .frame(width: cardWidth, height: cardBgHeight)
                     .foregroundStyle(.neutral10)
-                
-                // название популярного блюда
-                Text(title)
-                    .frame(width: titleWidth)
-                    .font(.custom(Poppins.semiBold, size: titleFontSize))
-                    .multilineTextAlignment(.center)
-                    .lineLimit(3)
-                
-                // фотография популярного блюда
-                AsyncImage(url: URL(string: foodFoto))
-                    .scaledToFill()
-                    .clipShape(Circle())
-                    .frame(width: foodFotoWidth, height: foodFotoWidth)
-                    .shadow(radius: foodFotoShadowRadius)
-                    .offset(CGSize(width: 0, height: -foodFotoVerticalOffset))
-                
-                
-                // нижний горизонтальный блок карточки: время и закладка
-                HStack(alignment: .bottom) {
-                    
-                    // время приготовления блюда
-                    VStack(alignment: .leading) {
-                        Text("Time")
-                            .foregroundStyle(.neutral30)
-                        Text(time)
-                    }.font(.custom(Poppins.semiBold, size: timeFontSize))
+                VStack{
                     
                     Spacer()
-                    
-                    // закладка (может быть включена и не включена)
-                    ZStack {
-                        // круглый фон для закладки
-                        Circle()
-                            .frame(width: bookmarkBgWidth)
-                            .foregroundColor(.white)
-                        //закладка (если включена - красная, если нет - серая)
-                        Image(bookmarkIsOn ? "Iconebookmark" : "bookmark")
-                            .resizable()
-                            .frame(width: bookmarkWidth, height: bookmarkHeight)
+                    Spacer()
+                    Text(title)
+                    //.frame(width: titleWidth)
+                        .font(.custom(Poppins.semiBold, size: titleFontSize))
+                        .multilineTextAlignment(.center)
+                        .lineLimit(4)
+                    //.padding()
+                    Spacer()
+                    HStack(alignment: .bottom) {
+                        // время приготовления блюда
+                        
+                        VStack(alignment: .leading) {
+                            Text("Time")
+                                .foregroundStyle(.neutral30)
+                            Text(time)
+                        }
+                        .font(.custom(Poppins.semiBold, size: timeFontSize))
+                        Spacer()
+                        // закладка (может быть включена и не включена)
+                        ZStack {
+                            // круглый фон для закладки
+                            Circle()
+                                .frame(width: bookmarkBgWidth)
+                                .foregroundColor(.white)
+                            //закладка (если включена - красная, если нет - серая)
+                            Image(bookmarkIsOn ? "Iconebookmark" : "bookmark")
+                                .resizable()
+                                .frame(width: bookmarkWidth, height: bookmarkHeight)
+                        }
                     }
+                    
                 }
-                .frame(width: bottomBlockWidth)
-                .padding(.bottom, bottomBlockPadding)
+                .padding()
+                AsyncImage(url: URL(string: foodFoto))
+                {image in
+                    image
+                        .image?.resizable()
+                        .scaledToFill()
+                        .clipShape(Circle())
+                        .frame(width: foodFotoWidth, height: foodFotoWidth)
+                        .shadow(radius: foodFotoShadowRadius)
+                        .offset(CGSize(width: 0, height: -foodFotoVerticalOffset))
+                }
             }
+            .frame(width: cardWidth, height: cardBgHeight)
         }
+        .frame(height: cardHeight)
     }
 }
 
-    #Preview {
-        PopularItemView(
-            foodFoto: "",
-            title: "Chicken and Vegetable wrap",
-            time: "5 Mins",
-            bookmarkIsOn: true,
-            cardWidth: 350
-        )
-    }
+#Preview {
+    PopularItemView(
+        foodFoto: "",
+        title: "Chicken and Vegetable wrap",
+        time: "5 Mins",
+        bookmarkIsOn: true,
+        cardWidth: 350
+    )
+}
 
