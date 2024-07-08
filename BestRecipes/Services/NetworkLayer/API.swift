@@ -10,7 +10,7 @@ import Foundation
 struct API {
     static let scheme = "https"
     static let host = "api.spoonacular.com"
-    static let apiKey = Token.fifth
+    static let apiKey = Token.six
 }
 
 struct Token {
@@ -21,5 +21,4 @@ struct Token {
     static let forth = "c56516ad0a6d44779012eb74893b6af2"
     static let fifth = "f9cc19628f7c4aec92404da9af033f0c"
     static let six = "b49c1606b4d744d69c543e592c416db1"
-
 }
