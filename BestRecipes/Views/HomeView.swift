@@ -39,21 +39,15 @@ struct HomeView: View {
         VStack {
             NavigationView {
                 ScrollView {
-                    
-                    VStack(alignment: .leading) {
-                        Text("Get Amazing recipes")
-                            .font(.custom(Poppins.bold, size: 24))
-                            .multilineTextAlignment(.center)
-                        Text("to cooking")
-                            .font(.custom(Poppins.bold, size: 24))
-                            .multilineTextAlignment(.center)
-                    }
-                    .padding(.leading, -90)
-                    .background(.white)
-                    
-                    SearchBar(searchTerm: $searchTerm)
-
                     VStack(spacing: 20) {
+                        HStack {
+                            Text("Get amazing recipes for cooking")
+                                .font(.title)
+                            .fontWeight(.semibold)
+                            .padding(.leading, 20)
+                            Spacer()
+                        }
+                        SearchBar(searchTerm: $searchTerm)
                         // MARK: - Trending Section
                         HStack {
                             Text("Trending now 🔥")
@@ -78,7 +72,6 @@ struct HomeView: View {
                             }
                         }
                         .padding(.horizontal, 20)
-                        
                         // MARK: - Popular Categories Section
                         HStack {
                             Text("Popular Category")
@@ -86,7 +79,6 @@ struct HomeView: View {
                             Spacer()
                         }
                         .padding()
-                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(categories, id: \.self) { item in
@@ -124,7 +116,6 @@ struct HomeView: View {
                                 .foregroundColor(.red)
                                 .padding()
                         }
-                        
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 10) {
@@ -136,39 +127,24 @@ struct HomeView: View {
                             }
                         }
                         .padding(.horizontal, 20)
-                    }
-                    .onAppear {
-                        networkManager.fetchTrendingRecipes { result in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(let response):
-                                    self.trendingItems = response.results.map { element in Frame1View(
-                                        id: element.id ?? 0,
-                                        foodFoto: element.image ?? "",
-                                        title: element.title ?? "")
+                        .onAppear{
+                            networkManager.fetchPopularCategory(for: selectionCategory) { result in
+                                DispatchQueue.main.async {
+                                    switch result {
+                                    case .success(let response):
+                                        self.popularItems = response.results.map { popularRecipe in
+                                            PopularItemView(
+                                                foodFoto: popularRecipe.image ?? "no image",
+                                                title: popularRecipe.title ?? "no title",
+                                                time: "N/A",
+                                                bookmarkIsOn: false,
+                                                cardWidth: 150
+                                            )
+                                        }
+                                    case .failure(let error):
+                                        self.errorMessage = error.localizedDescription
+                                        print("Error fetching popular category: \(error.localizedDescription)")
                                     }
-                                case .failure(let error):
-                                    self.errorMessage = error.localizedDescription
-                                    print("Error fetching trending recipes: \(error.localizedDescription)")
-                                }
-                            }
-                        }
-                        networkManager.fetchPopularCategory(for: selectionCategory) { result in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(let response):
-                                    self.popularItems = response.results.map { popularRecipe in
-                                        PopularItemView(
-                                            foodFoto: popularRecipe.image ?? "no image",
-                                            title: popularRecipe.title ?? "no title",
-                                            time: "N/A",
-                                            bookmarkIsOn: false,
-                                            cardWidth: 150
-                                        )
-                                    }
-                                case .failure(let error):
-                                    self.errorMessage = error.localizedDescription
-                                    print("Error fetching popular category: \(error.localizedDescription)")
                                 }
                             }
                         }
@@ -190,8 +166,26 @@ struct HomeView: View {
             }
             .padding(.top, 15)
             CustomNavBarViewShape()
-                .ignoresSafeArea(.all, edges: .bottom)
                 .searchable(text: $searchTerm, prompt: "Search recipes")
+        }
+        .ignoresSafeArea(.all, edges: .bottom)
+        .onAppear{
+            networkManager.fetchTrendingRecipes { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let response):
+                        self.trendingItems = response.results.map { element in Frame1View(
+                            id: element.id ?? 0,
+                            foodFoto: element.image ?? "",
+                            title: element.title ?? "")
+                        }
+                    case .failure(let error):
+                        self.errorMessage = error.localizedDescription
+                        print("Error fetching trending recipes: \(error.localizedDescription)")
+                    }
+                }
+            }
+
         }
     }
 }
