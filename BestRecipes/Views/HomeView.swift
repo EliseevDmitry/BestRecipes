@@ -52,7 +52,7 @@ struct HomeView: View {
                     .background(.white)
                     
                     CustomSearchBar(searchTerm: $searchTerm)
-
+                    
                     VStack(spacing: 20) {
                         // MARK: - Trending Section
                         HStack {
@@ -78,7 +78,7 @@ struct HomeView: View {
                             }
                         }
                         .padding(.horizontal, 20)
-                        
+                        .frame(maxHeight: .infinity)
                         // MARK: - Popular Categories Section
                         HStack {
                             Text("Popular Category")
@@ -189,12 +189,13 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 20)
                 }
+                
             }
             .padding(.top, 15)
             CustomNavBarViewShape()
-                .ignoresSafeArea(.all, edges: .bottom)
                 .searchable(text: $searchTerm, prompt: "Search recipes")
         }
+        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 

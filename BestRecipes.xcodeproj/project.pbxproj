@@ -53,6 +53,8 @@
 		261733EC2C31710F00BAB4F5 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733EB2C31710F00BAB4F5 /* NetworkModel.swift */; };
 		261733F12C3171E900BAB4F5 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733F02C3171E900BAB4F5 /* UserDefaultService.swift */; };
 		2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261734032C3173E300BAB4F5 /* Fonts.swift */; };
+		2641CBFA2C3BF79400D6FFA2 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641CBF92C3BF79400D6FFA2 /* test.swift */; };
+		2641CBFC2C3BF89E00D6FFA2 /* TestFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */; };
 		26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA392C3452D200EE6B43 /* ModelApp.swift */; };
 		26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA3B2C345B0700EE6B43 /* SearchView.swift */; };
 		26B6FA532C35AD4600EE6B43 /* Сuisines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA522C35AD4600EE6B43 /* Сuisines.swift */; };
@@ -115,6 +117,8 @@
 		261733EB2C31710F00BAB4F5 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		261733F02C3171E900BAB4F5 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		2641CBF92C3BF79400D6FFA2 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFrame.swift; sourceTree = "<group>"; };
 		26B6FA392C3452D200EE6B43 /* ModelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApp.swift; sourceTree = "<group>"; };
 		26B6FA3B2C345B0700EE6B43 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		26B6FA522C35AD4600EE6B43 /* Сuisines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сuisines.swift"; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				26FAF5072C3721E600AED803 /* Test.swift */,
 				261733C82C316C3B00BAB4F5 /* PopularItemView.swift */,
 				926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */,
+				2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				261733E12C316F2B00BAB4F5 /* RecipeDetailView.swift */,
 				261733E32C316F4D00BAB4F5 /* SeeAllView.swift */,
 				92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */,
+				2641CBF92C3BF79400D6FFA2 /* test.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -412,6 +418,7 @@
 				261733E42C316F4D00BAB4F5 /* SeeAllView.swift in Sources */,
 				261733BF2C316B7F00BAB4F5 /* IngredientsView.swift in Sources */,
 				261733B92C316B3100BAB4F5 /* Frame1View.swift in Sources */,
+				2641CBFC2C3BF89E00D6FFA2 /* TestFrame.swift in Sources */,
 				261733DE2C316EB700BAB4F5 /* IndicatorsView.swift in Sources */,
 				22DBE3E02C3418AC00CE7830 /* OnboardingTextView.swift in Sources */,
 				261733E02C316F1000BAB4F5 /* DiscoverView.swift in Sources */,
@@ -432,6 +439,7 @@
 				261733AA2C3164A900BAB4F5 /* BestRecipesApp.swift in Sources */,
 				261733F12C3171E900BAB4F5 /* UserDefaultService.swift in Sources */,
 				926E7EB42C3AF6BB00165701 /* CustomSearchBar.swift in Sources */,
+				2641CBFA2C3BF79400D6FFA2 /* test.swift in Sources */,
 				261733D62C316E0F00BAB4F5 /* OnboardingStartView.swift in Sources */,
 				261733BB2C316B5400BAB4F5 /* Frame2View.swift in Sources */,
 				2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */,
