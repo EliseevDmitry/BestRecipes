@@ -47,7 +47,7 @@ struct PopularItemView: View, Hashable {
                 RoundedRectangle(cornerRadius: cardBgCornerRadius)
                     .foregroundStyle(.neutral10)
                 VStack{
-
+                    
                     Spacer()
                     Spacer()
                     Text(title)
@@ -55,7 +55,7 @@ struct PopularItemView: View, Hashable {
                         .font(.custom(Poppins.semiBold, size: titleFontSize))
                         .multilineTextAlignment(.center)
                         .lineLimit(4)
-                        //.padding()
+                    //.padding()
                     Spacer()
                     HStack(alignment: .bottom) {
                         // время приготовления блюда
@@ -79,7 +79,7 @@ struct PopularItemView: View, Hashable {
                                 .frame(width: bookmarkWidth, height: bookmarkHeight)
                         }
                     }
-                  
+                    
                 }
                 .padding()
                 AsyncImage(url: URL(string: foodFoto))
@@ -95,7 +95,7 @@ struct PopularItemView: View, Hashable {
             }
             .frame(width: cardWidth, height: cardBgHeight)
         }
-        .frame(maxHeight: .infinity)
+        .frame(height: cardHeight)
     }
 }
 
