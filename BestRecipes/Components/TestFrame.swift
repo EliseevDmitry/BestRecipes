@@ -1,4 +1,10 @@
 //
+//  TestFrame.swift
+//  BestRecipes
+//
+//  Created by Dmitriy Eliseev on 08.07.2024.
+//
+//
 //  Frame1View.swift
 //  BestRecipes
 //
@@ -7,12 +13,11 @@
 
 import SwiftUI
 
-struct Frame1View: View, Hashable {
-    
+struct TestFrame: View, Hashable {
     var id: Int
     var foodFoto: String
     var title: String
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack {
@@ -21,17 +26,26 @@ struct Frame1View: View, Hashable {
                     case .empty:
                         Image(systemName: "wifi.slash")
                             .resizable()
+                            .scaledToFill()
+                            //.frame(width: 280, height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     case .success(let image):
                         image
                             .resizable()
+                            .scaledToFill()
+                            //.frame(width: 280, height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     case .failure(_):
                         Image(systemName: "wifi.slash")
                             .resizable()
+                            .scaledToFill()
+                           // .frame(width: 280, height: 180)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     @unknown default:
                         EmptyView()
                     }
                 }
-                .scaledToFill()
+
                 VStack {
                     HStack {
                         ZStack {
@@ -47,6 +61,7 @@ struct Frame1View: View, Hashable {
                             }
                         }
                         Spacer()
+                        .padding(.top, 20)
                         ZStack {
                             Circle()
                                 .frame(width: 32, height: 32)
@@ -54,6 +69,7 @@ struct Frame1View: View, Hashable {
                             Image("Iconebookmark")
                         }
                     }
+                    .padding(8)
                     Spacer()
                     HStack {
                         Spacer()
@@ -66,39 +82,41 @@ struct Frame1View: View, Hashable {
                                 .foregroundStyle(.white)
                         }
                     }
+                    
                 }
-                .padding(.bottom, 20)
-                .padding(.top, 20)
-                .padding(.horizontal, 5)
+                .padding()
             }
-            .frame(height: 180)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.bottom, 0)
-            Text(title)
-                .frame(maxWidth: 260, alignment: .leading)
-                .font(.custom(Poppins.bold, size: 16))
-                .lineLimit(2)
-                .truncationMode(.tail)
-                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                .multilineTextAlignment(.leading)
-                .padding(.top, 10)
-            HStack {
-                Image("mockAvatar")
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-                    .frame(width: 32, height: 32)
-                Text("By Zellicous Foods")
-                    .font(.custom(Poppins.regular, size: 12))
-                    .foregroundStyle(.secondary)
+            .frame(width: 280, height: 180)
+
+            VStack(alignment: .leading, spacing: 5){
+                Text(title)
+                    .frame(maxWidth: 260, alignment: .leading)
+                    .font(.custom(Poppins.bold, size: 16))
+                    .lineLimit(2)
+                    .truncationMode(.tail)
+                    
+                    .multilineTextAlignment(.leading)
+                    .padding(.top, 10)
+                //Spacer(minLength: 2)
+                HStack {
+                    Image("mockAvatar")
+                        .resizable()
+                        .frame(width: 32, height: 32)
+                        .clipShape(Circle())
+                    Text("By Zellicous Foods")
+                        .font(.custom(Poppins.regular, size: 12))
+                        .foregroundStyle(.secondary)
+                }
+
             }
-            Spacer()
         }
-        .frame(width: 280)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
-    
 }
 
 #Preview {
-    Frame1View(id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
+    TestFrame(id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
 }
+
+
