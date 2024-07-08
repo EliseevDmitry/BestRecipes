@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    
+    var recipeId: Int?
+    var cuisine: String?
+
     var body: some View {
-        Text("Recipe Detail View")
-            .navigationBarHidden(true)
+        Text("Recipe  View for recipeID \(String(describing: recipeId))")
+            .navigationTitle("Recipe Detail")
     }
 }
 
 #Preview {
-    RecipeDetailView()
+    RecipeDetailView(recipeId: 1222)
 }
