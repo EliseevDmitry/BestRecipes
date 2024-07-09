@@ -174,6 +174,7 @@ struct TestSearchView: View {
     }
 }
 
+
 struct RecipeDetailTestView: View {
     var recipe: RecipeInformation
     
