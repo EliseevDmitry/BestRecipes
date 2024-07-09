@@ -12,8 +12,10 @@ struct HomeView: View {
     
     @ObservedObject var appManager: RecipesManager
     @State private var searchResults: [SearchResultRecipe] = []
-    var networkManager = NetworkManager.shared
-    var frameArr: [Frame1View] = [Frame1View(id: 1), Frame1View(id: 2), Frame1View(id: 3), Frame1View(id: 4), Frame1View(id: 5)]
+    @State private var popularItems: [PopularItemView] = []
+    @State private var frameArr: [Frame1View] = []
+    @State private var cuisinesArray: [Frame3View] = []
+    @State private var errorMessage: String?
     @State private var selectionCategory = "Breakfast"
     
     @State private var popularItems: [PopularItemView] = []
@@ -85,6 +87,26 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .onAppear {
+                        networkManager.fetchTrendingRecipes { result in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(let response):
+                                    self.frameArr = response.results.map { element in Frame1View(
+                                        id: element.id ?? 0,
+                                        foodFoto: element.image ?? "",
+                                        title: element.title ?? "")
+                                        
+                                    }
+                                    
+                                case .failure(let error):
+                                    self.errorMessage = error.localizedDescription
+                                    print("Error fetching popular category: \(error.localizedDescription)")
+                                }
+                            }
+                        }
+                        
+                    }
                     .padding(.leading, 20)
                     
                     // Display error message if any
@@ -106,14 +128,27 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 20) // Changed padding from leading to horizontal
                 }
+                // MARK: - Popular Items Section
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 20) {
+                        ForEach(cuisines, id: \.self) { item in
+                            NavigationLink(destination: RecipeDetailView()) {
+                                Frame3View(
+                                    cuisineFoto: item,
+                                    title: item)
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal, 20) // Changed padding from leading to horizontal
             }
             .navigationTitle("Get Amazing recipes to cooking")
             .navigationBarTitleDisplayMode(.automatic)
         }
-
         CustomNavBarViewShape()
             .ignoresSafeArea()
     }
+        
 }
 
 #Preview {
