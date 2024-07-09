@@ -78,7 +78,6 @@ struct HomeView: View {
                                 }
                             }
                         }
-//                        .padding(.horizontal, 20)
                         .frame(maxHeight: .infinity)
                         // MARK: - Popular Categories Section
                         HStack {
@@ -134,12 +133,11 @@ struct HomeView: View {
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
                                             .frame(height: 294)
-                                            .padding(.leading) // добавил, чтобы до начала прокрутки у группы карточек был отступ слева
+                                            .padding(.leading)
                                     }
                                 }
                             }
                         }
-//                        .padding(.horizontal, 20) // убрал, чтобы группа карточек прокручивалась от края до края
                     }
                     .onAppear {
                         networkManager.fetchTrendingRecipes { result in
@@ -191,9 +189,7 @@ struct HomeView: View {
                             }
                         }
                     }
-//                    .padding(.horizontal, 20)
-                }
-                
+                }                
             }
             .padding(.top, 15)
             CustomNavBarViewShape()
