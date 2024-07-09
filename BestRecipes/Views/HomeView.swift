@@ -20,9 +20,9 @@ struct HomeView: View {
     @State private var selectionCategory = "Breakfast"
     
     var categories = [
-        "Breakfast", "Main course", "Side dish", "Dessert", "Appetizer", "Salad",
+        "Breakfast", "Dessert", "Appetizer", "Salad",
         "Bread", "Soup", "Beverage", "Sauce", "Marinade",
-        "Fingerfood", "Snack", "Drink"
+        "Fingerfood", "Snack", "Drink", "Main course", "Side dish"
     ]
     
     var cuisines = [
