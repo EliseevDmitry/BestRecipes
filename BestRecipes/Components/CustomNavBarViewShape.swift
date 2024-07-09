@@ -60,9 +60,10 @@ struct CustomNavBarViewShape: View {
             ZStack {
                 CustomBox(angle: params.angle, radiusOne: params.radiusOne, radiusTwo: params.radiusTwo)
                     .frame(alignment: .center)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.blue)
+                    
                     .frame(height: params.height)
-                    .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
+                   // .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
                 HStack{
                     Button{
                         resetCheck()
@@ -113,7 +114,9 @@ struct CustomNavBarViewShape: View {
                     .offset(CGSize(width: 0.0, height: params.offset))
                 }
             }
+          
         }
+       
     }
     func resetCheck(){
         isCheckHome = false

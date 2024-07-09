@@ -192,12 +192,16 @@ struct HomeView: View {
                 
             }
             .padding(.top, 15)
+            
             CustomNavBarViewShape()
                 .searchable(text: $searchTerm, prompt: "Search recipes")
+            
                 
         }
+        
         .ignoresSafeArea(.all, edges: .bottom)
     }
+      
 }
 
 #Preview {

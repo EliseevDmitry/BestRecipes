@@ -82,6 +82,7 @@ struct Frame1View: View, Hashable {
                 .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 .multilineTextAlignment(.leading)
                 .padding(.top, 10)
+            Spacer()
             HStack {
                 Image("mockAvatar")
                     .resizable()
@@ -92,7 +93,7 @@ struct Frame1View: View, Hashable {
                     .font(.custom(Poppins.regular, size: 12))
                     .foregroundStyle(.secondary)
             }
-            Spacer()
+            //Spacer()
         }
         .frame(width: 280)
     }
