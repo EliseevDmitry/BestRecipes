@@ -30,9 +30,10 @@ struct PopularItemView: View, Hashable {
     private var foodFotoVerticalOffset: Double { cardBgHeight / 2 }
     
     private var titleWidth: Double { cardWidth * 0.8 }
-    private var titleFontSize: Double { cardWidth * 0.09 }
+    private var titleFontSize: Double { cardWidth * 0.08 }
+    private var titleVerticalOffset: Double { cardBgHeight / 13 }
     
-    private var timeFontSize: Double { cardWidth * 0.1 }
+    private var timeFontSize: Double { cardWidth * 0.08 }
     
     private var bookmarkWidth: Double { cardWidth / 150 * 16 * 0.8 }
     private var bookmarkHeight: Double { cardWidth / 150 * 16 }
@@ -54,6 +55,7 @@ struct PopularItemView: View, Hashable {
                         .font(.custom(Poppins.semiBold, size: titleFontSize))
                         .multilineTextAlignment(.center)
                         .lineLimit(4)
+                        .offset(CGSize(width: 0, height: titleVerticalOffset))
                     //.padding()
                     Spacer()
                     HStack(alignment: .bottom) {
@@ -62,12 +64,15 @@ struct PopularItemView: View, Hashable {
                         VStack(alignment: .leading) {
                             Text("Time")
                                 .foregroundStyle(.neutral30)
-                            Text(time)
+                            Text("\(time) Mins")
                         }
                         .font(.custom(Poppins.semiBold, size: timeFontSize))
                         Spacer()
                         // закладка (может быть включена и не включена)
-                        ZStack {
+//                        ZStack {
+                            BookmarkView()
+                            
+                            /*
                             // круглый фон для закладки
                             Circle()
                                 .frame(width: bookmarkBgWidth)
@@ -76,7 +81,8 @@ struct PopularItemView: View, Hashable {
                             Image(bookmarkIsOn ? "Iconebookmark" : "bookmark")
                                 .resizable()
                                 .frame(width: bookmarkWidth, height: bookmarkHeight)
-                        }
+                            */
+//                        }
                     }
                 }
                 .padding()
@@ -100,9 +106,9 @@ struct PopularItemView: View, Hashable {
 #Preview {
     PopularItemView(
         id: 1,
-        foodFoto: "",
-        title: "Chicken and Vegetable wrap",
-        time: "5 Mins",
+        foodFoto: "mockImage1",
+        title: "Chicken and Vegetable wrap Chicken and Vegetable wrap Chicken and Vegetable wrap",
+        time: "5",
         bookmarkIsOn: true,
         cardWidth: 350
     )

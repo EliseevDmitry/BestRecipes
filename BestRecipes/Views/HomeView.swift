@@ -20,9 +20,9 @@ struct HomeView: View {
     @State private var selectionCategory = "Breakfast"
     
     var categories = [
-        "Breakfast", "Main course", "Side dish", "Dessert", "Appetizer", "Salad",
+        "Breakfast", "Dessert", "Appetizer", "Salad",
         "Bread", "Soup", "Beverage", "Sauce", "Marinade",
-        "Fingerfood", "Snack", "Drink"
+        "Fingerfood", "Snack", "Drink", "Main course", "Side dish"
     ]
     
     var cuisines = [
@@ -73,11 +73,12 @@ struct HomeView: View {
                                 ForEach(trendingItems, id: \.self) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
+                                            .padding(.leading)
                                     }
                                 }
                             }
                         }
-                        .padding(.horizontal, 20)
+//                        .padding(.horizontal, 20)
                         .frame(maxHeight: .infinity)
                         // MARK: - Popular Categories Section
                         HStack {
@@ -85,7 +86,7 @@ struct HomeView: View {
                                 .font(.custom(Poppins.bold, size: 20))
                             Spacer()
                         }
-                        .padding()
+                        .padding(.leading, 20)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
@@ -100,7 +101,7 @@ struct HomeView: View {
                                                             id: popularRecipe.id ?? 716429,
                                                             foodFoto: popularRecipe.image ?? "no image",
                                                             title: popularRecipe.title ?? "no title",
-                                                            time: "N/A",
+                                                            time: String(Int.random(in: 5...20)),
                                                             bookmarkIsOn: false,
                                                             cardWidth: 150
                                                         )
@@ -128,15 +129,17 @@ struct HomeView: View {
                         
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 10) {
+                            LazyHStack(spacing: 4) { // 
                                 ForEach(popularItems, id: \.self) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
+                                            .frame(height: 294)
+                                            .padding(.leading) // добавил, чтобы до начала прокрутки у группы карточек был отступ слева
                                     }
                                 }
                             }
                         }
-                        .padding(.horizontal, 20)
+//                        .padding(.horizontal, 20) // убрал, чтобы группа карточек прокручивалась от края до края
                     }
                     .onAppear {
                         networkManager.fetchTrendingRecipes { result in
@@ -163,7 +166,7 @@ struct HomeView: View {
                                             id: popularRecipe.id ?? 716429,
                                             foodFoto: popularRecipe.image ?? "no image",
                                             title: popularRecipe.title ?? "no title",
-                                            time: "N/A",
+                                            time: String(Int.random(in: 5...50)),
                                             bookmarkIsOn: false,
                                             cardWidth: 150
                                         )
@@ -194,6 +197,7 @@ struct HomeView: View {
             .padding(.top, 15)
             CustomNavBarViewShape()
                 .searchable(text: $searchTerm, prompt: "Search recipes")
+                
         }
         .ignoresSafeArea(.all, edges: .bottom)
     }

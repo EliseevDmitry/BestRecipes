@@ -27,4 +27,5 @@ struct BookmarkView: View {
 
 #Preview {
     BookmarkView()
+        .preferredColorScheme(.dark)
 }
