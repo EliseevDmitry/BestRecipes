@@ -85,7 +85,7 @@ struct HomeView: View {
                                 .font(.custom(Poppins.bold, size: 20))
                             Spacer()
                         }
-                        .padding()
+                        .padding(.leading, 20)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
@@ -100,7 +100,7 @@ struct HomeView: View {
                                                             id: popularRecipe.id ?? 716429,
                                                             foodFoto: popularRecipe.image ?? "no image",
                                                             title: popularRecipe.title ?? "no title",
-                                                            time: "N/A",
+                                                            time: String(Int.random(in: 5...20)),
                                                             bookmarkIsOn: false,
                                                             cardWidth: 150
                                                         )
@@ -132,6 +132,7 @@ struct HomeView: View {
                                 ForEach(popularItems, id: \.self) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
+                                            .frame(height: 294)
                                     }
                                 }
                             }
@@ -163,7 +164,7 @@ struct HomeView: View {
                                             id: popularRecipe.id ?? 716429,
                                             foodFoto: popularRecipe.image ?? "no image",
                                             title: popularRecipe.title ?? "no title",
-                                            time: "N/A",
+                                            time: String(Int.random(in: 5...20)),
                                             bookmarkIsOn: false,
                                             cardWidth: 150
                                         )
