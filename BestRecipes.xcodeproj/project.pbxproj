@@ -59,6 +59,10 @@
 		26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA3B2C345B0700EE6B43 /* SearchView.swift */; };
 		26B6FA532C35AD4600EE6B43 /* Сuisines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA522C35AD4600EE6B43 /* Сuisines.swift */; };
 		26FAF5062C37167A00AED803 /* PopularCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAF5052C37167A00AED803 /* PopularCategoryButton.swift */; };
+
+		26FAF5082C3721E600AED803 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FAF5072C3721E600AED803 /* Test.swift */; };
+		524AB84D2C3C2DF100ADCD24 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524AB84C2C3C2DF100ADCD24 /* BookmarkView.swift */; };
+
 		926E7EAA2C357BA500165701 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EA92C357BA500165701 /* API.swift */; };
 		926E7EAC2C3580A600165701 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAB2C3580A600165701 /* Endpoints.swift */; };
 		926E7EAE2C35819500165701 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EAD2C35819500165701 /* NetworkManager.swift */; };
@@ -66,6 +70,9 @@
 		926E7EB22C3592C500165701 /* NetworkTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB12C3592C500165701 /* NetworkTestView.swift */; };
 		926E7EB42C3AF6BB00165701 /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */; };
 		92B8FD312C3C01CC00DF3728 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */; };
+		D449D5742C3D207D00545B93 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D449D5732C3D207D00545B93 /* Buttons.swift */; };
+		D449D5772C3D34A200545B93 /* ActiveBookM.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D449D5762C3D34A200545B93 /* ActiveBookM.pdf */; };
+		D449D57A2C3D6CA400545B93 /* WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D449D5792C3D6CA400545B93 /* WKWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +130,10 @@
 		26B6FA522C35AD4600EE6B43 /* Сuisines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сuisines.swift"; sourceTree = "<group>"; };
 		26B6FA592C35C82200EE6B43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
 		26FAF5052C37167A00AED803 /* PopularCategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCategoryButton.swift; sourceTree = "<group>"; };
+
+		26FAF5072C3721E600AED803 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		524AB84C2C3C2DF100ADCD24 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+
 		926E7EA92C357BA500165701 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		926E7EAB2C3580A600165701 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		926E7EAD2C35819500165701 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -130,6 +141,9 @@
 		926E7EB12C3592C500165701 /* NetworkTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkTestView.swift; sourceTree = "<group>"; };
 		926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
+		D449D5732C3D207D00545B93 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		D449D5762C3D34A200545B93 /* ActiveBookM.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ActiveBookM.pdf; sourceTree = "<group>"; };
+		D449D5792C3D6CA400545B93 /* WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +184,7 @@
 				261733D32C316D9900BAB4F5 /* Views */,
 				261733F22C31725000BAB4F5 /* Extensions */,
 				261733AD2C3164AC00BAB4F5 /* Assets.xcassets */,
+				D449D5762C3D34A200545B93 /* ActiveBookM.pdf */,
 				261733AF2C3164AC00BAB4F5 /* Preview Content */,
 			);
 			path = BestRecipes;
@@ -192,8 +207,8 @@
 				261733C62C316C1400BAB4F5 /* Frame4View.swift */,
 				261733C02C316B9D00BAB4F5 /* IngredientsRecipeItemView.swift */,
 				261733C22C316BD900BAB4F5 /* CustomNavBarViewShape.swift */,
-				261733C42C316BFA00BAB4F5 /* VideoView.swift */,
-				261733CA2C316C5400BAB4F5 /* MyRecipeItemView.swift */,
+				D449D5782C3D6C8F00545B93 /* Video  */,
+				D449D5752C3D208A00545B93 /* M_R_I_V_Frame_4 */,
 				261733CC2C316D5000BAB4F5 /* ButtonIcon.swift */,
 				261733CE2C316D6800BAB4F5 /* ButtonTextIcon.swift */,
 				261733D02C316D7900BAB4F5 /* ButtonText.swift */,
@@ -212,6 +227,9 @@
 				26FAF5052C37167A00AED803 /* PopularCategoryButton.swift */,
 				261733C82C316C3B00BAB4F5 /* PopularItemView.swift */,
 				926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */,
+
+				524AB84C2C3C2DF100ADCD24 /* BookmarkView.swift */,
+
 				261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */,
 				2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */,
 			);
@@ -315,6 +333,24 @@
 			path = NetworkLayer;
 			sourceTree = "<group>";
 		};
+		D449D5752C3D208A00545B93 /* M_R_I_V_Frame_4 */ = {
+			isa = PBXGroup;
+			children = (
+				261733CA2C316C5400BAB4F5 /* MyRecipeItemView.swift */,
+				D449D5732C3D207D00545B93 /* Buttons.swift */,
+			);
+			path = M_R_I_V_Frame_4;
+			sourceTree = "<group>";
+		};
+		D449D5782C3D6C8F00545B93 /* Video  */ = {
+			isa = PBXGroup;
+			children = (
+				261733C42C316BFA00BAB4F5 /* VideoView.swift */,
+				D449D5792C3D6CA400545B93 /* WKWebView.swift */,
+			);
+			path = "Video ";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -376,6 +412,7 @@
 				22A125362C372AB2000962E5 /* Poppins-Black.ttf in Resources */,
 				22A125392C372AB2000962E5 /* Poppins-ExtraBold.ttf in Resources */,
 				22A125332C372AB2000962E5 /* Poppins-Medium.ttf in Resources */,
+				D449D5772C3D34A200545B93 /* ActiveBookM.pdf in Resources */,
 				22A125372C372AB2000962E5 /* Poppins-Bold.ttf in Resources */,
 				22A125352C372AB2000962E5 /* Poppins-Light.ttf in Resources */,
 				22A125342C372AB2000962E5 /* Poppins-SemiBold.ttf in Resources */,
@@ -413,6 +450,7 @@
 				261733E22C316F2B00BAB4F5 /* RecipeDetailView.swift in Sources */,
 				261733D82C316E2000BAB4F5 /* OnboardingPage1View.swift in Sources */,
 				261733E42C316F4D00BAB4F5 /* SeeAllView.swift in Sources */,
+				D449D57A2C3D6CA400545B93 /* WKWebView.swift in Sources */,
 				261733BF2C316B7F00BAB4F5 /* IngredientsView.swift in Sources */,
 				261733B92C316B3100BAB4F5 /* Frame1View.swift in Sources */,
 				2641CBFC2C3BF89E00D6FFA2 /* TestFrame.swift in Sources */,
@@ -420,6 +458,7 @@
 				22DBE3E02C3418AC00CE7830 /* OnboardingTextView.swift in Sources */,
 				261733E02C316F1000BAB4F5 /* DiscoverView.swift in Sources */,
 				261733CB2C316C5400BAB4F5 /* MyRecipeItemView.swift in Sources */,
+				524AB84D2C3C2DF100ADCD24 /* BookmarkView.swift in Sources */,
 				261733EC2C31710F00BAB4F5 /* NetworkModel.swift in Sources */,
 				261733E72C316F8E00BAB4F5 /* RecipesManager.swift in Sources */,
 				261733E72C316F8E00BAB4F5 /* RecipesManager.swift in Sources */,
@@ -438,6 +477,7 @@
 				2641CBFA2C3BF79400D6FFA2 /* test.swift in Sources */,
 				261733D62C316E0F00BAB4F5 /* OnboardingStartView.swift in Sources */,
 				261733BB2C316B5400BAB4F5 /* Frame2View.swift in Sources */,
+				D449D5742C3D207D00545B93 /* Buttons.swift in Sources */,
 				2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */,
 				926E7EB22C3592C500165701 /* NetworkTestView.swift in Sources */,
 				261733C92C316C3B00BAB4F5 /* PopularItemView.swift in Sources */,
