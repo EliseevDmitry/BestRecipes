@@ -188,7 +188,6 @@
 				261733BA2C316B5400BAB4F5 /* Frame2View.swift */,
 				261733BC2C316B6800BAB4F5 /* Frame3View.swift */,
 				261733C62C316C1400BAB4F5 /* Frame4View.swift */,
-				261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */,
 				261733C02C316B9D00BAB4F5 /* IngredientsRecipeItemView.swift */,
 				261733C22C316BD900BAB4F5 /* CustomNavBarViewShape.swift */,
 				261733C42C316BFA00BAB4F5 /* VideoView.swift */,
@@ -212,6 +211,7 @@
 				26FAF5072C3721E600AED803 /* Test.swift */,
 				261733C82C316C3B00BAB4F5 /* PopularItemView.swift */,
 				926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */,
+				261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
