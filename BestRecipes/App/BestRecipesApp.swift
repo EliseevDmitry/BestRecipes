@@ -15,12 +15,18 @@ struct BestRecipesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if onboardingIsShow {
-               HomeView(appManager: appManager)
-               
-            } else {
-               OnboardingStartView(appManager: appManager)
-            }
+           //TimeView()
+            //BookMark()
+          //  MyRecipeItemView()
+            RecipeCard()
+            
+//            if onboardingIsShow {
+//               HomeView(appManager: appManager)
+//                
+//               
+//            } else {
+//               OnboardingStartView(appManager: appManager)
+//            }
         }
     }
 }
