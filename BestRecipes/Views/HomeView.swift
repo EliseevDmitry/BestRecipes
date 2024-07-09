@@ -69,7 +69,7 @@ struct HomeView: View {
                         
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 20) {
+                            LazyHStack(spacing: 4) {
                                 ForEach(trendingItems, id: \.self) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
@@ -180,17 +180,18 @@ struct HomeView: View {
                     }
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack(spacing: 20) {
+                        LazyHStack(spacing: 4) {
                             ForEach(cuisines, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView(cuisine: item.uppercased())) {
                                     Frame3View(
                                         cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
                                         title: item)
+                                    .padding(.leading)
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, 20)
+//                    .padding(.horizontal, 20)
                 }
                 
             }
