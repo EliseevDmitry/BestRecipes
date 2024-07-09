@@ -47,7 +47,6 @@ struct PopularItemView: View, Hashable {
                 RoundedRectangle(cornerRadius: cardBgCornerRadius)
                     .foregroundStyle(.neutral10)
                 VStack{
-                    
                     Spacer()
                     Spacer()
                     Text(title)
@@ -79,7 +78,6 @@ struct PopularItemView: View, Hashable {
                                 .frame(width: bookmarkWidth, height: bookmarkHeight)
                         }
                     }
-                    
                 }
                 .padding()
                 AsyncImage(url: URL(string: foodFoto))
