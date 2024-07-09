@@ -1,18 +1,50 @@
-//
-//  Frame4View.swift
-//  BestRecipes
-//
-//  Created by Dmitriy Eliseev on 30.06.2024.
-//
 
 import SwiftUI
-
-struct Frame4View: View {
+struct RecipeCard: View {
+    var recipeName: String = "How to make yam \n& vegetable sauce at home"
+    var countIngredients : String = "9 Ingredients | 25 min"
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottomLeading) {
+            Image("african")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(height: 250)
+                .clipped()
+
+            VStack(alignment: .leading, spacing: 5) {
+                    RatingView()
+                
+                  .padding(.bottom, 95)
+                  .padding(.leading, 0)
+                VStack{
+                    
+                    Text(recipeName)
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
+                    
+                }.padding(.leading, 5)
+                
+                VStack
+                {
+                    Text(countIngredients)
+                        .foregroundColor(.white)
+                        .font(.subheadline)
+                }.padding(.leading, 5)
+                
+                
+            }
+            .padding()
+
+        }
+        .cornerRadius(25)
+        .padding()
+        .shadow(radius: 5)
     }
 }
 
+
 #Preview {
-    Frame4View()
+    RecipeCard()
 }
