@@ -67,6 +67,7 @@
 		92B8FD312C3C01CC00DF3728 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */; };
 		D449D5742C3D207D00545B93 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = D449D5732C3D207D00545B93 /* Buttons.swift */; };
 		D449D5772C3D34A200545B93 /* ActiveBookM.pdf in Resources */ = {isa = PBXBuildFile; fileRef = D449D5762C3D34A200545B93 /* ActiveBookM.pdf */; };
+		D449D57A2C3D6CA400545B93 /* WKWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D449D5792C3D6CA400545B93 /* WKWebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,7 @@
 		92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		D449D5732C3D207D00545B93 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		D449D5762C3D34A200545B93 /* ActiveBookM.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ActiveBookM.pdf; sourceTree = "<group>"; };
+		D449D5792C3D6CA400545B93 /* WKWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +198,7 @@
 				261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */,
 				261733C02C316B9D00BAB4F5 /* IngredientsRecipeItemView.swift */,
 				261733C22C316BD900BAB4F5 /* CustomNavBarViewShape.swift */,
-				261733C42C316BFA00BAB4F5 /* VideoView.swift */,
+				D449D5782C3D6C8F00545B93 /* Video  */,
 				D449D5752C3D208A00545B93 /* M_R_I_V_Frame_4 */,
 				261733CC2C316D5000BAB4F5 /* ButtonIcon.swift */,
 				261733CE2C316D6800BAB4F5 /* ButtonTextIcon.swift */,
@@ -326,6 +328,15 @@
 			path = M_R_I_V_Frame_4;
 			sourceTree = "<group>";
 		};
+		D449D5782C3D6C8F00545B93 /* Video  */ = {
+			isa = PBXGroup;
+			children = (
+				261733C42C316BFA00BAB4F5 /* VideoView.swift */,
+				D449D5792C3D6CA400545B93 /* WKWebView.swift */,
+			);
+			path = "Video ";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -425,6 +436,7 @@
 				261733E22C316F2B00BAB4F5 /* RecipeDetailView.swift in Sources */,
 				261733D82C316E2000BAB4F5 /* OnboardingPage1View.swift in Sources */,
 				261733E42C316F4D00BAB4F5 /* SeeAllView.swift in Sources */,
+				D449D57A2C3D6CA400545B93 /* WKWebView.swift in Sources */,
 				261733BF2C316B7F00BAB4F5 /* IngredientsView.swift in Sources */,
 				261733B92C316B3100BAB4F5 /* Frame1View.swift in Sources */,
 				261733DE2C316EB700BAB4F5 /* IndicatorsView.swift in Sources */,

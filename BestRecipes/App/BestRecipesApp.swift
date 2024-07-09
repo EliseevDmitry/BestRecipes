@@ -15,10 +15,7 @@ struct BestRecipesApp: App {
     
     var body: some Scene {
         WindowGroup {
-           //TimeView()
-            //BookMark()
-          //  MyRecipeItemView()
-            RecipeCard()
+            VideoView()
             
 //            if onboardingIsShow {
 //               HomeView(appManager: appManager)
