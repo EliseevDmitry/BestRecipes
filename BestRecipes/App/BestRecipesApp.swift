@@ -16,9 +16,10 @@ struct BestRecipesApp: App {
     var body: some Scene {
         WindowGroup {
             if onboardingIsShow {
-                HomeView(appManager: appManager)
+               HomeView(appManager: appManager)
+               
             } else {
-                OnboardingStartView(appManager: appManager)
+               OnboardingStartView(appManager: appManager)
             }
         }
     }
