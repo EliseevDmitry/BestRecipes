@@ -128,7 +128,7 @@ struct HomeView: View {
                         
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 4) { // 
+                            LazyHStack(spacing: 4) { //
                                 ForEach(popularItems, id: \.self) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
@@ -189,7 +189,7 @@ struct HomeView: View {
                             }
                         }
                     }
-                }                
+                }
             }
             .padding(.top, 15)
             CustomNavBarViewShape()

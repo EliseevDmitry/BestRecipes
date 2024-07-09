@@ -11,6 +11,7 @@ import SwiftUI
 
 
 struct RecipeDetailView: View {
+    @Environment(\.presentationMode) var presentation
     
     var recipeId: Int?
     var cuisine: String?
@@ -88,6 +89,16 @@ struct RecipeDetailView: View {
                 }
             }
             .padding(.horizontal, 10)
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigation) {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(.primary)
+                        .onTapGesture {
+                            self.presentation.wrappedValue.dismiss()
+                        }
+                }
+            }
         }
     }
 }
