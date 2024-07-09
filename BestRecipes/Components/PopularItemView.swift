@@ -10,6 +10,7 @@ import SwiftUI
 struct PopularItemView: View, Hashable {
     // входные параметры, которые могут приходить из сети
     
+    var id: Int?
     var foodFoto: String
     var title: String
     var time: String

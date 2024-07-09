@@ -19,7 +19,7 @@ struct HomeView: View {
     @State private var popularItems: [PopularItemView] = []
     @State private var errorMessage: String?
     
-    var categories = ["Salad", "Breakfast", "Appetizer", "Noodle", "Lunch", "...", "jhjhj", "jjj"]
+    var categories = ["Salad", "Breakfast", "Appetizer", "Dessert", "Soup", "Beverage", "Sauce", "Marinade", "Finger Food", "Snack", "Drink", "Main Course", "Side Dish"]
     
     var body: some View {
         NavigationView {
@@ -64,7 +64,7 @@ struct HomeView: View {
                                             case .success(let response):
                                                 self.popularItems = response.results.map { popularRecipe in
                                                     PopularItemView(
-                                                        
+                                                        id: popularRecipe.id ?? 642583,
                                                         foodFoto: popularRecipe.image ?? "no image",
                                                         title: popularRecipe.title ?? "no title",
                                                         time: "N/A", // Placeholder for time
@@ -78,6 +78,8 @@ struct HomeView: View {
                                             }
                                         }
                                     }
+                                    
+                                    
                                 }
                                 .foregroundStyle(.red)
                             }
