@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct IngredientsView: View {
+    var titleString = ""
+    var ingredientImage: String?
     var body: some View {
         ZStack {
             Color(.neutral20)
@@ -18,11 +20,17 @@ struct IngredientsView: View {
                     RoundedRectangle(cornerRadius: 8)
                         .foregroundStyle(.white)
                         .frame(width: 52, height: 52)
-                    Image("mockFish")
-                        .resizable()
-                        .frame(width: 52, height: 52)
+                    
+                    if let imageUrl = ingredientImage, let url = URL(string: "https://spoonacular.com/cdn/ingredients_100x100/\(imageUrl)") {
+                        AsyncImage(url: url){image in
+                            image
+                                .image?.resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 52, height: 52)
+                        }
+                    }
                 }
-                Text("Fish")
+                Text(titleString)
                     .font(.custom(Poppins.bold, size: 16))
                 Spacer()
                 Text("200g")
@@ -32,8 +40,6 @@ struct IngredientsView: View {
             }
             .padding(.horizontal, 16)
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 12)
     }
 }
 
