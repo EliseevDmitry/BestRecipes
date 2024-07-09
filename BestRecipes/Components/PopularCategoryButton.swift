@@ -21,9 +21,9 @@ struct PopularCategoryButton: View {
                 .padding(5)
                 .padding(.horizontal, 8)
                 .font(.custom(Poppins.semiBold, size: 12))
-                .background(selectedCategory == title ? Color.primary50 : Color.neutral10)
-                .foregroundStyle(selectedCategory == title ? .white : .primary41)
-                .clipShape(RoundedRectangle(cornerRadius: 15))
+                .background(selectedCategory == title ? Color.primary50 : Color.white)
+                .foregroundStyle(selectedCategory == title ? .white : .primary30)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
         }
     }
 }
