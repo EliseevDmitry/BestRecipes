@@ -8,6 +8,7 @@
 import Foundation
 
 class RecipesManager: ObservableObject {
+    var networkManager = NetworkManager.shared
     
     
 //    @Published var onboarding = Onboarding(isShow: false)
@@ -27,4 +28,6 @@ class RecipesManager: ObservableObject {
 //        guard let loadData = try? decoder.decode(Onboarding.self, from: data) else {return}
 //        onboarding.isShow = loadData.isShow
 //    }
+
+    
 }
