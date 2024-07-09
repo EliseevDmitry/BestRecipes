@@ -128,4 +128,5 @@ struct CustomNavBarViewShape: View {
 
 #Preview {
     CustomNavBarViewShape()
+        .preferredColorScheme(.dark)
 }
