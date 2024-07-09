@@ -69,7 +69,10 @@ struct PopularItemView: View, Hashable {
                         .font(.custom(Poppins.semiBold, size: timeFontSize))
                         Spacer()
                         // закладка (может быть включена и не включена)
-                        ZStack {
+//                        ZStack {
+                            BookmarkView()
+                            
+                            /*
                             // круглый фон для закладки
                             Circle()
                                 .frame(width: bookmarkBgWidth)
@@ -78,7 +81,8 @@ struct PopularItemView: View, Hashable {
                             Image(bookmarkIsOn ? "Iconebookmark" : "bookmark")
                                 .resizable()
                                 .frame(width: bookmarkWidth, height: bookmarkHeight)
-                        }
+                            */
+//                        }
                     }
                 }
                 .padding()
