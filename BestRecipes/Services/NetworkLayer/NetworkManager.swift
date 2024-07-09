@@ -45,7 +45,7 @@ struct NetworkManager {
             parameters["type"] = category
         case .cuisine(cuisine: let cuisine):
             parameters["cuisine"] = cuisine
-        case .recipeInfo(id: let id):
+        case .recipeInfo(id: _):
             parameters["includeNutrition"] = "false"
         }
         
