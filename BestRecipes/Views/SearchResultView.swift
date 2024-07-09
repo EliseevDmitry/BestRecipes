@@ -8,25 +8,63 @@
 import SwiftUI
 
 struct SearchResultsView: View {
-    var searchResults: [SearchResultRecipe]
-
+    @Binding var searchResults: [SearchResultRecipe]
+    @Binding var searchTerm: String
+    @State private var showSearchResults = false
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading) {
-                    ForEach(searchResults, id: \.id) { recipe in
-                        NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
-                            Frame1View(id: recipe.id ?? 0, foodFoto: recipe.image ?? "", title: recipe.title ?? "")
+        VStack {
+            ZStack {
+                CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults)
+                
+                if !searchTerm.isEmpty {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            searchTerm = ""
+                            presentationMode.wrappedValue.dismiss() // Возвращает на домашний экран
+                        }) {
+                            Image(systemName: "xmark")
+                                .foregroundColor(.black)
+                                .padding(.trailing, 30) // Увеличен отступ для более правильного расположения
                         }
-                        .padding(.horizontal)
                     }
                 }
             }
-            .navigationTitle("Search Results")
-            .background(Color.white)
-            .cornerRadius(10)
-            .shadow(radius: 5)
-            .padding(.horizontal)
+            .padding()
+            
+            ScrollView {
+                ForEach(searchResults, id: \.id) { recipe in
+                    NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
+                        Frame1View(id: recipe.id ?? 0,
+                                   foodFoto: recipe.image ?? "",
+                                   title: recipe.title ?? "")
+                    }
+                    .padding(.horizontal)
+                }
+            }
+        }
+        .navigationTitle("Search Results")
+        .background(Color.white)
+        .padding(.horizontal)
+    }
+}
+
+struct SearchResultsView_Previews: PreviewProvider {
+    @State static var searchResults = [
+        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg")
+        
+    ]
+    @State static var searchTerm = "Spaghetti"
+    
+    static var previews: some View {
+        NavigationView {
+            SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm)
         }
     }
 }
+
+    
+
