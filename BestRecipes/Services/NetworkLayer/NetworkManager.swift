@@ -1,10 +1,3 @@
-//
-//  NetworkManager.swift
-//  BestRecipes
-//
-//  Created by Daniil Murzin on 03.07.2024.
-//
-
 import Foundation
 
 struct NetworkManager {
@@ -143,7 +136,6 @@ struct NetworkManager {
         guard let url = createURL(for: .popularCategory(category: category)) else { return }
         print("Request popular category URL: \(url.absoluteString)")
         makeRequest(for: url, apiKey: API.apiKey, completion: completion)
-        
     }
     
     func fetchCuisine(

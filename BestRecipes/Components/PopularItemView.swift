@@ -1,20 +1,20 @@
-//
-//  PopularItemView.swift
-//  BestRecipes
-//
-//  Created by Денис Гиндулин on 30.06.2024.
-//
 
 import SwiftUI
 
-struct PopularItemView: View, Hashable {
+struct PopularItemView: View, Equatable {
+    
+    static func == (lhs: PopularItemView, rhs: PopularItemView) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    
+    @ObservedObject var appManager: RecipesManager
     // входные параметры, которые могут приходить из сети
     var id: Int
     var cuisine: String?
     var foodFoto: String
     var title: String
     var time: String
-    var bookmarkIsOn: Bool // свойство отражает включена ли закладка
     
     // ширина карточки - все остальные размеры зависят от нее
     let cardWidth: Double
@@ -70,7 +70,7 @@ struct PopularItemView: View, Hashable {
                         Spacer()
                         // закладка (может быть включена и не включена)
 //                        ZStack {
-                            BookmarkView()
+                        BookmarkView(appManager: appManager, id: id)
                             
                             /*
                             // круглый фон для закладки
@@ -100,16 +100,17 @@ struct PopularItemView: View, Hashable {
             .frame(width: cardWidth, height: cardBgHeight)
         }
         .frame(height: cardHeight)
+
     }
 }
 
 #Preview {
     PopularItemView(
+        appManager:RecipesManager(),
         id: 1,
         foodFoto: "mockImage1",
         title: "Chicken and Vegetable wrap Chicken and Vegetable wrap Chicken and Vegetable wrap",
         time: "5",
-        bookmarkIsOn: true,
         cardWidth: 350
     )
 }

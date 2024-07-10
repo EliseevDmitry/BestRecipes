@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  BestRecipes
-//
-//  Created by Dmitriy Eliseev on 30.06.2024.
-//
 
 import SwiftUI
 
@@ -18,6 +12,8 @@ struct HomeView: View {
     @State private var cuisinesItems: [Frame3View] = []
     @State private var errorMessage: String?
     @State private var selectionCategory = "Breakfast"
+    @State private var showSearchResults = false
+    
     
     var categories = [
         "Breakfast", "Dessert", "Appetizer", "Salad",
@@ -35,11 +31,15 @@ struct HomeView: View {
     
     var networkManager = NetworkManager.shared
     
+    
+    @State private var isCheckHome = false
+    @State private var isCheckBookmark = false
+    @State private var isCheckbell = false
+    @State private var isCheckprofile = false
     var body: some View {
-        VStack {
-            NavigationView {
+        NavigationView {
+            VStack {
                 ScrollView {
-                    
                     VStack(alignment: .leading) {
                         Text("Get Amazing recipes")
                             .font(.custom(Poppins.bold, size: 24))
@@ -51,7 +51,11 @@ struct HomeView: View {
                     .padding(.leading, -90)
                     .background(.white)
                     
-                    CustomSearchBar(searchTerm: $searchTerm)
+                    CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults, appManager: appManager)
+                    
+                    NavigationLink(destination: SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm, appManager: appManager), isActive: $showSearchResults) {
+                        EmptyView()
+                    }
                     
                     VStack(spacing: 20) {
                         // MARK: - Trending Section
@@ -67,10 +71,9 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
                         
-                        
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 4) {
-                                ForEach(trendingItems, id: \.self) { item in
+                            LazyHStack(spacing: 20) {
+                                ForEach(trendingItems, id: \.id) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
                                             .padding(.leading)
@@ -78,7 +81,9 @@ struct HomeView: View {
                                 }
                             }
                         }
+                        //                        .padding(.horizontal, 20)
                         .frame(maxHeight: .infinity)
+                        
                         // MARK: - Popular Categories Section
                         HStack {
                             Text("Popular Category")
@@ -97,15 +102,14 @@ struct HomeView: View {
                                                 case .success(let response):
                                                     self.popularItems = response.results.map { popularRecipe in
                                                         PopularItemView(
+                                                            appManager: appManager,
                                                             id: popularRecipe.id ?? 716429,
                                                             foodFoto: popularRecipe.image ?? "no image",
                                                             title: popularRecipe.title ?? "no title",
                                                             time: String(Int.random(in: 5...20)),
-                                                            bookmarkIsOn: false,
                                                             cardWidth: 150
                                                         )
                                                     }
-                                                    
                                                 case .failure(let error):
                                                     self.errorMessage = error.localizedDescription
                                                     print("Error fetching popular category: \(error.localizedDescription)")
@@ -129,7 +133,7 @@ struct HomeView: View {
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 4) { //
-                                ForEach(popularItems, id: \.self) { item in
+                                ForEach(popularItems, id: \.id) { item in //елисеев
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
                                             .frame(height: 294)
@@ -138,6 +142,7 @@ struct HomeView: View {
                                 }
                             }
                         }
+                        //                        .padding(.horizontal, 20) // убрал, чтобы группа карточек прокручивалась от края до края
                     }
                     .onAppear {
                         networkManager.fetchTrendingRecipes { result in
@@ -145,6 +150,7 @@ struct HomeView: View {
                                 switch result {
                                 case .success(let response):
                                     self.trendingItems = response.results.map { element in Frame1View(
+                                        appManager: appManager,
                                         id: element.id ?? 0,
                                         foodFoto: element.image ?? "",
                                         title: element.title ?? "")
@@ -160,12 +166,13 @@ struct HomeView: View {
                                 switch result {
                                 case .success(let response):
                                     self.popularItems = response.results.map { popularRecipe in
+                                        
                                         PopularItemView(
+                                            appManager: appManager,
                                             id: popularRecipe.id ?? 716429,
                                             foodFoto: popularRecipe.image ?? "no image",
                                             title: popularRecipe.title ?? "no title",
                                             time: String(Int.random(in: 5...50)),
-                                            bookmarkIsOn: false,
                                             cardWidth: 150
                                         )
                                     }
@@ -176,6 +183,7 @@ struct HomeView: View {
                             }
                         }
                     }
+                    
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 4) {
@@ -190,16 +198,43 @@ struct HomeView: View {
                         }
                     }
                 }
+                CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
+                    .offset(CGSize(width: 0.0, height: -40))
+                    .padding(.horizontal, 20)
+                    .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
+                        .frame(height: 150)
+                        .background(.clear)
+                        .foregroundStyle(.white)
+                        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
+                    )
+                    .overlay(content: {
+                        Button {
+                            print("Round Action")
+                        }
+                    label: {
+                        Image(systemName: "plus")
+                            .font(.title.bold())
+                    }
+                    .frame(width: 70, height: 70)
+                    .background(Color.red)
+                    .clipShape(Circle())
+                    .offset(CGSize(width: 0.0, height: -60))
+                    })
             }
-            .padding(.top, 15)
-            CustomNavBarViewShape()
-                .searchable(text: $searchTerm, prompt: "Search recipes")
-                
+            .padding(.top, 50)
+            //.searchable(text: $searchTerm, prompt: "Search recipes")
+            
+            .ignoresSafeArea(.all, edges: .all)
         }
-        .ignoresSafeArea(.all, edges: .bottom)
+        .onAppear{
+            appManager.loadBookMarkData()
+        }
     }
+    
+    
 }
 
 #Preview {
     HomeView(appManager: RecipesManager())
 }
+

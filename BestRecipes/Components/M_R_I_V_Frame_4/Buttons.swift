@@ -63,7 +63,7 @@ struct TimeView: View {
 
 #Preview
 {
-    BookMark()
-   // RatingView()
+//    BookMark()
+    RatingView()
   // TimeView()
 }

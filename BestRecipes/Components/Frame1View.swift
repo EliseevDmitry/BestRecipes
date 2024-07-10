@@ -1,14 +1,14 @@
-//
-//  Frame1View.swift
-//  BestRecipes
-//
-//  Created by Dmitriy Eliseev on 30.06.2024.
-//
 
 import SwiftUI
 
-struct Frame1View: View, Hashable {
+struct Frame1View: View, Equatable {
+    static func == (lhs: Frame1View, rhs: Frame1View) -> Bool {
+        return lhs.id == rhs.id
+    }
     
+
+    
+    @ObservedObject var appManager: RecipesManager
     var id: Int
     var foodFoto: String
     var title: String
@@ -48,10 +48,11 @@ struct Frame1View: View, Hashable {
                         }
                         Spacer()
                         ZStack {
-                            Circle()
-                                .frame(width: 32, height: 32)
-                                .foregroundStyle(.white)
-                            Image("Iconebookmark")
+                            BookmarkView(appManager: appManager, id: id)
+//                            Circle()
+//                                .frame(width: 32, height: 32)
+//                                .foregroundStyle(.white)
+//                            Image("Iconebookmark")
                         }
                     }
                     Spacer()
@@ -82,6 +83,7 @@ struct Frame1View: View, Hashable {
                 .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 .multilineTextAlignment(.leading)
                 .padding(.top, 10)
+            Spacer()
             HStack {
                 Image("mockAvatar")
                     .resizable()
@@ -92,7 +94,7 @@ struct Frame1View: View, Hashable {
                     .font(.custom(Poppins.regular, size: 12))
                     .foregroundStyle(.secondary)
             }
-            Spacer()
+            //Spacer()
         }
         .frame(width: 280)
     }
@@ -100,5 +102,5 @@ struct Frame1View: View, Hashable {
 }
 
 #Preview {
-    Frame1View(id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
+    Frame1View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
 }

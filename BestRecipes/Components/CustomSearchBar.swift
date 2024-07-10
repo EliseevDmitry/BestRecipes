@@ -1,18 +1,19 @@
-//  SearchBar.swift
-//  BestRecipes
+// SearchBar.swift
+// BestRecipes
 //
-//  Created by Daniil Murzin on 07.07.2024.
+// Created by Daniil Murzin on 07.07.2024.
 //
 
 import SwiftUI
 
 struct CustomSearchBar: View {
     @Binding var searchTerm: String
-    @State private var searchResults: [SearchResultRecipe] = []
+    @Binding var searchResults: [SearchResultRecipe]
+    @Binding var showResultsSheet: Bool
+    
     @State private var isSearching = false
-    @State private var showResultsSheet = false
     var networkManager = NetworkManager.shared
-
+    @ObservedObject var appManager: RecipesManager
     var body: some View {
         VStack {
             HStack {
@@ -27,7 +28,6 @@ struct CustomSearchBar: View {
                 TextField("Search recipes", text: $searchTerm, onEditingChanged: { isEditing in
                     if !isEditing {
                         self.searchResults = []
-                        
                     }
                 })
                 .onChange(of: searchTerm) { newValue in
@@ -45,13 +45,6 @@ struct CustomSearchBar: View {
                 .font(.custom(Poppins.regular, size: 14))
                 .foregroundColor(.neutral30)
                 
-                Button(action: {
-                    performSearch()
-                }) {
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.black)
-                        .padding(.trailing, 10)
-                }
             }
             .frame(width: 360, height: 44)
             .overlay(
@@ -64,9 +57,6 @@ struct CustomSearchBar: View {
                 ProgressView()
                     .padding()
             }
-        }
-        .sheet(isPresented: $showResultsSheet) {
-            SearchResultsView(searchResults: searchResults)
         }
     }
     
@@ -92,8 +82,11 @@ struct CustomSearchBar: View {
 
 struct SearchBar_Previews: PreviewProvider {
     @State static var searchTerm = "Find your recipe"
+    @State static var searchResults: [SearchResultRecipe] = []
+    @State static var showResultsSheet = false
 
     static var previews: some View {
-        CustomSearchBar(searchTerm: $searchTerm)
+        CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showResultsSheet, appManager: RecipesManager())
     }
 }
+

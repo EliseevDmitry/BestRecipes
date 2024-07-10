@@ -1,9 +1,3 @@
-//
-//  TestBTN.swift
-//  BestRecipes
-//
-//  Created by Dmitriy Eliseev on 05.07.2024.
-//
 
 import SwiftUI
 
