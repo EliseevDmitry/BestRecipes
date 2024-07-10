@@ -67,7 +67,7 @@ struct BookMarkView: View {
                         id: recipeDetails.id ?? 0,
                         foodFoto: recipeDetails.image ?? "no image",
                         title: recipeDetails.title ?? "no title",
-                        cuisines: recipeDetails.cuisines ?? []
+                       cuisines: recipeDetails.cuisines ?? []
                     )
                     frames.append(frame)
                 case .failure(let error):
