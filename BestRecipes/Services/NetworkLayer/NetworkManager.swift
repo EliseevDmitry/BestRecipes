@@ -1,10 +1,3 @@
-//
-//  NetworkManager.swift
-//  BestRecipes
-//
-//  Created by Daniil Murzin on 03.07.2024.
-//
-
 import Foundation
 
 struct NetworkManager {
@@ -166,23 +159,5 @@ struct NetworkManager {
        print("Request RecipeDetails URL: \(url.absoluteString)")
     }
     
-    
-//    func fetchCategories(
-//        for categories: [String],
-//        completion: @escaping (String, Result<SearchResults, NetworkErrors>) -> Void) {
-//            
-//        categories.enumerated().forEach { index, category in
-//            
-//            let delay = Double(index) * 0.5 // Задержка в секундах для каждого запроса
-//            DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-//                
-//                guard let url = self.createURL(for: .doSearch(request: category)) else { return }
-//                
-//                self.makeRequest(for: url, apiKey: API.apiKey) { result in
-//                    completion(category, result)
-//                }
-//            }
-//        }
-//    }
-    
+        
 }
