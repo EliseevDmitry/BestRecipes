@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "mockImage.10jpg.jpeg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

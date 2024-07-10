@@ -1,16 +1,23 @@
 import SwiftUI
 
 struct Frame2View: View {
+    
+    let imageAndTitleArray = [("mockImage7", "beef steak"),
+                              ("mockImage8", "fried eggs"),
+                              ("mockImage9", "fruit dessert"),
+                              ("mockImage10", "hamburger"),
+                              ("mockImage11", "vegetable salad")]
+    
     var body: some View {
-        ScrollView(.horizontal) {
-            ZStack {
-                VStack {
-                    Image("mockImage7")
-                        .resizable()
-                        .frame(width: 124, height: 124)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 16) {
+                ForEach(imageAndTitleArray, id: \.0) { (imageName, title) in
                     VStack(alignment: .leading) {
-                        Text("Kelewelw Ghanian Recipe")
+                        Image(imageName)
+                            .resizable()
+                            .frame(width: 124, height: 124)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        Text(title)
                             .font(.custom(Poppins.bold, size: 14))
                             .padding(.top, 8)
                         Text("By Zeelicious Foods")
@@ -20,8 +27,6 @@ struct Frame2View: View {
                     }
                 }
             }
-            .frame(width: 124)
-            .padding(.horizontal, 16)
         }
     }
 }
