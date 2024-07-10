@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct SearchResultsView: View {
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var showAlert = false
+    
     var searchResults: [SearchResultRecipe]
 
     var body: some View {
@@ -27,6 +31,28 @@ struct SearchResultsView: View {
             .cornerRadius(10)
             .shadow(radius: 5)
             .padding(.horizontal)
+            // в панели навигации: стрелка влево вместо кнопки Back и кнопка "...", вызывающая alert
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .foregroundStyle(.primary)
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAlert = true
+                    } label: {
+                        Image(systemName: "ellipsis")
+                    }
+                }
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("- Разыгрался аппетит?"), message: Text("- Да, согласен даже перевести 100 рублей разработчикам!"))
+            }
         }
     }
 }
