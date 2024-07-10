@@ -1,5 +1,6 @@
 import Foundation
 
-//struct Onboarding: Codable {
-//    var isShow: Bool
-//}
+struct BookMarks: Codable {
+    var idUUID = UUID()
+    var bookMarkSet: Set<Int>
+}
