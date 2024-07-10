@@ -19,6 +19,7 @@ struct HomeView: View {
     @State private var errorMessage: String?
     @State private var selectionCategory = "Breakfast"
     
+    
     var categories = [
         "Breakfast", "Dessert", "Appetizer", "Salad",
         "Bread", "Soup", "Beverage", "Sauce", "Marinade",
@@ -34,6 +35,12 @@ struct HomeView: View {
     ]
     
     var networkManager = NetworkManager.shared
+    
+    
+    @State private var isCheckHome = false
+    @State private var isCheckBookmark = false
+    @State private var isCheckbell = false
+    @State private var isCheckprofile = false
     
     var body: some View {
         VStack {
@@ -78,7 +85,7 @@ struct HomeView: View {
                                 }
                             }
                         }
-//                        .padding(.horizontal, 20)
+                        //                        .padding(.horizontal, 20)
                         .frame(maxHeight: .infinity)
                         // MARK: - Popular Categories Section
                         HStack {
@@ -129,7 +136,7 @@ struct HomeView: View {
                         
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 4) { // 
+                            LazyHStack(spacing: 4) { //
                                 ForEach(popularItems, id: \.self) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
@@ -139,7 +146,7 @@ struct HomeView: View {
                                 }
                             }
                         }
-//                        .padding(.horizontal, 20) // убрал, чтобы группа карточек прокручивалась от края до края
+                        //                        .padding(.horizontal, 20) // убрал, чтобы группа карточек прокручивалась от края до края
                     }
                     .onAppear {
                         networkManager.fetchTrendingRecipes { result in
@@ -195,16 +202,34 @@ struct HomeView: View {
                 
             }
             .padding(.top, 15)
-            
-            CustomNavBarViewShape()
+            CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
+                .offset(CGSize(width: 0.0, height: -40))
+                .padding(.horizontal, 20)
+                .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
+                    .frame(height: 150)
+                    .background(.clear)
+                    .foregroundStyle(.white)
+                    .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
+                )
+                .overlay(content: {
+                    Button {
+                        print("Round Action")
+                    }
+                label: {
+                    Image(systemName: "plus")
+                        .font(.title.bold())
+                }
+                .frame(width: 70, height: 70)
+                .background(Color.red)
+                .clipShape(Circle())
+                .offset(CGSize(width: 0.0, height: -60))
+                })
                 .searchable(text: $searchTerm, prompt: "Search recipes")
-            
-                
         }
-        
         .ignoresSafeArea(.all, edges: .bottom)
     }
-      
+    
+    
 }
 
 #Preview {
