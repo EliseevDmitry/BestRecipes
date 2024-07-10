@@ -190,6 +190,7 @@ struct HomeView: View {
                             switch result {
                             case .success(let recipeDetails):
                                 let item = Frame1View(
+                                    appManager: appManager,
                                     id: recipeDetails.id ?? 0,
                                     foodFoto: recipeDetails.image ?? "no image",
                                     title: recipeDetails.title ?? "no title",
@@ -232,11 +233,11 @@ struct HomeView: View {
                             switch result {
                             case .success(let recipeDetails):
                                 let item = PopularItemView(
+                                    appManager: appManager,
                                     id: recipeDetails.id ?? 0,
                                     foodFoto: recipeDetails.image ?? "no image",
                                     title: recipeDetails.title ?? "no title",
                                     time: String(recipeDetails.readyInMinutes ?? 0),
-                                    bookmarkIsOn: false,
                                     cardWidth: 150
                                 )
                                 newPopularItems.append(item)
