@@ -1,18 +1,9 @@
-//
-//  API.swift
-//  BestRecipes
-//
-//  Created by Daniil Murzin on 03.07.2024.
-//
-
 import Foundation
 
 struct API {
     static let scheme = "https"
     static let host = "api.spoonacular.com"
-
-    static let apiKey = Token.apiToken
-
+    static let apiKey = Token.forth
 }
 
 struct Token {
