@@ -7,6 +7,6 @@
 
 import Foundation
 
-//struct Onboarding: Codable {
-//    var isShow: Bool
-//}
+struct BookMarks: Codable {
+    var bookMarkSet: Set<Int>
+}

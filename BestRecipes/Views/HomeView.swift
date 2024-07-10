@@ -41,7 +41,6 @@ struct HomeView: View {
     @State private var isCheckBookmark = false
     @State private var isCheckbell = false
     @State private var isCheckprofile = false
-    
     var body: some View {
         VStack {
             NavigationView {
@@ -104,12 +103,12 @@ struct HomeView: View {
                                                 switch result {
                                                 case .success(let response):
                                                     self.popularItems = response.results.map { popularRecipe in
-                                                        PopularItemView(
+                                                 PopularItemView(
+                                                            appManager: appManager,
                                                             id: popularRecipe.id ?? 716429,
                                                             foodFoto: popularRecipe.image ?? "no image",
                                                             title: popularRecipe.title ?? "no title",
                                                             time: String(Int.random(in: 5...20)),
-                                                            bookmarkIsOn: false,
                                                             cardWidth: 150
                                                         )
                                                     }
@@ -137,7 +136,7 @@ struct HomeView: View {
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 4) { //
-                                ForEach(popularItems, id: \.self) { item in
+                                ForEach(popularItems, id: \.id) { item in //елисеев
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
                                             .frame(height: 294)
@@ -169,12 +168,13 @@ struct HomeView: View {
                                 switch result {
                                 case .success(let response):
                                     self.popularItems = response.results.map { popularRecipe in
-                                        PopularItemView(
+                                        
+                                       PopularItemView(
+                                            appManager: appManager,
                                             id: popularRecipe.id ?? 716429,
                                             foodFoto: popularRecipe.image ?? "no image",
                                             title: popularRecipe.title ?? "no title",
                                             time: String(Int.random(in: 5...50)),
-                                            bookmarkIsOn: false,
                                             cardWidth: 150
                                         )
                                     }
@@ -226,7 +226,10 @@ struct HomeView: View {
                 })
                 .searchable(text: $searchTerm, prompt: "Search recipes")
         }
-        .ignoresSafeArea(.all, edges: .bottom)
+        .ignoresSafeArea(.all, edges: .all)
+        .onAppear{
+            appManager.loadBookMarkData()
+        }
     }
     
     
