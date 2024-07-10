@@ -1,10 +1,3 @@
-//
-//  OnboardingStartView.swift
-//  BestRecipes
-//
-//  Created by Денис Гиндулин on 30.06.2024.
-//
-
 import SwiftUI
 
 struct OnboardingStartView: View {

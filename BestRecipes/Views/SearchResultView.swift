@@ -1,9 +1,4 @@
-//
-//  SearchResultView.swift
-//  BestRecipes
-//
-//  Created by Daniil Murzin on 08.07.2024.
-//
+
 
 import SwiftUI
 
