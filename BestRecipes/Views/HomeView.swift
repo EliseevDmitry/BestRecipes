@@ -51,9 +51,9 @@ struct HomeView: View {
                     .padding(.leading, -90)
                     .background(.white)
                     
-                    CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults)
+                    CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults, appManager: appManager)
                     
-                    NavigationLink(destination: SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm), isActive: $showSearchResults) {
+                    NavigationLink(destination: SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm, appManager: appManager), isActive: $showSearchResults) {
                         EmptyView()
                     }
                     
@@ -101,7 +101,7 @@ struct HomeView: View {
                                                 switch result {
                                                 case .success(let response):
                                                     self.popularItems = response.results.map { popularRecipe in
-                                                 PopularItemView(
+                                                        PopularItemView(
                                                             appManager: appManager,
                                                             id: popularRecipe.id ?? 716429,
                                                             foodFoto: popularRecipe.image ?? "no image",
@@ -167,7 +167,7 @@ struct HomeView: View {
                                 case .success(let response):
                                     self.popularItems = response.results.map { popularRecipe in
                                         
-                                       PopularItemView(
+                                        PopularItemView(
                                             appManager: appManager,
                                             id: popularRecipe.id ?? 716429,
                                             foodFoto: popularRecipe.image ?? "no image",
@@ -198,33 +198,34 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 20)
                 }
-            }
-            .padding(.top, 15)
-            CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
-                .offset(CGSize(width: 0.0, height: -40))
-                .padding(.horizontal, 20)
-                .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
-                    .frame(height: 150)
-                    .background(.clear)
-                    .foregroundStyle(.white)
-                    .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
-                )
-                .overlay(content: {
-                    Button {
-                        print("Round Action")
+                CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
+                    .offset(CGSize(width: 0.0, height: -40))
+                    .padding(.horizontal, 20)
+                    .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
+                        .frame(height: 150)
+                        .background(.clear)
+                        .foregroundStyle(.white)
+                        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
+                    )
+                    .overlay(content: {
+                        Button {
+                            print("Round Action")
+                        }
+                    label: {
+                        Image(systemName: "plus")
+                            .font(.title.bold())
                     }
-                label: {
-                    Image(systemName: "plus")
-                        .font(.title.bold())
-                }
-                .frame(width: 70, height: 70)
-                .background(Color.red)
-                .clipShape(Circle())
-                .offset(CGSize(width: 0.0, height: -60))
-                })
-                .searchable(text: $searchTerm, prompt: "Search recipes")
+                    .frame(width: 70, height: 70)
+                    .background(Color.red)
+                    .clipShape(Circle())
+                    .offset(CGSize(width: 0.0, height: -60))
+                    })
+            }
+            .padding(.top, 50)
+            //.searchable(text: $searchTerm, prompt: "Search recipes")
+            
+            .ignoresSafeArea(.all, edges: .all)
         }
-        .ignoresSafeArea(.all, edges: .all)
         .onAppear{
             appManager.loadBookMarkData()
         }

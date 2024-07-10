@@ -86,7 +86,7 @@ struct SearchBar_Previews: PreviewProvider {
     @State static var showResultsSheet = false
 
     static var previews: some View {
-        CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showResultsSheet)
+        CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showResultsSheet, appManager: RecipesManager())
     }
 }
 
