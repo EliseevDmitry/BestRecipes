@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var cuisinesItems: [Frame3View] = []
     @State private var errorMessage: String?
     @State private var selectionCategory = "Breakfast"
+    @State private var showSearchResults = false
     
     
     var categories = [
@@ -37,10 +38,9 @@ struct HomeView: View {
     @State private var isCheckprofile = false
     
     var body: some View {
-        VStack {
-            NavigationView {
+        NavigationView {
+            VStack {
                 ScrollView {
-                    
                     VStack(alignment: .leading) {
                         Text("Get Amazing recipes")
                             .font(.custom(Poppins.bold, size: 24))
@@ -52,7 +52,11 @@ struct HomeView: View {
                     .padding(.leading, -90)
                     .background(.white)
                     
-                    CustomSearchBar(searchTerm: $searchTerm)
+                    CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults)
+                    
+                    NavigationLink(destination: SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm), isActive: $showSearchResults) {
+                        EmptyView()
+                    }
                     
                     VStack(spacing: 20) {
                         // MARK: - Trending Section
@@ -68,7 +72,6 @@ struct HomeView: View {
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
                         
-                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 20) {
                                 ForEach(trendingItems, id: \.self) { item in
@@ -81,6 +84,7 @@ struct HomeView: View {
                         }
                         //                        .padding(.horizontal, 20)
                         .frame(maxHeight: .infinity)
+                        
                         // MARK: - Popular Categories Section
                         HStack {
                             Text("Popular Category")
@@ -107,7 +111,6 @@ struct HomeView: View {
                                                             cardWidth: 150
                                                         )
                                                     }
-                                                    
                                                 case .failure(let error):
                                                     self.errorMessage = error.localizedDescription
                                                     print("Error fetching popular category: \(error.localizedDescription)")
@@ -179,6 +182,7 @@ struct HomeView: View {
                             }
                         }
                     }
+                    
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 20) {
@@ -193,7 +197,6 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 20)
                 }
-                
             }
             .padding(.top, 15)
             CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
@@ -229,3 +232,4 @@ struct HomeView: View {
 #Preview {
     HomeView(appManager: RecipesManager())
 }
+
