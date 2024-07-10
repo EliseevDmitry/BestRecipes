@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct OffsetCustomBox{
-    let height: CGFloat = 100
-    let angle: CGFloat = 15
-    let radiusOne: CGFloat = 45
-    let radiusTwo: CGFloat = 30
-    var demensionOneY: CGFloat {
+  static let height: CGFloat = 150
+    static let angle: CGFloat = 15
+    static let radiusOne: CGFloat = 45
+    static let radiusTwo: CGFloat = 30
+    static  var demensionOneY: CGFloat {
         (radiusOne*sin(angle * Double.pi / 180))
     }
-    var demensionTwoY: CGFloat {
+    static  var demensionTwoY: CGFloat {
         (radiusTwo*sin(angle * Double.pi / 180))
     }
-    var offset: CGFloat{
-        return -(height/2 - (demensionOneY+demensionTwoY)/2)
+    static  var offset: CGFloat{
+               return -(height/2 - (demensionOneY+demensionTwoY)/2)
     }
 }
 
@@ -45,75 +45,47 @@ struct CustomBox: Shape {
         path.addArc(center: CGPoint(x: (rect.midX)-deltaX, y: rect.minY+radiusTwo), radius: radiusTwo, startAngle: Angle(degrees: (360-angle)), endAngle: Angle(degrees: 270), clockwise: true)
         path.closeSubpath()
         return path
-        
     }
 }
 
 struct CustomNavBarViewShape: View {
-    @State private var isCheckHome = false
-    @State private var isCheckBookmark = false
-    @State private var isCheckbell = false
-    @State private var isCheckprofile = false
-    let params = OffsetCustomBox()
+    @Binding var isCheckHome: Bool
+    @Binding var isCheckBookmark: Bool
+    @Binding var isCheckbell: Bool
+    @Binding var isCheckprofile: Bool
     var body: some View {
-        VStack{
-            ZStack {
-                CustomBox(angle: params.angle, radiusOne: params.radiusOne, radiusTwo: params.radiusTwo)
-                    .frame(alignment: .center)
-                    .foregroundStyle(.white)
-                    .frame(height: params.height)
-                    .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
-                HStack{
-                    Button{
-                        resetCheck()
-                        isCheckHome.toggle()
-                    }label: {
-                        Image(!isCheckHome ? "home" : "homeRed")
-                    }
-                    Spacer()
-                    Button{
-                        resetCheck()
-                        isCheckBookmark.toggle()
-                    }label: {
-                        Image(!isCheckBookmark ? "bookmark" : "bookmarkRed")
-                    }
-                    Spacer()
-                    Spacer()
-                    Button{
-                        resetCheck()
-                        isCheckbell.toggle()
-                    }label: {
-                        Image(!isCheckbell ? "bell" : "bellRed")
-                    }
-                    Spacer()
-                    Button{
-                        resetCheck()
-                        isCheckprofile.toggle()
-                    }label: {
-                        Image(!isCheckprofile ? "profile" : "profileRed")
-
-                    }
-                }
-                .offset(CGSize(width: 0.0, height: -15.0)) //костыль
-                .frame(maxWidth: .infinity)
-                .padding(.leading, 20)
-                .padding(.trailing, 20)
+            HStack{
                 Button{
-                    //action
-                    //resetCheck()
-                    print("Boommmm!")
+                    resetCheck()
+                    isCheckHome.toggle()
                 }label: {
-                    ZStack {
-                        Circle()
-                            .frame(width: 80)
-                            .foregroundStyle(.red)
-                        Image(systemName: "plus")
-                            .font(.title.bold())
-                    }
-                    .offset(CGSize(width: 0.0, height: params.offset))
+                    Image(!isCheckHome ? "home" : "homeRed")
                 }
-            }
-        }
+                Spacer()
+                Button{
+                    resetCheck()
+                    isCheckBookmark.toggle()
+                }label: {
+                    Image(!isCheckBookmark ? "bookmark" : "bookmarkRed")
+                }
+                Spacer()
+  
+                Spacer()
+                Button{
+                    resetCheck()
+                    isCheckbell.toggle()
+                }label: {
+                    Image(!isCheckbell ? "bell" : "bellRed")
+                }
+                Spacer()
+                Button{
+                    resetCheck()
+                    isCheckprofile.toggle()
+                }label: {
+                    Image(!isCheckprofile ? "profile" : "profileRed")
+                    
+                }
+            }    
     }
     func resetCheck(){
         isCheckHome = false
@@ -123,7 +95,5 @@ struct CustomNavBarViewShape: View {
     }
 }
 
-#Preview {
-    CustomNavBarViewShape()
-        .preferredColorScheme(.dark)
-}
+
+
