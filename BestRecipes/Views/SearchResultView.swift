@@ -6,13 +6,14 @@ struct SearchResultsView: View {
     @Binding var searchResults: [SearchResultRecipe]
     @Binding var searchTerm: String
     @State private var showSearchResults = false
+    @ObservedObject var appManager: RecipesManager
     
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
             ZStack {
-                CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults)
+                CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults, appManager: appManager)
                 
                 if !searchTerm.isEmpty {
                     HStack {
@@ -60,7 +61,7 @@ struct SearchResultsView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm)
+            SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm, appManager: RecipesManager())
         }
     }
 }

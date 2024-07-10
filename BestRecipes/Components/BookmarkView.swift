@@ -2,12 +2,17 @@
 import SwiftUI
 
 struct BookmarkView: View {
-    
-    @State private var isSelected = false
-    
+    @ObservedObject var appManager: RecipesManager
+    @State var isSelected: Bool = false
+    var id: Int
     var body: some View {
         Button{
-            isSelected.toggle()
+            if appManager.saveIdBookMark(id: id) {
+                isSelected = true
+            } else {
+                isSelected = false
+            }
+            
         } label: {
             ZStack {
                 Circle()
@@ -16,10 +21,19 @@ struct BookmarkView: View {
                 Image(isSelected ? "bookmarkRed" : "bookmark")
             }
         }
+        .onAppear{
+            if appManager.bookMark.bookMarkSet.contains(id) {
+                isSelected = true
+            } else {
+                isSelected = false
+            }
+            
+        }
     }
 }
 
-#Preview {
-    BookmarkView()
-        .preferredColorScheme(.dark)
-}
+//#Preview {
+//    //@State var test = false
+//    BookmarkView(appManager: RecipesManager(), isSelected: isSelected, id: 1)
+//
+//}

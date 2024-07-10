@@ -15,4 +15,8 @@ struct Token {
     static let fifth = "f9cc19628f7c4aec92404da9af033f0c"
     static let six = "b49c1606b4d744d69c543e592c416db1"
     static let seven = "2b1c595159634ca9ba0e817b419a533b"
+    static let apiToken = "2970b49d7c754669aece7b55a25ef7b8"
+    
+    
+    
 }

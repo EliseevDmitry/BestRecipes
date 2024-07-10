@@ -34,7 +34,6 @@ struct HomeView: View {
     @State private var isCheckBookmark = false
     @State private var isCheckbell = false
     @State private var isCheckprofile = false
-    
     var body: some View {
         NavigationView {
             VStack {
@@ -50,9 +49,9 @@ struct HomeView: View {
                     .padding(.leading, -90)
                     .background(.white)
                     
-                    CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults)
+                    CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults, appManager: appManager)
                     
-                    NavigationLink(destination: SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm), isActive: $showSearchResults) {
+                    NavigationLink(destination: SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm, appManager: appManager), isActive: $showSearchResults) {
                         EmptyView()
                     }
                     
@@ -72,7 +71,7 @@ struct HomeView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 20) {
-                                ForEach(trendingItems, id: \.self) { item in
+                                ForEach(trendingItems, id: \.id) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
                                             .padding(.leading)
@@ -111,8 +110,8 @@ struct HomeView: View {
                         
                         // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 4) {
-                                ForEach(popularItems, id: \.self) { item in
+                            LazyHStack(spacing: 4) { //
+                                ForEach(popularItems, id: \.id) { item in //елисеев
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
                                             .frame(height: 294)
@@ -141,21 +140,20 @@ struct HomeView: View {
                     }
                     .padding(.horizontal, 20)
                 }
-            }
-            .padding(.top, 15)
-            CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
-                .offset(CGSize(width: 0.0, height: -40))
-                .padding(.horizontal, 20)
-                .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
-                    .frame(height: 150)
-                    .background(.clear)
-                    .foregroundStyle(.white)
-                    .shadow(color: .black.opacity(0.1), radius: 10, y: -5)
-                )
-                .overlay(content: {
-                    Button {
-                        print("Round Action")
-                    } label: {
+                CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
+                    .offset(CGSize(width: 0.0, height: -40))
+                    .padding(.horizontal, 20)
+                    .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
+                        .frame(height: 150)
+                        .background(.clear)
+                        .foregroundStyle(.white)
+                        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
+                    )
+                    .overlay(content: {
+                        Button {
+                            print("Round Action")
+                        }
+                    label: {
                         Image(systemName: "plus")
                             .font(.title.bold())
                     }
@@ -163,10 +161,16 @@ struct HomeView: View {
                     .background(Color.red)
                     .clipShape(Circle())
                     .offset(CGSize(width: 0.0, height: -60))
-                })
-                .searchable(text: $searchTerm, prompt: "Search recipes")
+                    })
+            }
+            .padding(.top, 50)
+            //.searchable(text: $searchTerm, prompt: "Search recipes")
+            
+            .ignoresSafeArea(.all, edges: .all)
         }
-        .ignoresSafeArea(.all, edges: .bottom)
+        .onAppear{
+            appManager.loadBookMarkData()
+        }
     }
     
     
