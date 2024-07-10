@@ -1,8 +1,3 @@
-//  SearchBar.swift
-//  BestRecipes
-//
-//  Created by Daniil Murzin on 07.07.2024.
-//
 
 import SwiftUI
 
