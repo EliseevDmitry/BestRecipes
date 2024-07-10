@@ -1,10 +1,3 @@
-//
-//  Frame2View.swift
-//  BestRecipes
-//
-//  Created by Dmitriy Eliseev on 30.06.2024.
-//
-
 import SwiftUI
 
 struct Frame2View: View {

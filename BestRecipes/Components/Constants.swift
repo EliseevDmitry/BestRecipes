@@ -1,9 +1,3 @@
-//
-//  Constants.swift
-//  BestRecipes
-//
-//  Created by Денис Гиндулин on 01.07.2024.
-//
 
 import SwiftUI
 
