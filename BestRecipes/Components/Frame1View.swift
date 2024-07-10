@@ -117,7 +117,7 @@ struct Frame1View: View, Equatable {
     }
 }
 
-#Preview {
-    Frame1View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
-}
+//#Preview {
+//    Frame1View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
+//}
 

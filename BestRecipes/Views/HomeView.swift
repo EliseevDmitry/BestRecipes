@@ -147,7 +147,7 @@ struct HomeView: View {
                         .frame(height: 150)
                         .background(.clear)
                         .foregroundStyle(.white)
-                        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
+                        .shadow(color: .black.opacity(0.1), radius: 10, y: -5)
                     )
                     .overlay(content: {
                         Button {
@@ -162,10 +162,19 @@ struct HomeView: View {
                     .clipShape(Circle())
                     .offset(CGSize(width: 0.0, height: -60))
                     })
+                
+                // Добавление кнопки для перехода на экран Избранного
+                NavigationLink(destination: BookMarkView(appManager: appManager)) {
+                    Text("Go to Bookmarks")
+                        .font(.custom(Poppins.bold, size: 16))
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                .padding()
             }
             .padding(.top, 50)
-            //.searchable(text: $searchTerm, prompt: "Search recipes")
-            
             .ignoresSafeArea(.all, edges: .all)
         }
         .onAppear{
@@ -190,6 +199,7 @@ struct HomeView: View {
                             switch result {
                             case .success(let recipeDetails):
                                 let item = Frame1View(
+                                    appManager: appManager,
                                     id: recipeDetails.id ?? 0,
                                     foodFoto: recipeDetails.image ?? "no image",
                                     title: recipeDetails.title ?? "no title",
@@ -214,8 +224,6 @@ struct HomeView: View {
         }
     }
 
-
-    
     private func fetchPopularCategoryWithDetails(for category: String) {
         networkManager.fetchPopularCategory(for: category) { result in
             DispatchQueue.main.async {
@@ -232,11 +240,11 @@ struct HomeView: View {
                             switch result {
                             case .success(let recipeDetails):
                                 let item = PopularItemView(
+                                    appManager: appManager,
                                     id: recipeDetails.id ?? 0,
                                     foodFoto: recipeDetails.image ?? "no image",
                                     title: recipeDetails.title ?? "no title",
                                     time: String(recipeDetails.readyInMinutes ?? 0),
-                                    bookmarkIsOn: false,
                                     cardWidth: 150
                                 )
                                 newPopularItems.append(item)
