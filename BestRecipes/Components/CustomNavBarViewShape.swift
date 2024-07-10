@@ -64,6 +64,7 @@ struct CustomNavBarViewShape: View {
                     .frame(height: params.height)
                     .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
                 HStack{
+                    Spacer() //*
                     Button{
                         resetCheck()
                         isCheckHome.toggle()
@@ -71,14 +72,16 @@ struct CustomNavBarViewShape: View {
                         Image(!isCheckHome ? "home" : "homeRed")
                     }
                     Spacer()
+                    Spacer() //*
                     Button{
                         resetCheck()
                         isCheckBookmark.toggle()
                     }label: {
                         Image(!isCheckBookmark ? "bookmark" : "bookmarkRed")
                     }
-                    Spacer()
-                    Spacer()
+                    ForEach(0 ..< 7) { item in
+                        Spacer()
+                    }
                     Button{
                         resetCheck()
                         isCheckbell.toggle()
@@ -86,6 +89,7 @@ struct CustomNavBarViewShape: View {
                         Image(!isCheckbell ? "bell" : "bellRed")
                     }
                     Spacer()
+                    Spacer() //*
                     Button{
                         resetCheck()
                         isCheckprofile.toggle()
@@ -93,6 +97,7 @@ struct CustomNavBarViewShape: View {
                         Image(!isCheckprofile ? "profile" : "profileRed")
 
                     }
+                    Spacer() //*
                 }
                 .offset(CGSize(width: 0.0, height: -15.0)) //костыль
                 .frame(maxWidth: .infinity)
