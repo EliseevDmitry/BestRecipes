@@ -123,7 +123,7 @@ struct HomeView: View {
                         }
                     }
                     .onAppear {
-                        fetchTrendingRecipes()
+                        fetchTrendingRecipesWithDetails()
                         fetchPopularCategoryWithDetails(for: selectionCategory)
                     }
                     
@@ -169,13 +169,38 @@ struct HomeView: View {
         .ignoresSafeArea(.all, edges: .bottom)
     }
     
-    private func fetchTrendingRecipes() {
+    
+    private func fetchTrendingRecipesWithDetails() {
         networkManager.fetchTrendingRecipes { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    self.trendingItems = response.results.map { element in
-                        Frame1View(id: element.id ?? 0, foodFoto: element.image ?? "", title: element.title ?? "")
+                    let group = DispatchGroup()
+                    var newTrendingItems: [Frame1View] = []
+                    
+                    for recipe in response.results {
+                        guard let id = recipe.id else { continue }
+                        
+                        group.enter()
+                        networkManager.fetchRecipeDetails(for: id) { result in
+                            switch result {
+                            case .success(let recipeDetails):
+                                let item = Frame1View(
+                                    id: recipeDetails.id ?? 0,
+                                    foodFoto: recipeDetails.image ?? "no image",
+                                    title: recipeDetails.title ?? "no title",
+                                    cuisines: recipeDetails.cuisines ?? []
+                                )
+                                newTrendingItems.append(item)
+                            case .failure(let error):
+                                print("Error fetching recipe details: \(error.localizedDescription)")
+                            }
+                            group.leave()
+                        }
+                    }
+                    
+                    group.notify(queue: .main) {
+                        self.trendingItems = newTrendingItems
                     }
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
@@ -184,6 +209,8 @@ struct HomeView: View {
             }
         }
     }
+
+
     
     private func fetchPopularCategoryWithDetails(for category: String) {
         networkManager.fetchPopularCategory(for: category) { result in

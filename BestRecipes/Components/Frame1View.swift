@@ -6,6 +6,7 @@ struct Frame1View: View, Hashable {
     var id: Int
     var foodFoto: String
     var title: String
+    var cuisines: [String]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -73,27 +74,43 @@ struct Frame1View: View, Hashable {
                 .font(.custom(Poppins.bold, size: 16))
                 .lineLimit(2)
                 .truncationMode(.tail)
-                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.leading)
                 .padding(.top, 10)
             Spacer()
             HStack {
-                Image("mockAvatar")
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-                    .frame(width: 32, height: 32)
-                Text("By Zellicous Foods")
-                    .font(.custom(Poppins.regular, size: 12))
-                    .foregroundStyle(.secondary)
+                if let cuisine = cuisines.first {
+                    Image(cuisine.lowercased().replacingOccurrences(of: " ", with: ""))
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 32, height: 32)
+                    Text("By \(cuisine) Foods")
+                        .font(.custom(Poppins.regular, size: 12))
+                        .foregroundStyle(.secondary)
+                } else {
+                    Image("asian")
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 32, height: 32)
+                    Text("By Foods")
+                        .font(.custom(Poppins.regular, size: 12))
+                        .foregroundStyle(.secondary)
+                }
             }
-            //Spacer()
+            if !cuisines.isEmpty {
+                Text(cuisines.joined(separator: ", "))
+                    .font(.custom(Poppins.regular, size: 12))
+                    .foregroundColor(.gray)
+                    .padding(.top, 5)
+            }
         }
         .frame(width: 280)
     }
-    
 }
 
 #Preview {
-    Frame1View(id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
+    Frame1View(id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened", cuisines: ["Italian", "Mediterranean"])
 }
+
