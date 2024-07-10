@@ -57,7 +57,7 @@ struct HomeView: View {
                     .padding(.leading, -90)
                     .background(.white)
                     
-                    CustomSearchBar(searchTerm: $searchTerm)
+                    CustomSearchBar(searchTerm: $searchTerm, appManager: appManager)
                     
                     VStack(spacing: 20) {
                         // MARK: - Trending Section
@@ -76,7 +76,7 @@ struct HomeView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 20) {
-                                ForEach(trendingItems, id: \.self) { item in
+                                ForEach(trendingItems, id: \.id) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
                                             .padding(.leading)
@@ -153,6 +153,7 @@ struct HomeView: View {
                                 switch result {
                                 case .success(let response):
                                     self.trendingItems = response.results.map { element in Frame1View(
+                                        appManager: appManager,
                                         id: element.id ?? 0,
                                         foodFoto: element.image ?? "",
                                         title: element.title ?? "")

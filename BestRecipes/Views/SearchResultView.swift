@@ -9,14 +9,14 @@ import SwiftUI
 
 struct SearchResultsView: View {
     var searchResults: [SearchResultRecipe]
-
+    @ObservedObject var appManager: RecipesManager
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(searchResults, id: \.id) { recipe in
                         NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
-                            Frame1View(id: recipe.id ?? 0, foodFoto: recipe.image ?? "", title: recipe.title ?? "")
+                            Frame1View(appManager: appManager, id: recipe.id ?? 0, foodFoto: recipe.image ?? "", title: recipe.title ?? "")
                         }
                         .padding(.horizontal)
                     }

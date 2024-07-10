@@ -143,7 +143,6 @@ struct NetworkManager {
         guard let url = createURL(for: .popularCategory(category: category)) else { return }
         print("Request popular category URL: \(url.absoluteString)")
         makeRequest(for: url, apiKey: API.apiKey, completion: completion)
-        
     }
     
     func fetchCuisine(

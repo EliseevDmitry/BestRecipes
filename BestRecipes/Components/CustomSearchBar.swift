@@ -12,7 +12,7 @@ struct CustomSearchBar: View {
     @State private var isSearching = false
     @State private var showResultsSheet = false
     var networkManager = NetworkManager.shared
-
+    @ObservedObject var appManager: RecipesManager
     var body: some View {
         VStack {
             HStack {
@@ -66,7 +66,7 @@ struct CustomSearchBar: View {
             }
         }
         .sheet(isPresented: $showResultsSheet) {
-            SearchResultsView(searchResults: searchResults)
+            SearchResultsView(searchResults: searchResults, appManager: appManager)
         }
     }
     
@@ -94,6 +94,6 @@ struct SearchBar_Previews: PreviewProvider {
     @State static var searchTerm = "Find your recipe"
 
     static var previews: some View {
-        CustomSearchBar(searchTerm: $searchTerm)
+        CustomSearchBar(searchTerm: $searchTerm, appManager: RecipesManager())
     }
 }

@@ -10,13 +10,12 @@ import SwiftUI
 @main
 struct BestRecipesApp: App {
     @AppStorage("onboardingIsShow") var onboardingIsShow = false
-    
     @StateObject var appManager = RecipesManager()
     
     var body: some Scene {
         WindowGroup {
            // VideoView()
-            
+        //    BookMarkView(appManager: appManager)
             if onboardingIsShow {
                HomeView(appManager: appManager)
                 
