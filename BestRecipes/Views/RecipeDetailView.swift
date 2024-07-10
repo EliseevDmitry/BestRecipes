@@ -6,6 +6,7 @@ import SwiftUI
 
 
 struct RecipeDetailView: View {
+    @Environment(\.dismiss) var dismiss
     
     var recipeId: Int?
     var cuisine: String?
@@ -15,6 +16,7 @@ struct RecipeDetailView: View {
     @State private var errorMessage: String?
     @State private var isLoading = false
     @State private var textTitle = ""
+    @State private var showAlert = false
     
     var body: some View {
         VStack {
@@ -83,6 +85,28 @@ struct RecipeDetailView: View {
                 }
             }
             .padding(.horizontal, 10)
+        }
+        // в панели навигации: стрелка влево вместо кнопки Back и кнопка "...", вызывающая alert
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "arrow.left")
+                        .foregroundStyle(.primary)
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showAlert = true
+                } label: {
+                    Image(systemName: "ellipsis")
+                }
+            }
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("- Разыгрался аппетит?"), message: Text("- Да, согласен даже перевести 100 рублей разработчикам!"))
         }
     }
 }
