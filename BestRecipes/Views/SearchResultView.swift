@@ -24,11 +24,11 @@ struct SearchResultsView: View {
                         Spacer()
                         Button(action: {
                             searchTerm = ""
-                            presentationMode.wrappedValue.dismiss() // Возвращает на домашний экран
+                            presentationMode.wrappedValue.dismiss()
                         }) {
                             Image(systemName: "xmark")
                                 .foregroundColor(.black)
-                                .padding(.trailing, 30) // Увеличен отступ для более правильного расположения
+                                .padding(.trailing, 30)
                         }
                     }
                 }
@@ -36,25 +36,29 @@ struct SearchResultsView: View {
             .padding()
             
             ScrollView {
-                ForEach(searchResults, id: \.id) { recipe in
-                    NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
-                        Frame1View(id: recipe.id ?? 0,
-                                   foodFoto: recipe.image ?? "",
-                                   title: recipe.title ?? "")
+                VStack(spacing: 12) { 
+                    ForEach(searchResults, id: \.id) { recipe in
+                        NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
+                            RecipeCard(id: recipe.id ?? 0,
+                                       foodFoto: recipe.image ?? "",
+                                       title: recipe.title ?? "")
+                        }
+                        .frame(width: 340, height: 200)
                     }
-                    .padding(.horizontal)
                 }
+                .padding(.horizontal)
             }
         }
-        .navigationTitle("Search Results")
         .background(Color.white)
         .padding(.horizontal)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
     @State static var searchResults = [
-        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg")
+        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg"),
+        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage2", imageType: "jpg")
         
     ]
     @State static var searchTerm = "Spaghetti"
