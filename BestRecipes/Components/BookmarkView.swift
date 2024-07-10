@@ -1,9 +1,3 @@
-//
-//  BookmarkView.swift
-//  BestRecipes
-//
-//  Created by Дмитрий Трушин on 08.07.2024.
-//
 
 import SwiftUI
 

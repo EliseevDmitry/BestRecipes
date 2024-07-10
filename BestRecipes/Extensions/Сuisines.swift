@@ -1,9 +1,4 @@
-//
-//  Сuisines.swift
-//  BestRecipes
-//
-//  Created by Dmitriy Eliseev on 03.07.2024.
-//
+
 
 import Foundation
 

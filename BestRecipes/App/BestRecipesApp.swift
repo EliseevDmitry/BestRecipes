@@ -1,9 +1,3 @@
-//
-//  BestRecipesApp.swift
-//  BestRecipes
-//
-//  Created by Dmitriy Eliseev on 30.06.2024.
-//
 
 import SwiftUI
 
@@ -15,15 +9,16 @@ struct BestRecipesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            VideoView()
+           // VideoView()
             
-//            if onboardingIsShow {
-//               HomeView(appManager: appManager)
-//                
-//               
-//            } else {
-//               OnboardingStartView(appManager: appManager)
-//            }
+            if onboardingIsShow {
+              // HomeView(appManager: appManager)
+                OnboardingStartView(appManager: appManager)
+
+               
+            } else {
+               OnboardingStartView(appManager: appManager)
+            }
         }
     }
 }
