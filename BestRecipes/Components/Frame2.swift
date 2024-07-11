@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Frame2: View {
+    
     @ObservedObject var appManager: RecipesManager
     var id: Int
     var foodFoto: String
