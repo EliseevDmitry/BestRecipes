@@ -170,8 +170,9 @@ struct HomeView: View {
                                 }
                             }
                         }
+//                        .frame(maxHeight: .infinity)
                     }
-                    .frame(maxHeight: .infinity)
+//                    .frame(maxHeight: .infinity)
                     //---------------
                     
                     // MARK: - Cuisines Section
