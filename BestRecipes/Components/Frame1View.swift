@@ -12,6 +12,8 @@ struct Frame1View: View, Equatable {
     var id: Int
     var foodFoto: String
     var title: String
+    var cuisines: [String]
+    @State var randomElement: String = DataConstants.cuisines.randomElement()!
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -80,27 +82,37 @@ struct Frame1View: View, Equatable {
                 .font(.custom(Poppins.bold, size: 16))
                 .lineLimit(2)
                 .truncationMode(.tail)
-                .fixedSize(horizontal: false, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.leading)
                 .padding(.top, 10)
             Spacer()
             HStack {
-                Image("mockAvatar")
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(Circle())
-                    .frame(width: 32, height: 32)
-                Text("By Zellicous Foods")
-                    .font(.custom(Poppins.regular, size: 12))
-                    .foregroundStyle(.secondary)
+                if let cuisine = cuisines.first {
+                    Image(cuisine.lowercased().replacingOccurrences(of: " ", with: ""))
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 32, height: 32)
+                    Text("By \(cuisine) Foods")
+                        .font(.custom(Poppins.regular, size: 12))
+                        .foregroundStyle(.secondary)
+                } else {
+                    Image(randomElement.lowercased().replacingOccurrences(of: " ", with: ""))
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 32, height: 32)
+                    Text(randomElement)
+                        .font(.custom(Poppins.regular, size: 12))
+                        .foregroundStyle(.secondary)
+                }
             }
-            //Spacer()
         }
         .frame(width: 280)
     }
-    
 }
 
 #Preview {
-    Frame1View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
+    Frame1View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened", cuisines: DataConstants.cuisines)
 }
+

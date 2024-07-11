@@ -13,44 +13,75 @@ struct BookMarkView: View {
     @State private var trendingItems: [Frame1View] = []
     @State private var errorMessage: String?
     @State private var isLoading = false
-    
+
+    var bookmarkedRecipeIds: [Int] {
+        return Array(appManager.bookMark.bookMarkSet)
+    }
+
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(spacing: 20) {
-                ForEach(trendingItems, id: \.id) { item in
-                    NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
-                        item
-                            .padding(.leading)
+        VStack {
+            if isLoading {
+                ProgressView("Loading...")
+                    .frame(maxHeight: .infinity)
+            } else {
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack(spacing: 20) {
+                        ForEach(trendingItems, id: \.id) { item in
+                            NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
+                                item
+                                    .padding(.leading)
+                            }
+                        }
                     }
                 }
+                .frame(maxHeight: .infinity)
             }
         }
-        //                        .padding(.horizontal, 20)
-        .frame(maxHeight: .infinity)
-//        .task {
-//            if let id = recipeId[Int] {
-//                print(id)
-//                isLoading = true
-//                networkManager.fetchRecipeDetails(for: id) { result in
-//                    DispatchQueue.main.async {
-//                        isLoading = false
-//                        switch result {
-//                        case .success(let response):
-//                            self.recipeDetails = response
-//                        case .failure(let error):
-//                            self.errorMessage = "Error: \(error.localizedDescription)"
-//                            print("Error: \(error)")
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        .padding(.horizontal, 10)
+        .onAppear {
+            loadBookmarkedRecipes()
+        }
+        .padding(.horizontal, 10)
+    }
+
+    private func loadBookmarkedRecipes() {
+        isLoading = true
+        fetchFrames(for: bookmarkedRecipeIds) { frames in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.trendingItems = frames
+            }
+        }
+    }
+
+    private func fetchFrames(for ids: [Int], completion: @escaping ([Frame1View]) -> Void) {
+        let group = DispatchGroup()
+        var frames: [Frame1View] = []
+        
+        for id in ids {
+            group.enter()
+            networkManager.fetchRecipeDetails(for: id) { result in
+                switch result {
+                case .success(let recipeDetails):
+                    let frame = Frame1View(
+                        appManager: appManager,
+                        id: recipeDetails.id ?? 0,
+                        foodFoto: recipeDetails.image ?? "no image",
+                        title: recipeDetails.title ?? "no title",
+                       cuisines: recipeDetails.cuisines ?? []
+                    )
+                    frames.append(frame)
+                case .failure(let error):
+                    print("Error fetching recipe details for id \(id): \(error.localizedDescription)")
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(frames)
+        }
     }
 }
-
-           
-
 
 #Preview {
     BookMarkView(appManager: RecipesManager())

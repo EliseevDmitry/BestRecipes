@@ -14,23 +14,7 @@ struct HomeView: View {
     @State private var selectionCategory = "Breakfast"
     @State private var showSearchResults = false
     
-    
-    var categories = [
-        "Breakfast", "Dessert", "Appetizer", "Salad",
-        "Bread", "Soup", "Beverage", "Sauce", "Marinade",
-        "Fingerfood", "Snack", "Drink", "Main course", "Side dish"
-    ]
-    
-    var cuisines = [
-        "African", "Asian", "American", "British", "Cajun", "Caribbean",
-        "Chinese", "Eastern European", "European", "French", "German",
-        "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish",
-        "Korean", "Latin American", "Mediterranean", "Mexican",
-        "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"
-    ]
-    
     var networkManager = NetworkManager.shared
-    
     
     @State private var isCheckHome = false
     @State private var isCheckBookmark = false
@@ -93,28 +77,9 @@ struct HomeView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
-                                ForEach(categories, id: \.self) { item in
+                                ForEach(DataConstants.categories, id: \.self) { item in
                                     PopularCategoryButton(title: item, selectedCategory: $selectionCategory) {
-                                        networkManager.fetchPopularCategory(for: item) { result in
-                                            DispatchQueue.main.async {
-                                                switch result {
-                                                case .success(let response):
-                                                    self.popularItems = response.results.map { popularRecipe in
-                                                        PopularItemView(
-                                                            appManager: appManager,
-                                                            id: popularRecipe.id ?? 716429,
-                                                            foodFoto: popularRecipe.image ?? "no image",
-                                                            title: popularRecipe.title ?? "no title",
-                                                            time: String(Int.random(in: 5...20)),
-                                                            cardWidth: 150
-                                                        )
-                                                    }
-                                                case .failure(let error):
-                                                    self.errorMessage = error.localizedDescription
-                                                    print("Error fetching popular category: \(error.localizedDescription)")
-                                                }
-                                            }
-                                        }
+                                        fetchPopularCategoryWithDetails(for: item)
                                     }
                                     .foregroundStyle(.red)
                                 }
@@ -143,49 +108,14 @@ struct HomeView: View {
                         }
                     }
                     .onAppear {
-                        networkManager.fetchTrendingRecipes { result in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(let response):
-                                    self.trendingItems = response.results.map { element in Frame1View(
-                                        appManager: appManager,
-                                        id: element.id ?? 0,
-                                        foodFoto: element.image ?? "",
-                                        title: element.title ?? "")
-                                    }
-                                case .failure(let error):
-                                    self.errorMessage = error.localizedDescription
-                                    print("Error fetching trending recipes: \(error.localizedDescription)")
-                                }
-                            }
-                        }
-                        networkManager.fetchPopularCategory(for: selectionCategory) { result in
-                            DispatchQueue.main.async {
-                                switch result {
-                                case .success(let response):
-                                    self.popularItems = response.results.map { popularRecipe in
-                                        
-                                        PopularItemView(
-                                            appManager: appManager,
-                                            id: popularRecipe.id ?? 716429,
-                                            foodFoto: popularRecipe.image ?? "no image",
-                                            title: popularRecipe.title ?? "no title",
-                                            time: String(Int.random(in: 5...50)),
-                                            cardWidth: 150
-                                        )
-                                    }
-                                case .failure(let error):
-                                    self.errorMessage = error.localizedDescription
-                                    print("Error fetching popular category: \(error.localizedDescription)")
-                                }
-                            }
-                        }
+                        fetchTrendingRecipesWithDetails()
+                        fetchPopularCategoryWithDetails(for: selectionCategory)
                     }
                     
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack(spacing: 4) {
-                            ForEach(cuisines, id: \.self) { item in
+                        LazyHStack(spacing: 20) {
+                            ForEach(DataConstants.cuisines, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView(cuisine: item.uppercased())) {
                                     Frame3View(
                                         cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
@@ -203,7 +133,7 @@ struct HomeView: View {
                         .frame(height: 150)
                         .background(.clear)
                         .foregroundStyle(.white)
-                        .shadow(color: /*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, y: -5)
+                        .shadow(color: .black.opacity(0.1), radius: 10, y: -5)
                     )
                     .overlay(content: {
                         Button {
@@ -220,8 +150,6 @@ struct HomeView: View {
                     })
             }
             .padding(.top, 50)
-            //.searchable(text: $searchTerm, prompt: "Search recipes")
-            
             .ignoresSafeArea(.all, edges: .all)
         }
         .onAppear{
@@ -230,6 +158,88 @@ struct HomeView: View {
     }
     
     
+    private func fetchTrendingRecipesWithDetails() {
+        networkManager.fetchTrendingRecipes { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    let group = DispatchGroup()
+                    var newTrendingItems: [Frame1View] = []
+                    
+                    for recipe in response.results {
+                        guard let id = recipe.id else { continue }
+                        
+                        group.enter()
+                        networkManager.fetchRecipeDetails(for: id) { result in
+                            switch result {
+                            case .success(let recipeDetails):
+                                let item = Frame1View(
+                                    appManager: appManager,
+                                    id: recipeDetails.id ?? 0,
+                                    foodFoto: recipeDetails.image ?? "no image",
+                                    title: recipeDetails.title ?? "no title",
+                                    cuisines: recipeDetails.cuisines ?? []
+                                )
+                                newTrendingItems.append(item)
+                            case .failure(let error):
+                                print("Error fetching recipe details: \(error.localizedDescription)")
+                            }
+                            group.leave()
+                        }
+                    }
+                    
+                    group.notify(queue: .main) {
+                        self.trendingItems = newTrendingItems
+                    }
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                    print("Error fetching trending recipes: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+
+    private func fetchPopularCategoryWithDetails(for category: String) {
+        networkManager.fetchPopularCategory(for: category) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let response):
+                    let group = DispatchGroup()
+                    var newPopularItems: [PopularItemView] = []
+                    
+                    for recipe in response.results {
+                        guard let id = recipe.id else { continue }
+                        
+                        group.enter()
+                        networkManager.fetchRecipeDetails(for: id) { result in
+                            switch result {
+                            case .success(let recipeDetails):
+                                let item = PopularItemView(
+                                    appManager: appManager,
+                                    id: recipeDetails.id ?? 0,
+                                    foodFoto: recipeDetails.image ?? "no image",
+                                    title: recipeDetails.title ?? "no title",
+                                    time: String(recipeDetails.readyInMinutes ?? 0),
+                                    cardWidth: 150
+                                )
+                                newPopularItems.append(item)
+                            case .failure(let error):
+                                print("Error fetching recipe details: \(error.localizedDescription)")
+                            }
+                            group.leave()
+                        }
+                    }
+                    
+                    group.notify(queue: .main) {
+                        self.popularItems = newPopularItems
+                    }
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                    print("Error fetching popular category: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }
 
 #Preview {

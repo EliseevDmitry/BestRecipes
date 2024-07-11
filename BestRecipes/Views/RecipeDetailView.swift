@@ -2,9 +2,6 @@
 
 import SwiftUI
 
-
-
-
 struct RecipeDetailView: View {
     @Environment(\.dismiss) var dismiss
     
