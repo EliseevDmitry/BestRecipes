@@ -3,7 +3,7 @@ import Foundation
 struct API {
     static let scheme = "https"
     static let host = "api.spoonacular.com"
-    static let apiKey = Token.seven
+    static let apiKey = Token.fifth
 }
 
 struct Token {
@@ -15,9 +15,14 @@ struct Token {
     static let fifth = "f9cc19628f7c4aec92404da9af033f0c"
     static let six = "b49c1606b4d744d69c543e592c416db1"
     static let seven = "2b1c595159634ca9ba0e817b419a533b"
-    static let apiToken = "2970b49d7c754669aece7b55a25ef7b8"
-    static let eight = "3df4748a170f45ce9c519d7371a16480"
-    static let oneMore = "3ea21aa2dee34d8382cc0c92fa86348d"
     
-    
+    static let reservOne = "2970b49d7c754669aece7b55a25ef7b8"
+    static let reservTwo = "3df4748a170f45ce9c519d7371a16480"
+    static let reservThree = "3ea21aa2dee34d8382cc0c92fa86348d"
+    static let reservFour = "961884e4a54a440693fc978235b835e2"
+    static let reservFive = "8c612b11d5b74a1b908fd6d65a886e50"
+    static let reservSix = "ec166d4297494de6980de93119696ed9"
+    static let reservSeven = "bd24d1d058c4386b650f7ce1bbdce07"
+    static let reservEight = "823b69d6de03422398b29958e6cb178f"
+    static let reservTen = "59ece5a665f9455c92dad51057fd5100"
 }
