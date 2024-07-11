@@ -21,7 +21,7 @@ struct Frame2: View {
             {image in
                 image
                     .image?.resizable()
-                    .frame(width: 124, height: 124)
+                    .frame(width: 124 ,height: 124)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             Text(title)
@@ -31,15 +31,15 @@ struct Frame2: View {
                 .multilineTextAlignment(.leading)
                 .font(.custom(Poppins.bold, size: 14))
                 .padding(.top, 8)
+                .frame(width: 124)
             Text(randomElement)
                 .font(.custom(Poppins.regular, size: 10))
                 .foregroundStyle(.secondary)
                 .padding(.top, 4)
         }
-        .frame(width: 124, height: 190)
     }
 }
 
 #Preview {
-    Frame2(appManager: RecipesManager(), id: 0, foodFoto: "african", title: "african", cuisines: ["african"])
+    Frame2(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "african", cuisines: ["african"])
 }
