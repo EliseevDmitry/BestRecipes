@@ -40,7 +40,7 @@ struct SearchResultsView: View {
             ScrollView {
                 VStack(spacing: 12) { 
                     ForEach(searchResults, id: \.id) { recipe in
-                        NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
+                        NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0, appManager: appManager)) {
                             RecipeCard(id: recipe.id ?? 0,
                                        foodFoto: recipe.image ?? "",
                                        title: recipe.title ?? "")

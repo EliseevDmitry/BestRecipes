@@ -27,7 +27,7 @@ struct BookMarkView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(spacing: 20) {
                         ForEach(trendingItems, id: \.id) { item in
-                            NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
+                            NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
                                 item
                                     .padding(.leading)
                             }
@@ -56,7 +56,6 @@ struct BookMarkView: View {
     private func fetchFrames(for ids: [Int], completion: @escaping ([Frame1View]) -> Void) {
         let group = DispatchGroup()
         var frames: [Frame1View] = []
-        
         for id in ids {
             group.enter()
             networkManager.fetchRecipeDetails(for: id) { result in
