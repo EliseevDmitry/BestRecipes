@@ -51,10 +51,6 @@ struct Frame1View: View, Equatable {
                         Spacer()
                         ZStack {
                             BookmarkView(appManager: appManager, id: id)
-//                            Circle()
-//                                .frame(width: 32, height: 32)
-//                                .foregroundStyle(.white)
-//                            Image("Iconebookmark")
                         }
                     }
                     Spacer()
@@ -91,8 +87,9 @@ struct Frame1View: View, Equatable {
                     Image(cuisine.lowercased().replacingOccurrences(of: " ", with: ""))
                         .resizable()
                         .scaledToFit()
+                        //.frame(width: 32, height: 32)
                         .clipShape(Circle())
-                        .frame(width: 32, height: 32)
+                       
                     Text("By \(cuisine) Foods")
                         .font(.custom(Poppins.regular, size: 12))
                         .foregroundStyle(.secondary)
@@ -100,13 +97,15 @@ struct Frame1View: View, Equatable {
                     Image(randomElement.lowercased().replacingOccurrences(of: " ", with: ""))
                         .resizable()
                         .scaledToFit()
+                        //.frame(width: 32, height: 32)
                         .clipShape(Circle())
-                        .frame(width: 32, height: 32)
+                       
                     Text(randomElement)
                         .font(.custom(Poppins.regular, size: 12))
                         .foregroundStyle(.secondary)
                 }
-            }
+            }  
+            .frame(height: 32)
         }
         .frame(width: 280)
     }

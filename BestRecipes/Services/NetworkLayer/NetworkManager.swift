@@ -41,7 +41,8 @@ struct NetworkManager {
         case .recipeInfo(id: _):
             parameters["includeNutrition"] = "false"
         }
-        
+        //max количество моделей в запросе
+        parameters["number"] = "5"
         return parameters
 
     }

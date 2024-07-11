@@ -53,6 +53,7 @@
 		261733EC2C31710F00BAB4F5 /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733EB2C31710F00BAB4F5 /* NetworkModel.swift */; };
 		261733F12C3171E900BAB4F5 /* UserDefaultService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733F02C3171E900BAB4F5 /* UserDefaultService.swift */; };
 		2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261734032C3173E300BAB4F5 /* Fonts.swift */; };
+		263DBBF52C400658009FA36E /* Frame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263DBBF42C400658009FA36E /* Frame2.swift */; };
 		2641CBFA2C3BF79400D6FFA2 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641CBF92C3BF79400D6FFA2 /* test.swift */; };
 		2641CBFC2C3BF89E00D6FFA2 /* TestFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */; };
 		2691E1142C3E8AC700BEBF25 /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2691E1132C3E8AC700BEBF25 /* BookMarkView.swift */; };
@@ -120,6 +121,7 @@
 		261733EB2C31710F00BAB4F5 /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		261733F02C3171E900BAB4F5 /* UserDefaultService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultService.swift; sourceTree = "<group>"; };
 		261734032C3173E300BAB4F5 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		263DBBF42C400658009FA36E /* Frame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2.swift; sourceTree = "<group>"; };
 		2641CBF92C3BF79400D6FFA2 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFrame.swift; sourceTree = "<group>"; };
 		2691E1132C3E8AC700BEBF25 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
@@ -210,7 +212,6 @@
 				22DBE3DB2C3416A900CE7830 /* AppSloganTextView.swift */,
 				22DBE3D72C3415E000CE7830 /* StartButtonView.swift */,
 				22DBE3DD2C3417E400CE7830 /* OnboardingBackgroundView.swift */,
-				22DBE3DF2C3418AC00CE7830 /* OnboardingTextView.swift */,
 				261733DD2C316EB700BAB4F5 /* IndicatorsView.swift */,
 				26B6FA3B2C345B0700EE6B43 /* SearchView.swift */,
 				22DBE3E12C3419D900CE7830 /* ContinueButtonView.swift */,
@@ -220,9 +221,11 @@
 				26FAF5052C37167A00AED803 /* PopularCategoryButton.swift */,
 				261733C82C316C3B00BAB4F5 /* PopularItemView.swift */,
 				926E7EB32C3AF6BB00165701 /* CustomSearchBar.swift */,
+				22DBE3DF2C3418AC00CE7830 /* OnboardingTextView.swift */,
 				524AB84C2C3C2DF100ADCD24 /* BookmarkView.swift */,
 				261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */,
 				2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */,
+				263DBBF42C400658009FA36E /* Frame2.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				261733CD2C316D5000BAB4F5 /* ButtonIcon.swift in Sources */,
 				261733D12C316D7900BAB4F5 /* ButtonText.swift in Sources */,
 				26B6FA532C35AD4600EE6B43 /* Сuisines.swift in Sources */,
+				263DBBF52C400658009FA36E /* Frame2.swift in Sources */,
 				261733BD2C316B6800BAB4F5 /* Frame3View.swift in Sources */,
 				26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */,
 				926E7EAA2C357BA500165701 /* API.swift in Sources */,

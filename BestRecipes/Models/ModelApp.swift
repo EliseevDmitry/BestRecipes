@@ -5,6 +5,10 @@ struct BookMarks: Codable {
     var bookMarkSet: Set<Int>
 }
 
+struct Recent: Codable {
+    var item: [Int]
+}
+
 struct DataConstants {
     static let categories = [
         "Breakfast", "Dessert", "Appetizer", "Salad",

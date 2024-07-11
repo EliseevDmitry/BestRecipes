@@ -9,6 +9,7 @@ struct HomeView: View {
     @State private var searchResults: [SearchResultRecipe] = []
     @State private var popularItems: [PopularItemView] = []
     @State private var trendingItems: [Frame1View] = []
+    @State private var recentItems: [Frame2] = []
     @State private var cuisinesItems: [Frame3View] = []
     @State private var errorMessage: String?
     @State private var selectionCategory = "Breakfast"
@@ -20,6 +21,7 @@ struct HomeView: View {
     @State private var isCheckBookmark = false
     @State private var isCheckbell = false
     @State private var isCheckprofile = false
+    @State private var isLoading = false
     var body: some View {
         NavigationView {
             VStack {
@@ -34,23 +36,24 @@ struct HomeView: View {
                     }
                     .padding(.leading, -90)
                     .background(.white)
-                    
                     CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults, appManager: appManager)
-                    
                     NavigationLink(destination: SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm, appManager: appManager), isActive: $showSearchResults) {
                         EmptyView()
                     }
-                    
                     VStack(spacing: 20) {
                         // MARK: - Trending Section
                         HStack {
                             Text("Trending now 🔥")
                                 .font(.custom(Poppins.bold, size: 20))
                             Spacer()
-                            Text("See All")
-                                .font(.custom(Poppins.bold, size: 14))
-                                .foregroundStyle(.red)
-                            Image(systemName: "arrow.right")
+                            Button{
+                                
+                            }label: {
+                                Text("See All")
+                                    .font(.custom(Poppins.bold, size: 14))
+                                    .foregroundStyle(.red)
+                                Image(systemName: "arrow.right")
+                            }
                         }
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
@@ -58,7 +61,7 @@ struct HomeView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 4) {
                                 ForEach(trendingItems, id: \.id) { item in
-                                    NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
+                                    NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
                                         item
                                             .padding(.leading)
                                     }
@@ -74,7 +77,6 @@ struct HomeView: View {
                             Spacer()
                         }
                         .padding(.leading, 20)
-                        
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(DataConstants.categories, id: \.self) { item in
@@ -86,19 +88,17 @@ struct HomeView: View {
                             }
                         }
                         .padding(.leading, 20)
-                        
                         // Display error message if any
                         if let errorMessage = errorMessage {
                             Text(errorMessage)
                                 .foregroundColor(.red)
                                 .padding()
                         }
-                        
-                        // MARK: - Popular Items Section
+        // MARK: - Popular Items Section
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack(spacing: 4) { //
-                                ForEach(popularItems, id: \.id) { item in //елисеев
-                                    NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
+                                ForEach(popularItems, id: \.id) { item in
+                                    NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
                                         item
                                             .frame(height: 294)
                                             .padding(.leading)
@@ -106,17 +106,65 @@ struct HomeView: View {
                                 }
                             }
                         }
+                        
+                        
                     }
-                    .onAppear {
+                    .task {
                         fetchTrendingRecipesWithDetails()
                         fetchPopularCategoryWithDetails(for: selectionCategory)
+                        loadRecentRecipes()
                     }
                     
+                    //-------------
+                    // MARK: - Recent recipe Section
+                    HStack {
+                        Text("Recent recipe")
+                            .font(.custom(Poppins.bold, size: 20))
+                        Spacer()
+                        Button{
+                            
+                        }label: {
+                            Text("See All")
+                                .font(.custom(Poppins.bold, size: 14))
+                                .foregroundStyle(.red)
+                            Image(systemName: "arrow.right")
+                        }
+                    }
+                   .padding(.horizontal, 20)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 4) {
+                            ForEach(recentItems, id: \.id) { item in
+                                NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
+                                    item
+                                        .padding(.leading)
+                                }
+                            }
+                        }
+                    }
+                    .frame(maxHeight: .infinity)
+                    //---------------
+                    
                     // MARK: - Cuisines Section
+                    HStack {
+                        Text("Popular creators")
+                            .font(.custom(Poppins.bold, size: 20))
+                        Spacer()
+                        Button{
+                            
+                        }label: {
+                            Text("See All")
+                                .font(.custom(Poppins.bold, size: 14))
+                                .foregroundStyle(.red)
+                            Image(systemName: "arrow.right")
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 20) {
                             ForEach(DataConstants.cuisines, id: \.self) { item in
-                                NavigationLink(destination: RecipeDetailView(cuisine: item.uppercased())) {
+                                NavigationLink(destination: RecipeDetailView(cuisine: item.uppercased(), appManager: appManager)) {
                                     Frame3View(
                                         cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
                                         title: item)
@@ -125,6 +173,12 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .padding(.bottom, 30)
+                    
+                    // MARK: - Video Section
+                    VideoView()
+                      //  .padding(.horizontal, 20)
+                    .padding(.bottom, 100)
                 }
                 CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
                     .offset(CGSize(width: 0.0, height: -40))
@@ -154,6 +208,7 @@ struct HomeView: View {
         }
         .onAppear{
             appManager.loadBookMarkData()
+            appManager.loadRecentData()
         }
     }
     
@@ -165,10 +220,8 @@ struct HomeView: View {
                 case .success(let response):
                     let group = DispatchGroup()
                     var newTrendingItems: [Frame1View] = []
-                    
                     for recipe in response.results {
                         guard let id = recipe.id else { continue }
-                        
                         group.enter()
                         networkManager.fetchRecipeDetails(for: id) { result in
                             switch result {
@@ -187,7 +240,6 @@ struct HomeView: View {
                             group.leave()
                         }
                     }
-                    
                     group.notify(queue: .main) {
                         self.trendingItems = newTrendingItems
                     }
@@ -238,6 +290,46 @@ struct HomeView: View {
                     print("Error fetching popular category: \(error.localizedDescription)")
                 }
             }
+        }
+    }
+    
+    
+    private func loadRecentRecipes() {
+        isLoading = true
+        fetchFrames(for: appManager.recentItem.item.reversed()) { frames in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                self.recentItems = frames
+            }
+        }
+    }
+    
+    
+    //загрузка массива рецептов
+    private func fetchFrames(for ids: [Int], completion: @escaping ([Frame2]) -> Void) {
+        let group = DispatchGroup()
+        var frames: [Frame2] = []
+        for id in ids {
+            group.enter()
+            networkManager.fetchRecipeDetails(for: id) { result in
+                switch result {
+                case .success(let recipeDetails):
+                    let frame = Frame2(
+                        appManager: appManager,
+                        id: recipeDetails.id ?? 0,
+                        foodFoto: recipeDetails.image ?? "no image",
+                        title: recipeDetails.title ?? "no title",
+                       cuisines: recipeDetails.cuisines ?? []
+                    )
+                    frames.append(frame)
+                case .failure(let error):
+                    print("Error fetching recipe details for id \(id): \(error.localizedDescription)")
+                }
+                group.leave()
+            }
+        }
+        group.notify(queue: .main) {
+            completion(frames)
         }
     }
 }
