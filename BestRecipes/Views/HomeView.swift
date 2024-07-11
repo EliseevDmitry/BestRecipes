@@ -14,20 +14,6 @@ struct HomeView: View {
     @State private var selectionCategory = "Breakfast"
     @State private var showSearchResults = false
     
-    var categories = [
-        "Breakfast", "Dessert", "Appetizer", "Salad",
-        "Bread", "Soup", "Beverage", "Sauce", "Marinade",
-        "Fingerfood", "Snack", "Drink", "Main course", "Side dish"
-    ]
-    
-    var cuisines = [
-        "African", "Asian", "American", "British", "Cajun", "Caribbean",
-        "Chinese", "Eastern European", "European", "French", "German",
-        "Greek", "Indian", "Irish", "Italian", "Japanese", "Jewish",
-        "Korean", "Latin American", "Mediterranean", "Mexican",
-        "Middle Eastern", "Nordic", "Southern", "Spanish", "Thai", "Vietnamese"
-    ]
-    
     var networkManager = NetworkManager.shared
     
     @State private var isCheckHome = false
@@ -91,7 +77,7 @@ struct HomeView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
-                                ForEach(categories, id: \.self) { item in
+                                ForEach(DataConstants.categories, id: \.self) { item in
                                     PopularCategoryButton(title: item, selectedCategory: $selectionCategory) {
                                         fetchPopularCategoryWithDetails(for: item)
                                     }
@@ -129,7 +115,7 @@ struct HomeView: View {
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 20) {
-                            ForEach(cuisines, id: \.self) { item in
+                            ForEach(DataConstants.cuisines, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView(cuisine: item.uppercased())) {
                                     Frame3View(
                                         cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),

@@ -13,6 +13,7 @@ struct Frame1View: View, Equatable {
     var foodFoto: String
     var title: String
     var cuisines: [String]
+    @State var randomElement: String = DataConstants.cuisines.randomElement()!
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -96,28 +97,22 @@ struct Frame1View: View, Equatable {
                         .font(.custom(Poppins.regular, size: 12))
                         .foregroundStyle(.secondary)
                 } else {
-                    Image("asian")
+                    Image(randomElement.lowercased().replacingOccurrences(of: " ", with: ""))
                         .resizable()
                         .scaledToFit()
                         .clipShape(Circle())
                         .frame(width: 32, height: 32)
-                    Text("By Foods")
+                    Text(randomElement)
                         .font(.custom(Poppins.regular, size: 12))
                         .foregroundStyle(.secondary)
                 }
-            }
-            if !cuisines.isEmpty {
-                Text(cuisines.joined(separator: ", "))
-                    .font(.custom(Poppins.regular, size: 12))
-                    .foregroundColor(.gray)
-                    .padding(.top, 5)
             }
         }
         .frame(width: 280)
     }
 }
 
-//#Preview {
-//    Frame1View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened")
-//}
+#Preview {
+    Frame1View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "Sample Recipe Title That Is Quite Long And Needs To Be Shortened", cuisines: DataConstants.cuisines)
+}
 
