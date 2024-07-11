@@ -125,6 +125,7 @@ struct HomeView: View {
                             }
                         }
                     }
+                    .padding(.bottom, 100)
                 }
                 CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
                     .offset(CGSize(width: 0.0, height: -40))
