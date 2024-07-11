@@ -8,13 +8,8 @@ struct BestRecipesApp: App {
     
     var body: some Scene {
         WindowGroup {
-           // VideoView()
-        //    BookMarkView(appManager: appManager)
             if onboardingIsShow {
-              // HomeView(appManager: appManager)
-                OnboardingStartView(appManager: appManager)
-
-               
+               HomeView(appManager: appManager)
             } else {
                OnboardingStartView(appManager: appManager)
             }

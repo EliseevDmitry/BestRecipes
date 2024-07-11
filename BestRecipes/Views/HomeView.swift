@@ -56,7 +56,7 @@ struct HomeView: View {
                         .padding(.top, 20)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 20) {
+                            LazyHStack(spacing: 4) {
                                 ForEach(trendingItems, id: \.id) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
@@ -120,15 +120,15 @@ struct HomeView: View {
                                     Frame3View(
                                         cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
                                         title: item)
+                                    .padding(.leading)
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, 20)
                 }
                 CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
                     .offset(CGSize(width: 0.0, height: -40))
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 30)
                     .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
                         .frame(height: 150)
                         .background(.clear)
