@@ -3,7 +3,7 @@ import Foundation
 struct API {
     static let scheme = "https"
     static let host = "api.spoonacular.com"
-    static let apiKey = Token.eight
+    static let apiKey = Token.notTwo
 }
 
 struct Token {
@@ -26,4 +26,8 @@ struct Token {
     static let reservSeven = "bd24d1d058c4386b650f7ce1bbdce07"
     static let reservEight = "823b69d6de03422398b29958e6cb178f"
     static let reservTen = "59ece5a665f9455c92dad51057fd5100"
+    
+    //Резервные для защиты проекта - тратьть только экстренно
+    static let notOne = "36437384580348f2ae7250f5236a3440"
+    static let notTwo = "5d260a98d98e4415a350998bcf1228dc"
 }
