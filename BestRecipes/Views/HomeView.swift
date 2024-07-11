@@ -56,7 +56,7 @@ struct HomeView: View {
                         .padding(.top, 20)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 20) {
+                            LazyHStack(spacing: 4) {
                                 ForEach(trendingItems, id: \.id) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
@@ -120,15 +120,15 @@ struct HomeView: View {
                                     Frame3View(
                                         cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
                                         title: item)
+                                    .padding(.leading)
                                 }
                             }
                         }
                     }
-                    .padding(.horizontal, 20)
                 }
                 CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
                     .offset(CGSize(width: 0.0, height: -40))
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 30)
                     .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)
                         .frame(height: 150)
                         .background(.clear)
@@ -148,17 +148,6 @@ struct HomeView: View {
                     .clipShape(Circle())
                     .offset(CGSize(width: 0.0, height: -60))
                     })
-                
-                // Добавление кнопки для перехода на экран Избранного
-                NavigationLink(destination: BookMarkView(appManager: appManager)) {
-                    Text("Go to Bookmarks")
-                        .font(.custom(Poppins.bold, size: 16))
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
-                .padding()
             }
             .padding(.top, 50)
             .ignoresSafeArea(.all, edges: .all)
