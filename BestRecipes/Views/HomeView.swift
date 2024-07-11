@@ -144,6 +144,36 @@ struct HomeView: View {
                     .frame(maxHeight: .infinity)
                     //---------------
                     
+                    //-------------
+                    // MARK: - Recent recipe Section
+                    HStack {
+                        Text("Recent recipe")
+                            .font(.custom(Poppins.bold, size: 20))
+                        Spacer()
+                        Button{
+                            
+                        }label: {
+                            Text("See All")
+                                .font(.custom(Poppins.bold, size: 14))
+                                .foregroundStyle(.red)
+                            Image(systemName: "arrow.right")
+                        }
+                    }
+                   .padding(.horizontal, 20)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack(spacing: 4) {
+                            ForEach(recentItems, id: \.id) { item in
+                                NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
+                                    item
+                                        .padding(.leading)
+                                }
+                            }
+                        }
+                    }
+                    .frame(maxHeight: .infinity)
+                    //---------------
+                    
                     // MARK: - Cuisines Section
                     HStack {
                         Text("Popular creators")
