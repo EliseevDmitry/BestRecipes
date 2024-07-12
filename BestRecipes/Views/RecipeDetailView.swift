@@ -64,7 +64,7 @@ struct RecipeDetailView: View {
                     }
                 }
             }
-            .task {
+            .onAppear {
                 if let id = recipeId {
                     print(id)
                     isLoading = true

@@ -114,37 +114,7 @@ struct HomeView: View {
                         fetchPopularCategoryWithDetails(for: selectionCategory)
                         loadRecentRecipes()
                     }
-                    //-------------
-                    // MARK: - Recent recipe Section
-//                    HStack {
-//                        Text("Recent recipe")
-//                            .font(.custom(Poppins.bold, size: 20))
-//                        Spacer()
-//                        Button{
-//                            
-//                        }label: {
-//                            Text("See All")
-//                                .font(.custom(Poppins.bold, size: 14))
-//                                .foregroundStyle(.red)
-//                            Image(systemName: "arrow.right")
-//                        }
-//                    }
-//                   .padding(.horizontal, 20)
-//                    
-//                    ScrollView(.horizontal, showsIndicators: false) {
-//                        LazyHStack(spacing: 4) {
-//                            ForEach(recentItems, id: \.id) { item in
-//                                NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
-//                                    item
-//                                        .padding(.leading)
-//                                }
-//                            }
-//                        }
-//                    }
-//                    .frame(maxHeight: .infinity)
-                    //---------------
-                    
-                    //-------------
+
                     // MARK: - Recent recipe Section
                     HStack {
                         Text("Recent recipe")
@@ -170,10 +140,8 @@ struct HomeView: View {
                                 }
                             }
                         }
-//                        .frame(maxHeight: .infinity)
                     }
-//                    .frame(maxHeight: .infinity)
-                    //---------------
+
                     
                     // MARK: - Cuisines Section
                     HStack {
@@ -248,31 +216,16 @@ struct HomeView: View {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    let group = DispatchGroup()
-                    var newTrendingItems: [Frame1View] = []
-                    for recipe in response.results {
-                        guard let id = recipe.id else { continue }
-                        group.enter()
-                        networkManager.fetchRecipeDetails(for: id) { result in
-                            switch result {
-                            case .success(let recipeDetails):
-                                let item = Frame1View(
-                                    appManager: appManager,
-                                    id: recipeDetails.id ?? 0,
-                                    foodFoto: recipeDetails.image ?? "no image",
-                                    title: recipeDetails.title ?? "no title",
-                                    cuisines: recipeDetails.cuisines ?? []
-                                )
-                                newTrendingItems.append(item)
-                            case .failure(let error):
-                                print("Error fetching recipe details: \(error.localizedDescription)")
-                            }
-                            group.leave()
-                        }
-                    }
-                    group.notify(queue: .main) {
-                        self.trendingItems = newTrendingItems
-                    }
+                    self.trendingItems = response.results.map({ result in
+                        Frame1View(
+                            appManager:appManager,
+                            id: result.id ?? 716276,
+                            foodFoto: result.image!,
+                            title: result.title ?? "No data from model",
+                            cuisines: result.cuisines ?? DataConstants.cuisines)
+                    })
+                    
+                   
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
                     print("Error fetching trending recipes: \(error.localizedDescription)")
@@ -286,35 +239,17 @@ struct HomeView: View {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let response):
-                    let group = DispatchGroup()
-                    var newPopularItems: [PopularItemView] = []
+                    self.popularItems = response.results.map({ result in
+                        PopularItemView(
+                            appManager: appManager,
+                            id: result.id ?? 716276,
+                            foodFoto: result.image!,
+                            title: result.title ?? "No data from model",
+                            time: result.readyInMinutes ?? 5,
+                            cardWidth: 150)
+                    })
+                
                     
-                    for recipe in response.results {
-                        guard let id = recipe.id else { continue }
-                        
-                        group.enter()
-                        networkManager.fetchRecipeDetails(for: id) { result in
-                            switch result {
-                            case .success(let recipeDetails):
-                                let item = PopularItemView(
-                                    appManager: appManager,
-                                    id: recipeDetails.id ?? 0,
-                                    foodFoto: recipeDetails.image ?? "no image",
-                                    title: recipeDetails.title ?? "no title",
-                                    time: String(recipeDetails.readyInMinutes ?? 0),
-                                    cardWidth: 150
-                                )
-                                newPopularItems.append(item)
-                            case .failure(let error):
-                                print("Error fetching recipe details: \(error.localizedDescription)")
-                            }
-                            group.leave()
-                        }
-                    }
-                    
-                    group.notify(queue: .main) {
-                        self.popularItems = newPopularItems
-                    }
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
                     print("Error fetching popular category: \(error.localizedDescription)")
