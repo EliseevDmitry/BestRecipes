@@ -105,3 +105,4 @@ struct PopularItemView: View, Equatable {
     .frame(width: 250)
 }
 
+
