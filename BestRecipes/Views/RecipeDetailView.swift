@@ -2,9 +2,6 @@
 
 import SwiftUI
 
-
-
-
 struct RecipeDetailView: View {
     @Environment(\.dismiss) var dismiss
     
@@ -17,6 +14,7 @@ struct RecipeDetailView: View {
     @State private var isLoading = false
     @State private var textTitle = ""
     @State private var showAlert = false
+    @ObservedObject var appManager: RecipesManager
     
     var body: some View {
         VStack {
@@ -66,7 +64,7 @@ struct RecipeDetailView: View {
                     }
                 }
             }
-            .task {
+            .onAppear {
                 if let id = recipeId {
                     print(id)
                     isLoading = true
@@ -85,6 +83,11 @@ struct RecipeDetailView: View {
                 }
             }
             .padding(.horizontal, 10)
+            .onAppear{
+                if let id = recipeId {
+                    appManager.addRecentData(id: id)
+                }
+            }
         }
         // в панели навигации: стрелка влево вместо кнопки Back и кнопка "...", вызывающая alert
         .navigationBarBackButtonHidden(true)
@@ -113,5 +116,5 @@ struct RecipeDetailView: View {
 
 
 #Preview {
-    RecipeDetailView(recipeId: 640275)
+    RecipeDetailView(recipeId: 640275, appManager: RecipesManager())
 }

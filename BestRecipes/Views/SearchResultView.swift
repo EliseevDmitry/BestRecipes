@@ -40,7 +40,7 @@ struct SearchResultsView: View {
             ScrollView {
                 VStack(spacing: 12) { 
                     ForEach(searchResults, id: \.id) { recipe in
-                        NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0)) {
+                        NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0, appManager: appManager)) {
                             RecipeCard(id: recipe.id ?? 0,
                                        foodFoto: recipe.image ?? "",
                                        title: recipe.title ?? "")
@@ -80,8 +80,8 @@ struct SearchResultsView: View {
 
 struct SearchResultsView_Previews: PreviewProvider {
     @State static var searchResults = [
-        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg"),
-        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage2", imageType: "jpg")
+        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg", cuisines: DataConstants.cuisines, readyInMinutes: 5),
+        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage2", imageType: "jpg", cuisines: DataConstants.cuisines, readyInMinutes: 5)
         
     ]
     @State static var searchTerm = "Spaghetti"
