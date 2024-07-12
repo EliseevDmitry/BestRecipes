@@ -109,6 +109,30 @@ struct HomeView: View {
    
                     }
                     .onAppear {
+                        
+                        networkManager.fetchPopularCategory(for: selectionCategory) { result in
+                            DispatchQueue.main.async {
+                                switch result {
+                                case .success(let response):
+                                    self.popularItems = response.results.map { popularRecipe in
+                                        
+                                        PopularItemView(
+                                            appManager: appManager,
+                                            id: popularRecipe.id ?? 716429,
+                                            foodFoto: popularRecipe.image ?? "no image",
+                                            title: popularRecipe.title ?? "no title",
+                                            time: Int.random(in: 5...50)
+                                        )
+                                    }
+                                case .failure(let error):
+                                    self.errorMessage = error.localizedDescription
+                                    print("Error fetching popular category: \(error.localizedDescription)")
+                                }
+                            }
+                        }
+                        
+                        
+                        
                         fetchTrendingRecipesWithDetails()
                         fetchPopularCategoryWithDetails(for: selectionCategory)
                         loadRecentRecipes()
