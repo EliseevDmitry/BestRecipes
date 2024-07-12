@@ -69,24 +69,30 @@ struct CustomTabBarView: View {
             } label: {
                 Image(selectedTab != .home ? "home" : "homeRed")
             }
+            
             Spacer()
+            
             Button{
-                // switch to HomeView
+                // switch to BookmarkView
                 selectedTab = .bookmark
             } label: {
                 Image(selectedTab != .bookmark ? "bookmark" : "bookmarkRed")
             }
+            
             Spacer()
             Spacer()
+            
             Button{
-                // switch to HomeView
+                // switch to BellView
                 selectedTab = .bell
             } label: {
                 Image(selectedTab != .bell ? "bell" : "bellRed")
             }
+            
             Spacer()
+            
             Button{
-                // switch to HomeView
+                // switch to ProfileView
                 selectedTab = .profile
             } label: {
                 Image(selectedTab != .profile ? "profile" : "profileRed")

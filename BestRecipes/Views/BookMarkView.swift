@@ -15,7 +15,7 @@ struct BookMarkView: View {
     @State private var isLoading = false
     
     var body: some View {
-        Text("iiii")
+        Text("Здесь должен быть экран, на котором собраны блюда, отмеченные закладками пользователя").font(.largeTitle).multilineTextAlignment(.center)
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 20) {
                 ForEach(trendingItems, id: \.id) { item in

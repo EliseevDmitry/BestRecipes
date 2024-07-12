@@ -224,6 +224,7 @@
 				524AB84C2C3C2DF100ADCD24 /* BookmarkView.swift */,
 				261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */,
 				2641CBFB2C3BF89E00D6FFA2 /* TestFrame.swift */,
+				229B63832C41136F00103781 /* CustomTabBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -240,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				261733D42C316DEE00BAB4F5 /* Onboarding */,
+				229B63812C4005A000103781 /* RootView.swift */,
 				261733AB2C3164A900BAB4F5 /* HomeView.swift */,
 				261733DF2C316F1000BAB4F5 /* DiscoverView.swift */,
 				261733E12C316F2B00BAB4F5 /* RecipeDetailView.swift */,
@@ -247,8 +249,6 @@
 				92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */,
 				2641CBF92C3BF79400D6FFA2 /* test.swift */,
 				2691E1132C3E8AC700BEBF25 /* BookMarkView.swift */,
-				229B63812C4005A000103781 /* RootView.swift */,
-				229B63832C41136F00103781 /* CustomTabBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

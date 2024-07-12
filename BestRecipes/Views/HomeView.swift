@@ -15,7 +15,6 @@ struct HomeView: View {
     @State private var showSearchResults = false
     
     @State var selectedTab: Tab = .home
-
     
     var categories = [
         "Breakfast", "Dessert", "Appetizer", "Salad",
@@ -32,13 +31,6 @@ struct HomeView: View {
     ]
     
     var networkManager = NetworkManager.shared
-    
-    
-    @State private var isCheckHome = true
-    @State private var isCheckBookmark = false
-    @State private var isCheckBell = false
-    @State private var isCheckProfile = false
-    @State private var index = 0
     
     var body: some View {
         NavigationView {
@@ -109,8 +101,8 @@ struct HomeView: View {
                                                             id: popularRecipe.id ?? 716429,
                                                             foodFoto: popularRecipe.image ?? "no image",
                                                             title: popularRecipe.title ?? "no title",
-                                                            time: String(Int.random(in: 5...20)),
-                                                            cardWidth: 150
+                                                            
+                                                            time: String(Int.random(in: 5...20))
                                                         )
                                                     }
                                                 case .failure(let error):
@@ -139,7 +131,7 @@ struct HomeView: View {
                                 ForEach(popularItems, id: \.id) { item in //елисеев
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id)) {
                                         item
-                                            .frame(height: 294)
+                                            .frame(width: 150, height: 234)
                                             .padding(.leading)
                                     }
                                 }
@@ -174,8 +166,7 @@ struct HomeView: View {
                                             id: popularRecipe.id ?? 716429,
                                             foodFoto: popularRecipe.image ?? "no image",
                                             title: popularRecipe.title ?? "no title",
-                                            time: String(Int.random(in: 5...50)),
-                                            cardWidth: 150
+                                            time: String(Int.random(in: 5...50))
                                         )
                                     }
                                 case .failure(let error):
@@ -185,9 +176,6 @@ struct HomeView: View {
                             }
                         }
                     }
-                    
-                    Text("jhkhk").font(.title).bold()
-                    
                     
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -206,7 +194,7 @@ struct HomeView: View {
             }
             .padding(.top, 50)
             //.searchable(text: $searchTerm, prompt: "Search recipes")
-           .ignoresSafeArea(.all, edges: .all)
+            .ignoresSafeArea(.all, edges: .all)
         }
         .onAppear{
             appManager.loadBookMarkData()
