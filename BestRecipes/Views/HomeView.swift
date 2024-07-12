@@ -14,6 +14,8 @@ struct HomeView: View {
     @State private var selectionCategory = "Breakfast"
     @State private var showSearchResults = false
     
+    @State var selectedTab: Tab = .home
+
     
     var categories = [
         "Breakfast", "Dessert", "Appetizer", "Salad",
@@ -32,10 +34,12 @@ struct HomeView: View {
     var networkManager = NetworkManager.shared
     
     
-    @State private var isCheckHome = false
+    @State private var isCheckHome = true
     @State private var isCheckBookmark = false
-    @State private var isCheckbell = false
-    @State private var isCheckprofile = false
+    @State private var isCheckBell = false
+    @State private var isCheckProfile = false
+    @State private var index = 0
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -182,6 +186,9 @@ struct HomeView: View {
                         }
                     }
                     
+                    Text("jhkhk").font(.title).bold()
+                    
+                    
                     // MARK: - Cuisines Section
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 4) {
@@ -196,7 +203,10 @@ struct HomeView: View {
                         }
                     }
                 }
-                CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckbell: $isCheckbell, isCheckprofile: $isCheckprofile)
+                /*
+                CustomNavBarViewShape(isCheckHome: $isCheckHome, isCheckBookmark: $isCheckBookmark, isCheckBell: $isCheckBell, isCheckProfile: $isCheckProfile, index: $index)
+                */
+                CustomTabBarView(selectedTab: $selectedTab)
                     .offset(CGSize(width: 0.0, height: -40))
                     .padding(.horizontal, 30)
                     .background(CustomBox(angle: OffsetCustomBox.angle, radiusOne: OffsetCustomBox.radiusOne, radiusTwo: OffsetCustomBox.radiusTwo)

@@ -42,49 +42,86 @@ struct CustomBox: Shape {
 }
 
 struct CustomNavBarViewShape: View {
+    /*
+    @ObservedObject var appManager: RecipesManager
+    
+    @State private var bookmarkViewIsOn = false
+     */
+    
     @Binding var isCheckHome: Bool
     @Binding var isCheckBookmark: Bool
-    @Binding var isCheckbell: Bool
-    @Binding var isCheckprofile: Bool
+    @Binding var isCheckBell: Bool
+    @Binding var isCheckProfile: Bool
+    
+    @Binding var index: Int
+    
     var body: some View {
-            HStack{
-                Button{
+        NavigationView {
+            HStack {
+                Button {
                     resetCheck()
                     isCheckHome.toggle()
-                }label: {
+                    
+                    
+                    
+                    /*
+                    HomeView(appManager: appManager)
+                    index = 0
+                    */
+                } label: {
                     Image(!isCheckHome ? "home" : "homeRed")
                 }
+                
                 Spacer()
-                Button{
+                
+                Button {
                     resetCheck()
                     isCheckBookmark.toggle()
-                }label: {
+                    
+                    /*
+                    bookmarkViewIsOn.toggle()
+                    
+                    NavigationLink("oooo", isActive: $bookmarkViewIsOn) {
+                        BookMarkView(appManager: appManager)
+                            .navigationBarBackButtonHidden()
+                    }
+                    */
+                    
+                    //                    BookMarkView(appManager: appManager)
+                    index = 1
+                } label: {
                     Image(!isCheckBookmark ? "bookmark" : "bookmarkRed")
                 }
+                
                 Spacer()
-  
+                
                 Spacer()
-                Button{
+                
+                Button {
                     resetCheck()
-                    isCheckbell.toggle()
-                }label: {
-                    Image(!isCheckbell ? "bell" : "bellRed")
+                    isCheckBell.toggle()
+                    index = 2
+                } label: {
+                    Image(!isCheckBell ? "bell" : "bellRed")
                 }
+                
                 Spacer()
-                Button{
+                
+                Button {
                     resetCheck()
-                    isCheckprofile.toggle()
-                }label: {
-                    Image(!isCheckprofile ? "profile" : "profileRed")
-                    
+                    isCheckProfile.toggle()
+                    index = 3
+                } label: {
+                    Image(!isCheckProfile ? "profile" : "profileRed")
                 }
-            }    
+            }   
+        }
     }
-    func resetCheck(){
+    func resetCheck() {
         isCheckHome = false
         isCheckBookmark = false
-        isCheckbell = false
-        isCheckprofile = false
+        isCheckBell = false
+        isCheckProfile = false
     }
 }
 

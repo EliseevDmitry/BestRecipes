@@ -97,9 +97,9 @@ struct PopularItemView: View, Equatable {
                         .offset(CGSize(width: 0, height: -foodFotoVerticalOffset))
                 }
             }
-            .frame(width: cardWidth, height: cardBgHeight)
+//            .frame(width: cardWidth, height: cardBgHeight)
         }
-        .frame(height: cardHeight)
+//        .frame(height: cardHeight)
 
     }
 }
