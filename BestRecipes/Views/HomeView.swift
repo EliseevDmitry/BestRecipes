@@ -100,12 +100,15 @@ struct HomeView: View {
                                 ForEach(popularItems, id: \.id) { item in
                                     NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
                                         item
-                                            .frame(height: 294)
-                                            .padding(.leading)
+                                            
                                     }
                                 }
                             }
+                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 294)
+                            .padding(.leading)
+                           
                         }
+                      
    
                     }
                     .onAppear {
