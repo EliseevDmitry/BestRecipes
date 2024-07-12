@@ -41,7 +41,7 @@ struct NetworkManager {
         case .recipeInfo(id: _):
             parameters["includeNutrition"] = "false"
         }
-        
+        parameters["number"] = "2"
         return parameters
 
     }

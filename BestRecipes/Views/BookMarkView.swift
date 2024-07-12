@@ -15,6 +15,7 @@ struct BookMarkView: View {
     @State private var isLoading = false
     
     var body: some View {
+        Text("iiii")
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 20) {
                 ForEach(trendingItems, id: \.id) { item in

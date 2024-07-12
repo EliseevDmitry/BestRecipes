@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		229B63822C4005A000103781 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B63812C4005A000103781 /* RootView.swift */; };
+		229B63842C41136F00103781 /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B63832C41136F00103781 /* CustomTabBarView.swift */; };
 		22A125332C372AB2000962E5 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22A1252C2C372AB2000962E5 /* Poppins-Medium.ttf */; };
 		22A125342C372AB2000962E5 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22A1252D2C372AB2000962E5 /* Poppins-SemiBold.ttf */; };
 		22A125352C372AB2000962E5 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 22A1252E2C372AB2000962E5 /* Poppins-Light.ttf */; };
@@ -33,7 +35,6 @@
 		261733BD2C316B6800BAB4F5 /* Frame3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733BC2C316B6800BAB4F5 /* Frame3View.swift */; };
 		261733BF2C316B7F00BAB4F5 /* IngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */; };
 		261733C12C316B9D00BAB4F5 /* IngredientsRecipeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733C02C316B9D00BAB4F5 /* IngredientsRecipeItemView.swift */; };
-		261733C32C316BD900BAB4F5 /* CustomNavBarViewShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733C22C316BD900BAB4F5 /* CustomNavBarViewShape.swift */; };
 		261733C52C316BFA00BAB4F5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733C42C316BFA00BAB4F5 /* VideoView.swift */; };
 		261733C72C316C1500BAB4F5 /* Frame4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733C62C316C1400BAB4F5 /* Frame4View.swift */; };
 		261733C92C316C3B00BAB4F5 /* PopularItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261733C82C316C3B00BAB4F5 /* PopularItemView.swift */; };
@@ -73,6 +74,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		229B63812C4005A000103781 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		229B63832C41136F00103781 /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		22A1252C2C372AB2000962E5 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		22A1252D2C372AB2000962E5 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		22A1252E2C372AB2000962E5 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
@@ -100,7 +103,6 @@
 		261733BC2C316B6800BAB4F5 /* Frame3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame3View.swift; sourceTree = "<group>"; };
 		261733BE2C316B7F00BAB4F5 /* IngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsView.swift; sourceTree = "<group>"; };
 		261733C02C316B9D00BAB4F5 /* IngredientsRecipeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsRecipeItemView.swift; sourceTree = "<group>"; };
-		261733C22C316BD900BAB4F5 /* CustomNavBarViewShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBarViewShape.swift; sourceTree = "<group>"; };
 		261733C42C316BFA00BAB4F5 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		261733C62C316C1400BAB4F5 /* Frame4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame4View.swift; sourceTree = "<group>"; };
 		261733C82C316C3B00BAB4F5 /* PopularItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularItemView.swift; sourceTree = "<group>"; };
@@ -199,7 +201,6 @@
 				261733BC2C316B6800BAB4F5 /* Frame3View.swift */,
 				261733C62C316C1400BAB4F5 /* Frame4View.swift */,
 				261733C02C316B9D00BAB4F5 /* IngredientsRecipeItemView.swift */,
-				261733C22C316BD900BAB4F5 /* CustomNavBarViewShape.swift */,
 				D449D5782C3D6C8F00545B93 /* Video  */,
 				D449D5752C3D208A00545B93 /* M_R_I_V_Frame_4 */,
 				261733CC2C316D5000BAB4F5 /* ButtonIcon.swift */,
@@ -246,6 +247,8 @@
 				92B8FD302C3C01CC00DF3728 /* SearchResultView.swift */,
 				2641CBF92C3BF79400D6FFA2 /* test.swift */,
 				2691E1132C3E8AC700BEBF25 /* BookMarkView.swift */,
+				229B63812C4005A000103781 /* RootView.swift */,
+				229B63832C41136F00103781 /* CustomTabBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,7 +430,6 @@
 				261733BD2C316B6800BAB4F5 /* Frame3View.swift in Sources */,
 				26B6FA3C2C345B0700EE6B43 /* SearchView.swift in Sources */,
 				926E7EAA2C357BA500165701 /* API.swift in Sources */,
-				261733C32C316BD900BAB4F5 /* CustomNavBarViewShape.swift in Sources */,
 				26FAF5062C37167A00AED803 /* PopularCategoryButton.swift in Sources */,
 				261733DC2C316E5900BAB4F5 /* OnboardingPage3View.swift in Sources */,
 				22DBE3DE2C3417E400CE7830 /* OnboardingBackgroundView.swift in Sources */,
@@ -452,6 +454,7 @@
 				524AB84D2C3C2DF100ADCD24 /* BookmarkView.swift in Sources */,
 				261733EC2C31710F00BAB4F5 /* NetworkModel.swift in Sources */,
 				261733E72C316F8E00BAB4F5 /* RecipesManager.swift in Sources */,
+				229B63822C4005A000103781 /* RootView.swift in Sources */,
 				2691E1142C3E8AC700BEBF25 /* BookMarkView.swift in Sources */,
 				261733E72C316F8E00BAB4F5 /* RecipesManager.swift in Sources */,
 				22DBE3E42C341A3500CE7830 /* SkipButtonView.swift in Sources */,
@@ -470,6 +473,7 @@
 				261733D62C316E0F00BAB4F5 /* OnboardingStartView.swift in Sources */,
 				261733BB2C316B5400BAB4F5 /* Frame2View.swift in Sources */,
 				D449D5742C3D207D00545B93 /* Buttons.swift in Sources */,
+				229B63842C41136F00103781 /* CustomTabBarView.swift in Sources */,
 				2617340B2C3173E300BAB4F5 /* Fonts.swift in Sources */,
 				926E7EB22C3592C500165701 /* NetworkTestView.swift in Sources */,
 				261733C92C316C3B00BAB4F5 /* PopularItemView.swift in Sources */,
