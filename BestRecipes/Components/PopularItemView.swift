@@ -14,7 +14,7 @@ struct PopularItemView: View, Equatable {
     var cuisine: String?
     var foodFoto: String
     var title: String
-    var time: String
+    var time: Int
     
     // ширина карточки - все остальные размеры зависят от нее
     let cardWidth: Double
@@ -110,7 +110,7 @@ struct PopularItemView: View, Equatable {
         id: 1,
         foodFoto: "mockImage1",
         title: "Chicken and Vegetable wrap Chicken and Vegetable wrap Chicken and Vegetable wrap",
-        time: "5",
+        time: 5,
         cardWidth: 350
     )
 }
