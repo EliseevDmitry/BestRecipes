@@ -94,20 +94,18 @@ struct HomeView: View {
                                 .foregroundColor(.red)
                                 .padding()
                         }
-        // MARK: - Popular Items Section
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            LazyHStack(spacing: 4) { //
-                                ForEach(popularItems, id: \.id) { item in
-                                    NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
-                                        item
-                                            
-                                    }
-                                }
-                            }
-                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: 294)
-                            .padding(.leading)
-                           
-                        }
+                        // MARK: - Popular Items Section
+                                        ScrollView(.horizontal, showsIndicators: false) {
+                                            LazyHStack(spacing: 4) { //
+                                                ForEach(popularItems, id: \.id) { item in
+                                                    NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
+                                                        item
+                                                            .frame(width: 150, height: 234)
+                                                            .padding(.leading)
+                                                    }
+                                                }
+                                            }
+                                        }
                       
    
                     }
