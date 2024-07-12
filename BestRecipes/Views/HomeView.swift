@@ -106,8 +106,7 @@ struct HomeView: View {
                                 }
                             }
                         }
-                        
-                        
+   
                     }
                     .task {
                         fetchTrendingRecipesWithDetails()
