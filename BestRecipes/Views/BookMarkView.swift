@@ -19,19 +19,13 @@ struct BookMarkView: View {
     }
 
     var body: some View {
-        VStack {
-            if isLoading {
-                ProgressView("Loading...")
-                    .frame(maxHeight: .infinity)
-            } else {
-                ScrollView(.vertical, showsIndicators: false) {
-                    LazyVStack(spacing: 20) {
-                        ForEach(trendingItems, id: \.id) { item in
-                            NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
-                                item
-                                    .padding(.leading)
-                            }
-                        }
+        Text("Здесь должен быть экран, на котором собраны блюда, отмеченные закладками пользователя").font(.largeTitle).multilineTextAlignment(.center)
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack(spacing: 20) {
+                ForEach(trendingItems, id: \.id) { item in
+                    NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
+                        item
+                            .padding(.leading)
                     }
                 }
                 .frame(maxHeight: .infinity)
