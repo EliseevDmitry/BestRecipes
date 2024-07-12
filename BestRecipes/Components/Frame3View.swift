@@ -12,6 +12,7 @@ struct Frame3View: View, Hashable {
             VStack {
                 Image(cuisineFoto)
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 110, height: 110)
                     .clipShape(Circle())
                 Text(title)
