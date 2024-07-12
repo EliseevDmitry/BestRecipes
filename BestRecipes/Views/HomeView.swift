@@ -108,7 +108,7 @@ struct HomeView: View {
                         }
    
                     }
-                    .task {
+                    .onAppear {
                         fetchTrendingRecipesWithDetails()
                         fetchPopularCategoryWithDetails(for: selectionCategory)
                         loadRecentRecipes()
