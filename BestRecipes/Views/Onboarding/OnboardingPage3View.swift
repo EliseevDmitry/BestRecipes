@@ -3,11 +3,9 @@ import SwiftUI
 
 struct OnboardingPage3View: View {
     @AppStorage("onboardingIsShow") var onboardingIsShow = false
-    
+    @ObservedObject var appManager: RecipesManager
     @State private var homeViewIsOn = false
     
-    @ObservedObject var appManager: RecipesManager
-
     var body: some View {
         ZStack(alignment: .bottom) {
             OnboardingBackgroundView(backgroundImage: .onboardingThreeBackground)
@@ -17,9 +15,7 @@ struct OnboardingPage3View: View {
                     whiteText: "Cook it now or\n ",
                     orangeText: "save it for later"
                 )
-
                 IndicatorsView(activeIndicatorIndex: 2)
-                
                 // кнопка, нажатие на которую ведет на экран HomeView
                 NavigationLink(isActive: $homeViewIsOn) {
                     HomeView(appManager: appManager)
@@ -30,7 +26,6 @@ struct OnboardingPage3View: View {
                         onboardingIsShow = true
                     }
                 }
-            
                 RectangleSpacerView()
             }
         }

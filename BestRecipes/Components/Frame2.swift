@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct Frame2: View {
+struct Frame2View: View {
     
     @ObservedObject var appManager: RecipesManager
+    @State var randomElement: String = DataConstants.cuisines.randomElement()!
     var id: Int
     var foodFoto: String
     var title: String
     var cuisines: [String]
-    @State var randomElement: String = DataConstants.cuisines.randomElement()!
+    
     var body: some View {
         VStack(alignment: .leading) {
             AsyncImage(url: URL(string: foodFoto))
@@ -41,5 +42,5 @@ struct Frame2: View {
 }
 
 #Preview {
-    Frame2(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "african", cuisines: ["african"])
+    Frame2View(appManager: RecipesManager(), id: 0, foodFoto: "https://img.spoonacular.com/recipes/782601-312x231.jpg", title: "african", cuisines: ["african"])
 }

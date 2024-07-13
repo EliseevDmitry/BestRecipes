@@ -5,7 +5,7 @@ struct PopularCategoryButton: View {
     let title: String
     @Binding var selectedCategory: String
     let action: () -> Void
-
+    
     var body: some View {
         Button(action: {
             selectedCategory = title

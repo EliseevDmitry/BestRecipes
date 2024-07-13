@@ -32,15 +32,13 @@ struct RecipeCard: View {
                     EmptyView()
                 }
             }
-            .frame(width: 340, height: 200) 
+            .frame(width: 340, height: 200)
             .cornerRadius(25)
             .shadow(radius: 5)
-
             VStack(alignment: .leading, spacing: 5) {
                 RatingView()
                     .padding(.bottom, 80)
                     .padding(.leading, 0)
-                
                 VStack {
                     Text(title)
                         .font(.title2)
@@ -48,7 +46,6 @@ struct RecipeCard: View {
                         .foregroundColor(.white)
                 }
                 .padding(.leading, 5)
-                
                 VStack {
                     Text(countIngredients)
                         .foregroundColor(.white)

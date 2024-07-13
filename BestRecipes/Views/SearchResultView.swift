@@ -3,24 +3,19 @@
 import SwiftUI
 
 struct SearchResultsView: View {
+    @ObservedObject var appManager: RecipesManager
+    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) var dismiss
+    
     @Binding var searchResults: [SearchResultRecipe]
     @Binding var searchTerm: String
     @State private var showSearchResults = false
-    @ObservedObject var appManager: RecipesManager
-    
-    @Environment(\.presentationMode) var presentationMode
-    
-    @Environment(\.dismiss) var dismiss
-    
     @State private var showAlert = false
-    
-//    var searchResults: [SearchResultRecipe]
     
     var body: some View {
         VStack {
             ZStack {
-                CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults, appManager: appManager)
-                
+                CustomSearchBar(appManager: appManager, searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showSearchResults)
                 if !searchTerm.isEmpty {
                     HStack {
                         Spacer()
@@ -40,7 +35,7 @@ struct SearchResultsView: View {
             ScrollView {
                 VStack(spacing: 12) { 
                     ForEach(searchResults, id: \.id) { recipe in
-                        NavigationLink(destination: RecipeDetailView(recipeId: recipe.id ?? 0, appManager: appManager)) {
+                        NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: recipe.id ?? 0)) {
                             RecipeCard(id: recipe.id ?? 0,
                                        foodFoto: recipe.image ?? "",
                                        title: recipe.title ?? "")
@@ -49,10 +44,11 @@ struct SearchResultsView: View {
                     }
                 }
                 .padding(.horizontal)
-            }
+            }//: ScrollView
         }
         .background(Color.white)
         .padding(.horizontal)
+        
         // в панели навигации: стрелка влево вместо кнопки Back и кнопка "...", вызывающая alert
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -78,6 +74,8 @@ struct SearchResultsView: View {
     }
 }
 
+
+//MARK: - Preview
 struct SearchResultsView_Previews: PreviewProvider {
     @State static var searchResults = [
         SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg", cuisines: DataConstants.cuisines, readyInMinutes: 5),
@@ -88,7 +86,7 @@ struct SearchResultsView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            SearchResultsView(searchResults: $searchResults, searchTerm: $searchTerm, appManager: RecipesManager())
+            SearchResultsView(appManager: RecipesManager(), searchResults: $searchResults, searchTerm: $searchTerm)
         }
     }
 }

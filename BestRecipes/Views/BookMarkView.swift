@@ -11,19 +11,19 @@ struct BookMarkView: View {
     @ObservedObject var appManager: RecipesManager
     var networkManager = NetworkManager.shared
     @State private var trendingItems: [Frame1View] = []
-    @State private var errorMessage: String?
     @State private var isLoading = false
-
-    var bookmarkedRecipeIds: [Int] {
-        return Array(appManager.bookMark.bookMarkSet)
-    }
-
+    
     var body: some View {
-        Text("Здесь должен быть экран, на котором собраны блюда, отмеченные закладками пользователя").font(.largeTitle).multilineTextAlignment(.center)
+        HStack {
+            Text("Saved recipes")
+                .font(.custom(Poppins.bold, size: 24))
+            Spacer()
+        }
+        .padding(.horizontal, 20)
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 20) {
                 ForEach(trendingItems, id: \.id) { item in
-                    NavigationLink(destination: RecipeDetailView(recipeId: item.id, appManager: appManager)) {
+                    NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
                         item
                             .padding(.leading)
                     }
@@ -31,22 +31,22 @@ struct BookMarkView: View {
                 .frame(maxHeight: .infinity)
             }
         }
-        .onAppear {
+        .padding(.horizontal, 10)
+        .task {
             loadBookmarkedRecipes()
         }
-        .padding(.horizontal, 10)
     }
-
+    
     private func loadBookmarkedRecipes() {
         isLoading = true
-        fetchFrames(for: bookmarkedRecipeIds) { frames in
+        fetchFrames(for: appManager.bookMark.bookMarkSet.sorted()) { frames in
             DispatchQueue.main.async {
                 self.isLoading = false
                 self.trendingItems = frames
             }
         }
     }
-
+    
     private func fetchFrames(for ids: [Int], completion: @escaping ([Frame1View]) -> Void) {
         let group = DispatchGroup()
         var frames: [Frame1View] = []
@@ -60,7 +60,7 @@ struct BookMarkView: View {
                         id: recipeDetails.id ?? 0,
                         foodFoto: recipeDetails.image ?? "no image",
                         title: recipeDetails.title ?? "no title",
-                       cuisines: recipeDetails.cuisines ?? []
+                        cuisines: recipeDetails.cuisines ?? []
                     )
                     frames.append(frame)
                 case .failure(let error):

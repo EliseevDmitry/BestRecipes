@@ -17,23 +17,6 @@ struct StartButtonView: View {
     }
 }
 
-/*
-struct ContinueButtonView: View {
-    let title: String
-    let action: () -> Void
-    
-    var body: some View {
-        Button(title) {}
-            .padding()
-            .frame(width: 280)
-            .font(.custom(Poppins.SemiBold, size: 35))
-            .background(.primary50)
-            .foregroundStyle(.white)
-            .clipShape(.capsule)
-    }
-}
-*/
-
 #Preview {
     StartButtonView(title: "Start", action: {})
 }

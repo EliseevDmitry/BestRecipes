@@ -2,8 +2,6 @@
 import SwiftUI
 
 struct Frame3View: View, Hashable {
-    
-
     var cuisineFoto: String
     var title: String
     

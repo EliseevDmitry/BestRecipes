@@ -7,13 +7,13 @@
 import SwiftUI
 
 struct CustomSearchBar: View {
+    @ObservedObject var appManager: RecipesManager
+    var networkManager = NetworkManager.shared
     @Binding var searchTerm: String
     @Binding var searchResults: [SearchResultRecipe]
     @Binding var showResultsSheet: Bool
-    
     @State private var isSearching = false
-    var networkManager = NetworkManager.shared
-    @ObservedObject var appManager: RecipesManager
+
     var body: some View {
         VStack {
             HStack {
@@ -24,7 +24,6 @@ struct CustomSearchBar: View {
                         .foregroundColor(.black)
                         .padding(.leading, 10)
                 }
-
                 TextField("Search recipes", text: $searchTerm, onEditingChanged: { isEditing in
                     if !isEditing {
                         self.searchResults = []
@@ -44,7 +43,6 @@ struct CustomSearchBar: View {
                 .cornerRadius(10)
                 .font(.custom(Poppins.regular, size: 14))
                 .foregroundColor(.neutral30)
-                
             }
             .frame(width: 360, height: 44)
             .overlay(
@@ -52,7 +50,6 @@ struct CustomSearchBar: View {
                     .stroke(Color(.neutral25), lineWidth: 1)
             )
             .padding(.horizontal, 10)
-            
             if isSearching {
                 ProgressView()
                     .padding()
@@ -86,7 +83,7 @@ struct SearchBar_Previews: PreviewProvider {
     @State static var showResultsSheet = false
 
     static var previews: some View {
-        CustomSearchBar(searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showResultsSheet, appManager: RecipesManager())
+        CustomSearchBar(appManager: RecipesManager(), searchTerm: $searchTerm, searchResults: $searchResults, showResultsSheet: $showResultsSheet)
     }
 }
 

@@ -10,7 +10,6 @@ import SwiftUI
 struct RootView: View {
     
     @ObservedObject var appManager: RecipesManager
-    
     @State var selectedTab: Tab = .home
     
     var body: some View {
@@ -28,12 +27,13 @@ struct RootView: View {
             EmptyView() // заглушка для экрана AddRecipeView
         }
         
+        //MARK: - Custom TabBar
         CustomTabBarView(selectedTab: $selectedTab)
             .offset(CGSize(width: 0.0, height: -40))
             .padding(.horizontal, 30)
             .background(
                 CustomBox(
-                    angle: OffsetCustomBox.angle, 
+                    angle: OffsetCustomBox.angle,
                     radiusOne: OffsetCustomBox.radiusOne,
                     radiusTwo: OffsetCustomBox.radiusTwo
                 )
@@ -54,6 +54,7 @@ struct RootView: View {
                 .clipShape(Circle())
                 .offset(CGSize(width: 0.0, height: -60))
             }
+        //: End Custom TabBar
     }
 }
 

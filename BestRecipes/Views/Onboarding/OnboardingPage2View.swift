@@ -3,12 +3,10 @@ import SwiftUI
 
 struct OnboardingPage2View: View {
     @AppStorage("onboardingIsShow") var onboardingIsShow = false
-
+    @ObservedObject var appManager: RecipesManager
     @State private var onboardingPage3ViewIsOn = false
     @State private var homeViewIsOn = false
     
-    @ObservedObject var appManager: RecipesManager
-
     var body: some View {
         ZStack(alignment: .bottom) {
             OnboardingBackgroundView(backgroundImage: .onboardingTwoBackground)
@@ -18,9 +16,7 @@ struct OnboardingPage2View: View {
                     whiteText: "Recipes with\n",
                     orangeText: "each and every\ndetail"
                 )
-
                 IndicatorsView(activeIndicatorIndex: 1)
-                
                 NavigationLink(isActive: $onboardingPage3ViewIsOn) {
                     OnboardingPage3View(appManager: appManager)
                         .navigationBarBackButtonHidden()
@@ -28,8 +24,7 @@ struct OnboardingPage2View: View {
                     ContinueButtonView(title: "Continue") {
                         onboardingPage3ViewIsOn.toggle()
                     }
-                }
-                               
+                }            
                 NavigationLink(isActive: $homeViewIsOn) {
                     HomeView(appManager: appManager)
                         .navigationBarBackButtonHidden()

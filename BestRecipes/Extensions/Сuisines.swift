@@ -10,7 +10,7 @@ enum Сuisines {
     static let cajun = "cajun"
     static let caribbean = "caribbean"
     static let chinese = "chinese"
-    static let easterneuropean = "easterneuropean"//
+    static let easterneuropean = "easterneuropean"
     static let ruropean = "ruropean"
     static let french = "french"
     static let german = "german"

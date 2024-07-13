@@ -2,18 +2,25 @@
 import SwiftUI
 
 struct Frame1View: View, Equatable {
-    static func == (lhs: Frame1View, rhs: Frame1View) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-
-    
     @ObservedObject var appManager: RecipesManager
+    @State var randomElement: String = DataConstants.cuisines.randomElement()!
     var id: Int
     var foodFoto: String
     var title: String
     var cuisines: [String]
-    @State var randomElement: String = DataConstants.cuisines.randomElement()!
+    //RandomDate
+    var myDate = Date().timeIntervalSince1970 + (Double.random(in: 1...100000))
+    var time: String {
+        let date = NSDate(timeIntervalSince1970: myDate)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let strDate = formatter.string(from: date as Date)
+        return strDate
+    }
+    
+    static func == (lhs: Frame1View, rhs: Frame1View) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -60,7 +67,7 @@ struct Frame1View: View, Equatable {
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(.secondary)
                                 .frame(width: 41, height: 25)
-                            Text("15:10")
+                            Text(time)
                                 .font(.custom(Poppins.regular, size: 12))
                                 .foregroundStyle(.white)
                         }
@@ -87,9 +94,7 @@ struct Frame1View: View, Equatable {
                     Image(cuisine.lowercased().replacingOccurrences(of: " ", with: ""))
                         .resizable()
                         .scaledToFit()
-                        //.frame(width: 32, height: 32)
-                        .clipShape(Circle())
-                       
+                        .clipShape(Circle())      
                     Text("By \(cuisine) Foods")
                         .font(.custom(Poppins.regular, size: 12))
                         .foregroundStyle(.secondary)
@@ -97,9 +102,7 @@ struct Frame1View: View, Equatable {
                     Image(randomElement.lowercased().replacingOccurrences(of: " ", with: ""))
                         .resizable()
                         .scaledToFit()
-                        //.frame(width: 32, height: 32)
                         .clipShape(Circle())
-                       
                     Text(randomElement)
                         .font(.custom(Poppins.regular, size: 12))
                         .foregroundStyle(.secondary)

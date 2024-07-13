@@ -58,7 +58,6 @@ struct CustomBox: Shape {
 
 
 struct CustomTabBarView: View {
-    
     @Binding var selectedTab: Tab
     
     var body: some View {
@@ -69,28 +68,22 @@ struct CustomTabBarView: View {
             } label: {
                 Image(selectedTab != .home ? "home" : "homeRed")
             }
-            
             Spacer()
-            
             Button{
                 // switch to BookmarkView
                 selectedTab = .bookmark
             } label: {
                 Image(selectedTab != .bookmark ? "bookmark" : "bookmarkRed")
             }
-            
             Spacer()
             Spacer()
-            
             Button{
                 // switch to BellView
                 selectedTab = .bell
             } label: {
                 Image(selectedTab != .bell ? "bell" : "bellRed")
             }
-            
             Spacer()
-            
             Button{
                 // switch to ProfileView
                 selectedTab = .profile

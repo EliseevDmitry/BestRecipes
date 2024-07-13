@@ -3,18 +3,21 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    
+    
+    @ObservedObject var appManager: RecipesManager
     @Environment(\.dismiss) var dismiss
     
-    var recipeId: Int?
-    var cuisine: String?
-    var networkManager = NetworkManager.shared
-    var recipe: RecipeInformation?
     @State private var recipeDetails: RecipeInformation?
     @State private var errorMessage: String?
     @State private var isLoading = false
     @State private var textTitle = ""
     @State private var showAlert = false
-    @ObservedObject var appManager: RecipesManager
+    
+    var recipeId: Int?
+    var cuisine: String?
+    var networkManager = NetworkManager.shared
+    var recipe: RecipeInformation?
     
     var body: some View {
         VStack {
@@ -48,7 +51,7 @@ struct RecipeDetailView: View {
                         HStack {
                             Text("Ingredients")
                                 .font(.headline).bold()
-                           // .padding([.top, .leading, .trailing])
+                            // .padding([.top, .leading, .trailing])
                             Spacer()
                             if let count = recipeDetails?.extendedIngredients?.count{
                                 Text("\(count) Items")
@@ -116,5 +119,5 @@ struct RecipeDetailView: View {
 
 
 #Preview {
-    RecipeDetailView(recipeId: 640275, appManager: RecipesManager())
+    RecipeDetailView(appManager: RecipesManager(), recipeId: 640275)
 }

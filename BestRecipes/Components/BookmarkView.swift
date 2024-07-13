@@ -1,3 +1,9 @@
+//
+//  BookmarkView.swift
+//  BestRecipes
+//
+//  Created by Dmitriy Eliseev on 11.07.2024.
+//
 
 import SwiftUI
 
@@ -5,6 +11,7 @@ struct BookmarkView: View {
     @ObservedObject var appManager: RecipesManager
     @State var isSelected: Bool = false
     var id: Int
+    
     var body: some View {
         Button{
             if appManager.saveIdBookMark(id: id) {
@@ -12,7 +19,6 @@ struct BookmarkView: View {
             } else {
                 isSelected = false
             }
-            
         } label: {
             ZStack {
                 Circle()
@@ -27,13 +33,7 @@ struct BookmarkView: View {
             } else {
                 isSelected = false
             }
-            
         }
     }
 }
 
-//#Preview {
-//    //@State var test = false
-//    BookmarkView(appManager: RecipesManager(), isSelected: isSelected, id: 1)
-//
-//}
