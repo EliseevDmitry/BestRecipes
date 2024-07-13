@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SeeAllRecentRecipe: View {
     @ObservedObject var appManager: RecipesManager
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var showAlert = false
     @Binding var recentItems: [Frame2View]
     var body: some View {
-        NavigationView{
             VStack{
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack{
@@ -22,7 +24,7 @@ struct SeeAllRecentRecipe: View {
                         }
                     }
                     .padding(.horizontal, 20)
-                    .padding(.top, 70)
+                    .padding(.top, 100)
                     LazyVStack {
                         ForEach(recentItems, id: \.id) { item in
                             NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
@@ -36,7 +38,28 @@ struct SeeAllRecentRecipe: View {
                 }
             }
             .ignoresSafeArea(.all, edges: .all)
-        }
+            // в панели навигации: стрелка влево вместо кнопки Back и кнопка "...", вызывающая alert
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .foregroundStyle(.primary)
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        showAlert = true
+                    } label: {
+                        Image(systemName: "ellipsis")
+                    }
+                }
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("- Разыгрался аппетит?"), message: Text("- Да, согласен даже перевести 100 рублей разработчикам!"))
+            }
     }
 }
 

@@ -78,16 +78,16 @@ struct HomeView: View {
                     //: HStack
                     
                     ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack {
+                        LazyHStack(spacing: 4) {
                             ForEach(DataConstants.categories, id: \.self) { item in
                                 PopularCategoryButton(title: item, selectedCategory: $selectionCategory) {
                                     fetchPopularCategoryWithDetails(for: item)
                                 }
                                 .foregroundStyle(.red)
+                                .padding(.leading)
                             }
                         }
                     }
-                    .padding(.leading, 20)
                     // Display error message if any
                     if let errorMessage = errorMessage {
                         Text(errorMessage)
