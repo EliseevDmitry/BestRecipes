@@ -47,6 +47,7 @@
 		263DBBF52C400658009FA36E /* Frame2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263DBBF42C400658009FA36E /* Frame2.swift */; };
 		264079862C42DAE800775D26 /* SeeAllTrendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264079852C42DAE800775D26 /* SeeAllTrendingView.swift */; };
 		264079882C42E4AC00775D26 /* SeeAllRecentRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264079872C42E4AC00775D26 /* SeeAllRecentRecipe.swift */; };
+		265CC50D2C439942001F2482 /* SearchCuisines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265CC50C2C439942001F2482 /* SearchCuisines.swift */; };
 		2691E1142C3E8AC700BEBF25 /* BookMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2691E1132C3E8AC700BEBF25 /* BookMarkView.swift */; };
 		26B6FA3A2C3452D200EE6B43 /* ModelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA392C3452D200EE6B43 /* ModelApp.swift */; };
 		26B6FA532C35AD4600EE6B43 /* Сuisines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B6FA522C35AD4600EE6B43 /* Сuisines.swift */; };
@@ -104,6 +105,7 @@
 		263DBBF42C400658009FA36E /* Frame2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frame2.swift; sourceTree = "<group>"; };
 		264079852C42DAE800775D26 /* SeeAllTrendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllTrendingView.swift; sourceTree = "<group>"; };
 		264079872C42E4AC00775D26 /* SeeAllRecentRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllRecentRecipe.swift; sourceTree = "<group>"; };
+		265CC50C2C439942001F2482 /* SearchCuisines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCuisines.swift; sourceTree = "<group>"; };
 		2691E1132C3E8AC700BEBF25 /* BookMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkView.swift; sourceTree = "<group>"; };
 		26B6FA392C3452D200EE6B43 /* ModelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelApp.swift; sourceTree = "<group>"; };
 		26B6FA522C35AD4600EE6B43 /* Сuisines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Сuisines.swift"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				2691E1132C3E8AC700BEBF25 /* BookMarkView.swift */,
 				264079852C42DAE800775D26 /* SeeAllTrendingView.swift */,
 				264079872C42E4AC00775D26 /* SeeAllRecentRecipe.swift */,
+				265CC50C2C439942001F2482 /* SearchCuisines.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				261733EC2C31710F00BAB4F5 /* NetworkModel.swift in Sources */,
 				261733E72C316F8E00BAB4F5 /* RecipesManager.swift in Sources */,
 				229B63822C4005A000103781 /* RootView.swift in Sources */,
+				265CC50D2C439942001F2482 /* SearchCuisines.swift in Sources */,
 				2691E1142C3E8AC700BEBF25 /* BookMarkView.swift in Sources */,
 				261733E72C316F8E00BAB4F5 /* RecipesManager.swift in Sources */,
 				22DBE3E42C341A3500CE7830 /* SkipButtonView.swift in Sources */,
