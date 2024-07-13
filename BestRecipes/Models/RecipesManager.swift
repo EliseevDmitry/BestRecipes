@@ -79,6 +79,5 @@ class RecipesManager: ObservableObject {
             print("Удален первый - добавлен новый элемент - \(recentItem.item)")
         }
         return
-    }
-    
+    } 
 }
