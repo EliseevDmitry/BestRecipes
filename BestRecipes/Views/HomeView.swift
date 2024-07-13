@@ -172,7 +172,7 @@ struct HomeView: View {
                     
                     // MARK: - Video Section
                     VideoView()
-                        .padding(.bottom, 100)
+                       .padding(.bottom, 100)
                 }
                 
             }
@@ -305,7 +305,7 @@ struct HomeView: View {
                             id: result.id ?? 716276,
                             foodFoto: result.image!,
                             title: result.title ?? "No data from model",
-                            time: result.readyInMinutes ?? 5)
+                            time: result.readyInMinutes ?? Int.random(in: 1...30))
                     })
                 case .failure(let error):
                     self.errorMessage = error.localizedDescription
@@ -315,6 +315,9 @@ struct HomeView: View {
         }
     }
     
+    
+    
+    //По этим функциям идет утечка --------------------
     private func loadRecentRecipes() {
         isLoading = true
         fetchFrames(for: appManager.recentItem.item.reversed()) { frames in
@@ -352,6 +355,7 @@ struct HomeView: View {
             completion(frames)
         }
     }
+    //По этим функциям идет утечка --------------------
 }
 
 #Preview {

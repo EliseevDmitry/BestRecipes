@@ -66,6 +66,7 @@ struct RecipeDetailView: View {
                         }
                     }
                 }
+                .padding(.bottom, 90)
             }
             .onAppear {
                 if let id = recipeId {
