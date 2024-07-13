@@ -158,10 +158,11 @@ struct HomeView: View {
                             ForEach(DataConstants.cuisines, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView(appManager: appManager, cuisine: item.uppercased())) {
                                     Frame3View(
-                                        cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
+                                        appManager: <#RecipesManager#>, cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
                                         title: item)
                                     .padding(.leading)
                                 }
+                                
                             }
                         }
                     }
