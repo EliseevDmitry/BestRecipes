@@ -16,8 +16,10 @@ struct BookmarkView: View {
         Button{
             if appManager.saveIdBookMark(id: id) {
                 isSelected = true
+                print("нажата")
             } else {
                 isSelected = false
+                print("нажата")
             }
         } label: {
             ZStack {

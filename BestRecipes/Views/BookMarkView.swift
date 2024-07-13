@@ -21,19 +21,23 @@ struct BookMarkView: View {
         }
         .padding(.horizontal, 20)
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(spacing: 20) {
+            //(spacing: 20)
+            LazyVStack {
                 ForEach(trendingItems, id: \.id) { item in
                     NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
                         item
-                            .padding(.leading)
+                          //  .padding(.leading)
                     }
                 }
                 .frame(maxHeight: .infinity)
             }
         }
-        .padding(.horizontal, 10)
+        //.padding(.horizontal, 10)
         .task {
             loadBookmarkedRecipes()
+        }
+        .onAppear{
+            appManager.loadBookMarkData()
         }
     }
     
