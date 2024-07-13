@@ -56,9 +56,7 @@ struct Frame1View: View, Equatable {
                             }
                         }
                         Spacer()
-                        ZStack {
                             BookmarkView(appManager: appManager, id: id)
-                        }
                     }
                     Spacer()
                     HStack {
@@ -73,13 +71,12 @@ struct Frame1View: View, Equatable {
                         }
                     }
                 }
-                .padding(.bottom, 20)
-                .padding(.top, 20)
-                .padding(.horizontal, 5)
+                .padding(.vertical, 15)
+                .padding(.horizontal, 10)
             }
-            .frame(height: 180)
             .clipShape(RoundedRectangle(cornerRadius: 10))
-            .padding(.bottom, 0)
+            .frame(maxHeight: 180)
+            Spacer()
             Text(title)
                 .frame(maxWidth: 260, alignment: .leading)
                 .font(.custom(Poppins.bold, size: 16))
@@ -87,7 +84,6 @@ struct Frame1View: View, Equatable {
                 .truncationMode(.tail)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.leading)
-                .padding(.top, 10)
             Spacer()
             HStack {
                 if let cuisine = cuisines.first {
@@ -109,8 +105,8 @@ struct Frame1View: View, Equatable {
                 }
             }  
             .frame(height: 32)
+            //Spacer()
         }
-        .frame(width: 280)
     }
 }
 

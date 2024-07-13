@@ -14,30 +14,36 @@ struct BookMarkView: View {
     @State private var isLoading = false
     
     var body: some View {
-        HStack {
-            Text("Saved recipes")
-                .font(.custom(Poppins.bold, size: 24))
-            Spacer()
-        }
-        .padding(.horizontal, 20)
-        ScrollView(.vertical, showsIndicators: false) {
-            //(spacing: 20)
-            LazyVStack {
-                ForEach(trendingItems, id: \.id) { item in
-                    NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
-                        item
-                          //  .padding(.leading)
-                    }
+        NavigationView{
+            VStack{
+                HStack {
+                    Text("Saved recipes")
+                        .font(.custom(Poppins.bold, size: 24))
+                    Spacer()
                 }
-                .frame(maxHeight: .infinity)
+                .padding(.horizontal, 20)
+                ScrollView(.vertical, showsIndicators: false) {
+                    //(spacing: 20)
+                    LazyVStack {
+                        ForEach(trendingItems, id: \.id) { item in
+                            NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
+                                item
+                                    .padding(.horizontal)
+                                    .padding(.bottom, 50)
+                            }
+                        }
+                        
+                    }
+                    .frame(height: 200)
+                }
+                .padding(.bottom, 70)
+                .padding(.top, 70)
             }
+            .padding(.top, 50)
+            .ignoresSafeArea(.all, edges: .all)
         }
-        //.padding(.horizontal, 10)
         .task {
             loadBookmarkedRecipes()
-        }
-        .onAppear{
-            appManager.loadBookMarkData()
         }
     }
     

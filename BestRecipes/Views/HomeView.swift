@@ -61,6 +61,7 @@ struct HomeView: View {
                             ForEach(trendingItems, id: \.id) { item in
                                 NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
                                     item
+                                        .frame(width: 280)
                                         .padding(.leading)
                                 }
                             }
