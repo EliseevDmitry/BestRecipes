@@ -139,7 +139,7 @@ struct HomeView: View {
                     
                     // MARK: - Cuisines Section
                     HStack {
-                        Text("Popular creators")
+                        Text("Popular cuisines")
                             .font(.custom(Poppins.bold, size: 20))
                         Spacer()
                         Button{
@@ -171,6 +171,13 @@ struct HomeView: View {
                     //: ScrollView
                     
                     // MARK: - Video Section
+                    HStack {
+                        Text("Video recipe")
+                            .font(.custom(Poppins.bold, size: 20))
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
+                    //: HStack
                     VideoView()
                         .padding(.bottom, 100)
                 }
