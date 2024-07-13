@@ -14,8 +14,6 @@ struct SearchResultRecipe: Codable {
     let title: String?
     let image: String?
     let imageType: String?
-    let cuisines: [String]?
-    let readyInMinutes: Int?
 }
 
 // Главная структура для декодирования информации о рецепте

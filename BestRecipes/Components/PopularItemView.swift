@@ -8,7 +8,7 @@ struct PopularItemView: View, Equatable {
     var cuisine: String?
     var foodFoto: String
     var title: String
-    var time: Int
+    var time: String
     
     static func == (lhs: PopularItemView, rhs: PopularItemView) -> Bool {
         return lhs.id == rhs.id

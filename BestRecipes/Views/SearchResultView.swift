@@ -78,8 +78,8 @@ struct SearchResultsView: View {
 //MARK: - Preview
 struct SearchResultsView_Previews: PreviewProvider {
     @State static var searchResults = [
-        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg", cuisines: DataConstants.cuisines, readyInMinutes: 5),
-        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage2", imageType: "jpg", cuisines: DataConstants.cuisines, readyInMinutes: 5)
+        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage1", imageType: "jpg"),
+        SearchResultRecipe(id: 1, title: "Spaghetti Bolognese", image: "mockImage2", imageType: "jpg")
         
     ]
     @State static var searchTerm = "Spaghetti"
