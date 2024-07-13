@@ -10,53 +10,50 @@ import SwiftUI
 struct BookMarkView: View {
     @ObservedObject var appManager: RecipesManager
     var networkManager = NetworkManager.shared
-    @State private var trendingItems: [Frame1View] = []
+    @State private var bookMarkItems: [Frame1View] = []
     @State private var isLoading = false
     
     var body: some View {
         NavigationView{
             VStack{
-                HStack {
-                    Text("Saved recipes")
-                        .font(.custom(Poppins.bold, size: 24))
-                    Spacer()
-                }
-                .padding(.horizontal, 20)
                 ScrollView(.vertical, showsIndicators: false) {
-                    //(spacing: 20)
+                    VStack{
+                        HStack{
+                            Text("Saved recipes")
+                                .font(.custom(Poppins.bold, size: 24))
+                            Spacer()
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 70)
                     LazyVStack {
-                        ForEach(trendingItems, id: \.id) { item in
+                        ForEach(bookMarkItems, id: \.id) { item in
                             NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
                                 item
                                     .padding(.horizontal)
-                                    .padding(.bottom, 50)
+                                    .padding(.bottom, 20)
                             }
                         }
-                        
                     }
-                    .frame(height: 200)
+                    .padding(.bottom, 80)
                 }
-                .padding(.bottom, 70)
-                .padding(.top, 70)
             }
-            .padding(.top, 50)
             .ignoresSafeArea(.all, edges: .all)
         }
         .task {
             loadBookmarkedRecipes()
         }
+        .onDisappear{
+            self.bookMarkItems = []
+        }
     }
-    
-    
-    
-    
-    //По этим функциям идет утечка --------------------
+
     private func loadBookmarkedRecipes() {
         isLoading = true
         fetchFrames(for: appManager.bookMark.bookMarkSet.sorted()) { frames in
             DispatchQueue.main.async {
                 self.isLoading = false
-                self.trendingItems = frames
+                self.bookMarkItems = frames
             }
         }
     }
@@ -88,8 +85,6 @@ struct BookMarkView: View {
             completion(frames)
         }
     }
-    
-    //По этим функциям идет утечка --------------------
 }
 
 #Preview {
