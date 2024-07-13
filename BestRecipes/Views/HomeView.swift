@@ -43,9 +43,8 @@ struct HomeView: View {
                         Text("Trending now 🔥")
                             .font(.custom(Poppins.bold, size: 20))
                         Spacer()
-                        Button{
-                            
-                        }label: {
+                            NavigationLink(destination: SeeAllTrendingView(appManager: appManager, trendingItems: $trendingItems)) {
+                                EmptyView()
                             Text("See All")
                                 .font(.custom(Poppins.bold, size: 14))
                                 .foregroundStyle(.red)
@@ -114,9 +113,8 @@ struct HomeView: View {
                         Text("Recent recipe")
                             .font(.custom(Poppins.bold, size: 20))
                         Spacer()
-                        Button{
-                            
-                        }label: {
+                        NavigationLink(destination: SeeAllRecentRecipe(appManager: appManager, recentItems: $recentItems)) {
+                            EmptyView()
                             Text("See All")
                                 .font(.custom(Poppins.bold, size: 14))
                                 .foregroundStyle(.red)
@@ -139,7 +137,7 @@ struct HomeView: View {
                     
                     // MARK: - Cuisines Section
                     HStack {
-                        Text("Popular creators")
+                        Text("Popular cuisines")
                             .font(.custom(Poppins.bold, size: 20))
                         Spacer()
                         Button{
@@ -171,6 +169,13 @@ struct HomeView: View {
                     //: ScrollView
                     
                     // MARK: - Video Section
+                    HStack {
+                        Text("Video recipe")
+                            .font(.custom(Poppins.bold, size: 20))
+                        Spacer()
+                    }
+                    .padding(.horizontal, 20)
+                    //: HStack
                     VideoView()
                         .padding(.bottom, 100)
                 }

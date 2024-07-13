@@ -73,11 +73,11 @@ struct Frame1View: View, Equatable {
                             }
                         }
                     }
-                    .padding(.vertical, 15)
+                    .frame(maxHeight: 184)
+                    .padding(.vertical, 16)
                     .padding(.horizontal, 10)
-                    
-                    
                 }
+                .frame(maxHeight: 200)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
 //Spacer()
                
