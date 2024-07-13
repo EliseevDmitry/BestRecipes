@@ -47,6 +47,10 @@ struct BookMarkView: View {
         }
     }
     
+    
+    
+    
+    //По этим функциям идет утечка --------------------
     private func loadBookmarkedRecipes() {
         isLoading = true
         fetchFrames(for: appManager.bookMark.bookMarkSet.sorted()) { frames in
@@ -84,6 +88,8 @@ struct BookMarkView: View {
             completion(frames)
         }
     }
+    
+    //По этим функциям идет утечка --------------------
 }
 
 #Preview {
