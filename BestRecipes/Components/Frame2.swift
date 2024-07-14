@@ -22,6 +22,8 @@ struct Frame2View: View {
             {image in
                 image
                     .image?.resizable()
+                //
+                    .scaledToFill()
                     .frame(width: 124 ,height: 124)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
             }

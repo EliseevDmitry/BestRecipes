@@ -22,7 +22,7 @@ struct SearchCuisines: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack{
                     HStack{
-                        Text("Trending now")
+                        Text("\(cuisines) cuisines")
                             .font(.custom(Poppins.bold, size: 24))
                         Spacer()
                     }
