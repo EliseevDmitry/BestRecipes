@@ -1,16 +1,16 @@
 //
-//  BookMarkView.swift
+//  SeeAllMyView.swift
 //  BestRecipes
 //
-//  Created by Dmitriy Eliseev on 10.07.2024.
+//  Created by Dmitriy Eliseev on 13.07.2024.
 //
-
+//<T: Codable>(_ file: String)->T 
 import SwiftUI
 
-struct BookMarkView: View {
+struct SeeAllMyView: View {
     @ObservedObject var appManager: RecipesManager
     var networkManager = NetworkManager.shared
-    @State private var bookMarkItems: [Frame1View] = []
+    @Binding private var anyView: [AnyHashable]
     @State private var isLoading = false
     
     var body: some View {
@@ -27,7 +27,7 @@ struct BookMarkView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 70)
                     LazyVStack {
-                        ForEach(bookMarkItems, id: \.id) { item in
+                        ForEach(anyView, id: \.self) { item in
                             NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
                                 item
                                     .padding(.horizontal)
@@ -44,7 +44,7 @@ struct BookMarkView: View {
             loadBookmarkedRecipes()
         }
         .onDisappear{
-            self.bookMarkItems = []
+            self.anyView = []
         }
     }
 
@@ -53,7 +53,7 @@ struct BookMarkView: View {
         fetchFrames(for: appManager.bookMark.bookMarkSet.sorted()) { frames in
             DispatchQueue.main.async {
                 self.isLoading = false
-                self.bookMarkItems = frames
+                self.anyView = frames
             }
         }
     }
@@ -88,5 +88,5 @@ struct BookMarkView: View {
 }
 
 #Preview {
-    BookMarkView(appManager: RecipesManager())
+    SeeAllMyView(appManager: RecipesManager())
 }

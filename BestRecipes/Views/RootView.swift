@@ -20,10 +20,13 @@ struct RootView: View {
         case .bookmark:
             BookMarkView(appManager: appManager)
         case .bell:
+            Spacer()
             EmptyView() // заглушка для экрана BellView
         case .profile:
+            Spacer()
             EmptyView() // заглушка для экрана ProfileView
         case .plus:
+            Spacer()
             EmptyView() // заглушка для экрана AddRecipeView
         }
         

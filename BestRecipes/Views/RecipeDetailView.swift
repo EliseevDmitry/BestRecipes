@@ -66,6 +66,7 @@ struct RecipeDetailView: View {
                         }
                     }
                 }
+                .padding(.bottom, 90)
             }
             .onAppear {
                 if let id = recipeId {
@@ -84,6 +85,9 @@ struct RecipeDetailView: View {
                         }
                     }
                 }
+            }
+            .onDisappear{
+                self.recipeDetails = nil
             }
             .padding(.horizontal, 10)
             .onAppear{
