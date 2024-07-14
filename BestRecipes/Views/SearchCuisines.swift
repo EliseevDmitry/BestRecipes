@@ -49,7 +49,7 @@ struct SearchCuisines: View {
     }
     
     func searchCuisines(cuisines: String){
-        networkManager.fetchCuisine(for: "Chinese") { result in
+        networkManager.fetchCuisine(for: cuisines) { result in
             DispatchQueue.main.async {
                 isLoading = false
                 switch result {
