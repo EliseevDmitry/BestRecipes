@@ -157,11 +157,11 @@ struct HomeView: View {
                         LazyHStack(spacing: 20) {
                             ForEach(DataConstants.cuisines, id: \.self) { item in
                                 NavigationLink(destination: RecipeDetailView(appManager: appManager, cuisine: item.uppercased())) {
-                                    Frame3View(
-                                        cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
-                                        title: item)
+                                    Frame3View(cuisineFoto: (item.lowercased().replacingOccurrences(of: " ", with: ""), title: item)
+                                               
                                     .padding(.leading)
                                 }
+                                
                             }
                         }
                     }
