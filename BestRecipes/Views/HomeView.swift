@@ -140,9 +140,10 @@ struct HomeView: View {
                         Text("Popular cuisines")
                             .font(.custom(Poppins.bold, size: 20))
                         Spacer()
-                        Button{
+                        
+                        NavigationLink(destination: SeeAllCuisines(appManager: appManager, cuisinesItems: DataConstants.cuisines)) {
+                            EmptyView()
                             
-                        }label: {
                             Text("See All")
                                 .font(.custom(Poppins.bold, size: 14))
                                 .foregroundStyle(.red)
