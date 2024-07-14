@@ -13,7 +13,6 @@ struct PopularCategoryButton: View {
         }) {
             Text(title)
                 .padding(5)
-                .padding(.horizontal, 8)
                 .font(.custom(Poppins.semiBold, size: 12))
                 .background(selectedCategory == title ? Color.primary50 : Color.white)
                 .foregroundStyle(selectedCategory == title ? .white : .primary30)
