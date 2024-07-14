@@ -187,8 +187,7 @@ struct HomeView: View {
             .ignoresSafeArea(.all, edges: .all)
         }
         .onAppear{
-            
-           // onboardingIsShow = false
+            //onboardingIsShow = false
             appManager.loadBookMarkData()
             appManager.loadRecentData()
         }

@@ -3,7 +3,7 @@ import Foundation
 struct API {
     static let scheme = "https"
     static let host = "api.spoonacular.com"
-    static let apiKey = Token.reservSix
+    static let apiKey = Token.notOne
 }
 
 struct Token {
@@ -28,7 +28,18 @@ struct Token {
     static let reservTen = "59ece5a665f9455c92dad51057fd5100"
     
     //Резервные для защиты проекта - тратьть только экстренно
-    static let notOne = "36437384580348f2ae7250f5236a3440"
-    static let notTwo = "5d260a98d98e4415a350998bcf1228dc"
-    static let notThree = "317592d32b1e4346ba205b6abdd25330"
+    static let notOne = "0fed29fb2c044908aba3c7879ffb5b46"
+    static let notTwo = "f7288bef5fe84596a8c1f3a33a8e1a47"
+    static let notThree = "eb24898795f34d798113b57081d58185"
+    
+    //"36437384580348f2ae7250f5236a3440"
+    //"5d260a98d98e4415a350998bcf1228dc"
+    //"317592d32b1e4346ba205b6abdd25330@
+   // d26a93b80f2a42ce92bb50e11f919a5a
+   // ebe130adc0bc4d12880fb57604199462
+   // 8536fb33b7c54bc38372aca6b29a9f8a
+   // 7ddb73a2fb89463ba5a46c2e00a4f0b9
+   // b20f3313345d433e9d05456ea127e83c
+   // 00435827194f450a97ac4576ed729102
+   // eaf1139adca04256a9e88a79b320db9c
 }
