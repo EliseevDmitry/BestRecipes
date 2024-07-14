@@ -31,7 +31,7 @@ struct SearchCuisines: View {
                     LazyVStack {
                         ForEach(searchResults, id: \.id) { item in
                             NavigationLink(destination: RecipeDetailView(appManager: appManager, recipeId: item.id)) {
-                                Frame1View(appManager: appManager, id: item.id ?? 1, foodFoto: item.image ?? "", title: item.title ?? "", cuisines: item.cuisines ?? [""])
+                                Frame1View(appManager: appManager, id: item.id ?? 1, foodFoto: item.image ?? "", title: item.title ?? "", cuisines: [cuisines])
                                     .padding(.horizontal)
                                     .padding(.bottom, 20)
                             }

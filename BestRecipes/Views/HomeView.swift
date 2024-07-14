@@ -156,7 +156,7 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 20) {
                             ForEach(DataConstants.cuisines, id: \.self) { item in
-                                NavigationLink(destination: SearchCuisines(appManager: appManager, cuisines:  item.lowercased().replacingOccurrences(of: " ", with: ""))) {
+                                NavigationLink(destination: SearchCuisines(appManager: appManager, cuisines:  item)) {
                                     Frame3View(
                                         cuisineFoto: item.lowercased().replacingOccurrences(of: " ", with: ""),
                                         title: item)
