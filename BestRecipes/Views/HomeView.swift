@@ -162,6 +162,7 @@ struct HomeView: View {
                                         title: item)
                                     .padding(.leading)
                                 }
+                                
                             }
                         }
                     }
