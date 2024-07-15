@@ -59,7 +59,7 @@
       <td><img src="https://github.com/user-attachments/assets/d291f7d8-eb25-4667-98f1-0e54153ed797" alt="Член команды 2" style="width:140px; height:auto; border-radius:50%;">
       <br>Даниил Мурзин</td>
       <td><img src="https://github.com/user-attachments/assets/a950a17a-af4a-483f-945b-b36d34fdc4a4" style="width:100px; height:auto; border-radius:50%;">
-      <br>Дениз </td>
+      <br>Денис </td>
     </tr>
     <tr>
       <td><img src="https://github.com/user-attachments/assets/290e63f0-139c-4409-95c2-0c14afb9c92c" alt="Член команды 4" style="width:140px; height:auto; border-radius:50%;">
