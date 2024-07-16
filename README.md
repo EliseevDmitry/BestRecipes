@@ -64,7 +64,7 @@
       <br>Дима</td>
       <td><img src="https://github.com/user-attachments/assets/9cf8a59d-7051-4597-a999-711338803fe0" alt="Член команды 5" style="width:110px; height:auto; border-radius:50%;">
       <br>Хабибуллох Халлоков</td>
-      <td></td> <!-- Empty cell for alignment -->
+   <!-- Empty cell for alignment -->
     </tr>
   </table>
 </div>
