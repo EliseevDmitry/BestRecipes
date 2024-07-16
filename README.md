@@ -58,6 +58,7 @@
       <br>Елисеев Дмитрий</td>
       <td><img src="https://github.com/user-attachments/assets/e4e8a919-ab3a-41ea-aa23-b3ebb52e2192" alt="Член команды 2" style="width:140px; height:auto; border-radius:50%;">
       <br>Даниил Мурзин</td>
+
       <td><img src="https://github.com/user-attachments/assets/11669881-9680-4be2-9b15-f28addd12459" style="width:100px; height:auto; border-radius:50%;">
       <br>Денис</td>
     </tr>
